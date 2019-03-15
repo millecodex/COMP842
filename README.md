@@ -1,5 +1,5 @@
 ## COMP842
-Applied Blockchains and Cryptocurrencies at Auckland University of Technology\
+Applied Blockchains and Cryptocurrencies at Auckland University of Technology
 
 This course is brand new! And thus, a work in progress...
 
