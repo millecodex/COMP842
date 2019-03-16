@@ -1,26 +1,23 @@
 # full documentation of the cryptography library available at:
 # https://pypi.org/project/cryptography/
-#
-#
-# generate some key pairs with cryptographic libraries
+import hashlib
 from cryptography.fernet import Fernet
 # Fernet.decrypt|encrypt|extract_timestamp|generate_key
 # Standard fernet is a 128 bit key, more specifically it is AES in CBC mode
 # every time a key is generated, fernet access the system os.random funtion
-# key = Fernet.generate_key()
-# print(key)
-# key2 = Fernet.generate_key()
-# print(key2)
-# here we have a byte object of a symmetric key
-# 
+key = Fernet.generate_key()
+print(key)
+key2 = Fernet.generate_key()
+print(key2)
+
 # show listing of available methods
-# print(dir(Fernet))
+print(dir(Fernet))
 #
-# cipher_suite = Fernet(key)
-# cipher_text = cipher_suite.encrypt(b'we attack at dawn')
-# cipher_text_2 = cipher_suite.encrypt(b'We attack at dawn')
-# plain_text = cipher_suite.decrypt(cipher_text)
-# plain_text = plain_text.decode()
+cipher_suite = Fernet(key)
+cipher_text = cipher_suite.encrypt(b'we attack at dawn')
+cipher_text_2 = cipher_suite.encrypt(b'We attack at dawn')
+plain_text = cipher_suite.decrypt(cipher_text)
+plain_text = plain_text.decode()
 
 # backend provides access to a variety of helper methods
 from cryptography.hazmat.backends import default_backend
@@ -31,13 +28,10 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import ec
 # needs two parameters, curve and backend
 curve = ec.SECP256K1()
-#print(curve)
 private_key = ec.generate_private_key(curve,default_backend())
-# print(private_key)
-# private_key object
 public_key = private_key.public_key()
-#print(public_key)
-# public_key object
+print(public_key)
+
 # view the private key (human readable) we must invoke serialization of the key object
 from cryptography.hazmat.primitives import serialization
 private_ks = private_key.private_bytes(
@@ -51,28 +45,18 @@ public_ks =public_key.public_bytes(
     serialization.Encoding.PEM,
     serialization.PublicFormat.SubjectPublicKeyInfo)
 print(public_ks.decode())
-# notice that much of the public key is also part of the private key
 
 # there is a method to output the curve coordinates in decimal
 # outputs coordinates: the (x,y) point on the curve
 print(public_key.public_numbers()) 
-#print('\n')
-
-# from here we will covert the public key to an 'address'; just a different format
-# using bitcoin as an example (base58)
 x_coord = public_key.public_numbers()._x
-# y_coord = public_key.public_numbers()._y
-#x_coord = 60863438835765496322046118568847610119789447270733591314076379178174877468952
-#y_coord = 99119739436921713267631303491701769548789714202056655558229127522644072532851
 # convert to hex
 pub_key_hex = hex(x_coord)
-#print(pub_key_hex)
 # strip the first two characters signifying python hex number
 pub_key_hex = pub_key_hex[2:]
-#print(pub_key_hex)
 # append the prefix 03 indicating that the y-value was odd
+# with this code, half the address should not validate
 pub_key_hex = '03'+pub_key_hex
-print(pub_key_hex)
 
 import hashlib
 # double-hashed first as sha256, then as ripemd160 
@@ -93,19 +77,3 @@ import base58
 b58 = base58.b58encode(pub_key_hash)
 btc_address = b58.decode()
 print(btc_address)
-
-
-
-
-
-
-
-
-
-
-
-
-
-tx = 'diploma transfer to student'.encode()
-# signature = private_key.sign(tx,ec.ECDSA(hashes.SHA1()))
-#print(signature)
