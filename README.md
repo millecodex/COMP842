@@ -10,4 +10,5 @@ Lecture 4 - consensus methods part I\
 Lecture 5 - consensus methods part II
 
 Tutorial 1 - block structure, hashing & merkle trees\
-Tutorial 2 - elliptic curve cryptography key generation
+Tutorial 2 - elliptic curve cryptography key generation\
+Tutorial 3 - proof of work
