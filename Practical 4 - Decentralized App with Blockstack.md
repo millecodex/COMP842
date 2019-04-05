@@ -7,24 +7,28 @@ First we will install or verify npm which is the package manager for node.js. To
 
 If you need to install it, head over to https://nodejs.org/en/, download and install node.js for Windows which comes with npm. Verify from the command prompt as above.
 
-Next we will install some support packages.\
-1. Yeoman: `npm install -g yo`\
+Next we will install some support packages.
+1. Yeoman: `npm install -g yo`
 2. Blockstack app generator: `npm install -g generator-blockstack`
 
 ## Generate an initial Blockstack application
-Create a directory for the app (make directory)\
-`mkdir hello-decentralized-world`\
+Create a new directory for the app (make directory)\
+`C:\Users\Japple> mkdir hello-decentralized-world`\
 Navigate there (change directory)\
-`cd hello-decentralized-world`\
+`C:\Users\Japple> cd hello-decentralized-world`\
 Start the app\
-`yo blockstack`
+`C:\Users\Japple\hello-decentralized-world> yo blockstack`
 
 ![blockstack generator](/images/blockstack/yoblockstack.PNG)
 
-You may get some errors here, for example the package `node-gyp` does not support python 3.x. You can direct it to python 2.7 by `npm config set python /path/to/executable/python2.7`. Additionally, Windows build tools may need to be installed via `npm install --global windows-build-tools` (needs administrator access, may not work in the lab).
+Select `Y` to proceed. You may get some errors here. For example:
+- the package `node-gyp` does not support python 3.x. You can direct it to python 2.7 by `npm config set python /path/to/executable/python2.7`. 
+- Additionally, Windows build tools may need to be installed via `npm install --global windows-build-tools` (needs administrator access, may not work in the lab).
+
+Once `yo blockstack` runs without any errors you will see: `found 0 vulnerabilities` and are ready.
 
 Start the server by:\
-`npm start`\
+`C:\Users\Japple\hello-decentralized-world> npm start`\
 This will load in your browser, note the address is `http://localhost:5000`. You may be prompted to accept incoming connections.
 
 ![hello blockstack!](/images/blockstack/helloBlockstack.PNG)
@@ -37,7 +41,7 @@ Select a username. A backup phrase will be emailed to you. Login with the new us
 
 ![nameless Person](/images/blockstack/nameless.PNG)
 
-
+From this point on you can inspect some of the code and commit to a git repo by following the [blockstack version](https://docs.blockstack.org/browser/hello-blockstack.html#understand-the-generated-application-code).
 
 
 ## Other links that may help
