@@ -7,23 +7,35 @@ First we will install or verify npm which is the package manager for node.js. To
 
 If you need to install it, head over to https://nodejs.org/en/, download and install node.js for Windows which comes with npm. Verify from the command prompt as above.
 
-Next we will install some support packages.
-1. Yeoman: `npm install -g yo`
+Next we will install some support packages.\
+1. Yeoman: `npm install -g yo`\
 2. Blockstack app generator: `npm install -g generator-blockstack`
 
 ## Generate an initial Blockstack application
-Create a directory for the app (make directory)
-`mkdir hello-decentralized-world`
-Navigate there (change directory)
-`cd hello-decentralized-world`
-Start the app
+Create a directory for the app (make directory)\
+`mkdir hello-decentralized-world`\
+Navigate there (change directory)\
+`cd hello-decentralized-world`\
+Start the app\
 `yo blockstack`
 
 ![blockstack generator](/images/blockstack/yoblockstack.PNG)
 
-You may get some errors here, for example the package `node-gyp` does not support python 3.x. You can direct it to python 2.7 by `npm config set python /path/to/executable/python2.7`. Additionally, Windows build tools may need to be installed via `npm install --global windows-build-tools` using administrator access (may not work in the lab).
+You may get some errors here, for example the package `node-gyp` does not support python 3.x. You can direct it to python 2.7 by `npm config set python /path/to/executable/python2.7`. Additionally, Windows build tools may need to be installed via `npm install --global windows-build-tools` (needs administrator access, may not work in the lab).
 
+Start the server by:\
+`npm start`\
+This will load in your browser, note the address is `http://localhost:5000`. You may be prompted to accept incoming connections.
 
+![hello blockstack!](/images/blockstack/helloBlockstack.PNG)
+
+Click sign in. You will be prompted to create a new ID. 
+
+![createID](/images/blockstack/newID.PNG)
+
+Select a username. A backup phrase will be emailed to you. Login with the new userID and leave the application running.
+
+![nameless Person](/images/blockstack/nameless.PNG)
 
 
 
