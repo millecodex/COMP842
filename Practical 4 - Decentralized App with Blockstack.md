@@ -43,8 +43,12 @@ Select a username. A backup phrase will be emailed to you. Login with the new us
 
 From this point on you can inspect some of the code and commit to a git repo by following the [blockstack version](https://docs.blockstack.org/browser/hello-blockstack.html#understand-the-generated-application-code).
 
+The files `app.js` and `manifest.json` contain most of the logic for the app.
 
-## Other links that may help
+## Exercise
+1. Now that you have a blockstack userID and the environment installed, try the [Todo List Application Tutorial](https://docs.blockstack.org/browser/todo-list.html).
+
+## Other links that may help with installation
 - [installing npm](https://www.npmjs.com/get-npm)
 - [running a node app on windows](http://blog.gvm-it.eu/post/20404719601/getting-started-with-nodejs-on-windows)
 - The elliptic curve package game me an error, [this page](https://github.com/cryptocoinjs/secp256k1-node#installation) helped resolve it on windows
