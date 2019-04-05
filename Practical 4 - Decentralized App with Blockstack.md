@@ -46,7 +46,8 @@ From this point on you can inspect some of the code and commit to a git repo by 
 The files `app.js` and `manifest.json` contain most of the logic for the app.
 
 ## Exercise
-1. Now that you have a blockstack userID and the environment installed, try the [Todo List Application Tutorial](https://docs.blockstack.org/browser/todo-list.html).
+1. Read about how blockstack views [decentralized applications](https://docs.blockstack.org/develop/dapp_principles.html).
+2. Now that you have a blockstack userID and the environment installed, try the [Todo List Application Tutorial](https://docs.blockstack.org/browser/todo-list.html).
 
 ## Other links that may help with installation
 - [installing npm](https://www.npmjs.com/get-npm)
