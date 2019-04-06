@@ -1,3 +1,5 @@
+This tutorial we will look into a framework called Blockstack that has been in development with the aim of 
+
 # Create an app with Blockstack
 This is based on the "Hello Blockstack" tutorial written for OSX users. If you are using a mac/linux, the [blockstack version](https://docs.blockstack.org/browser/hello-blockstack.html) will be better to follow. For this I am using Windows 10 which ~~should~~ might be compatible with the lab.
 
