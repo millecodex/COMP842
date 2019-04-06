@@ -15,4 +15,4 @@ Lecture 8 - smart contracts & lightning network
 Tutorial 1 - block structure, hashing & merkle trees\
 Tutorial 2 - elliptic curve cryptography key generation\
 Tutorial 3 - proof of work\
-Tutorial 4 - 
+Tutorial 4 - create a blockstack app
