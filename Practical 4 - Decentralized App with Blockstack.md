@@ -41,7 +41,7 @@ Click sign in. You will be prompted to create a new ID.
 
 ![createID](/images/blockstack/newID.PNG)
 
-Select a username. A backup phrase will be emailed to you. Login with the new userID and leave the application running.
+Select a username. A Magic Recovery Code will be emailed to you. Login with the new userID and leave the application running.
 
 ![nameless Person](/images/blockstack/nameless.PNG)
 
