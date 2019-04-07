@@ -24,8 +24,10 @@ Start the app\
 ![blockstack generator](/images/blockstack/yoblockstack.PNG)
 
 Select `Y` to proceed. You may get some errors here. For example:
-- the package `node-gyp` does not support python 3.x. You can direct it to python 2.7 by `npm config set python /path/to/executable/python2.7`. 
-- Additionally, Windows build tools may need to be installed via `npm install --global windows-build-tools` (needs administrator access, may not work in the lab).
+- the package `node-gyp` does not support python 3.x. You can direct it to python 2.7 by\
+`npm config set python /path/to/executable/python2.7`. 
+- Additionally, Windows build tools may need to be installed via\
+`npm install --global windows-build-tools` (needs administrator access, may not work in the lab).
 
 Once `yo blockstack` runs without any errors you will see: `found 0 vulnerabilities` and are ready.
 
