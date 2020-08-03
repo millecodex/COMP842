@@ -14,11 +14,11 @@ Lecture 8 - Project Presentations\
 Lecture 9 - Technology stack, scalability, lightning network\
 Lecture 10 - Privacy\
 Lecture 11 - Future Outlook: IPFS, rollups & Eth2.0\
-Lecture 12 - Final Project Submission\
+Lecture 12 - Final Project Submission
 
 Tutorial 1 - block structure, hashing & merkle trees\
 Tutorial 2 - elliptic curve cryptography key generation\
 Tutorial 3 - proof of work\
 Tutorial 4 - Remix Part I\
 Tutorial 5 - Remix Part II\
-Tutorial 6 - Remix Part III\
+Tutorial 6 - Remix Part III
