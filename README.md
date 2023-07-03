@@ -7,6 +7,8 @@ The course website is hosted on Canvas https://canvas.aut.ac.nz/courses/8343, ho
 
 Lectures are Tuesdays 16:10-18:00 in WZ602 begnning July 18, 2023\
 
+This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecodex/COMP726/), and as such has more detail, less in-class time (no tutorials), and overall adjusted expectations with respect to the quality and output of coursework. Occasionally we may have overalapping seminars and announcements.
+
 ## Lecture Topics
 Lecture 1 - Motivation for & history of computing leading to Bitcoin\
 Lecture 2 - Hash functions, merkle trees, block structure\
