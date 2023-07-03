@@ -1,24 +1,36 @@
-## COMP842
-Applied Blockchains and Cryptocurrencies at Auckland University of Technology
+## COMP842 - Applied Blockchains and Cryptocurrencies
+### Auckland University of Technology
 
-This course is brand new! And thus, a work in progress...
+As always this crypto space moves fast :rocket: and so this is a work in progress 🚧
 
-Lecture 1 - History of the blockchain & applications\
-Lecture 2 - Hash functions and merkle trees\
-Lecture 3 - Public key cryptography,digital signatures\
-Lecture 4 - Consensus methods part I: centralized & decentralized, double-spend attack\
-Lecture 5 - Consensus methods part II: mining, Proof of Work, Proof of Stake\
-Lecture 6 - Design Science\
+The course website is hosted on Canvas https://canvas.aut.ac.nz/courses/8343, however you need to be an enrolled student to login. This site serves as the open-source version. (You will still need to login to Canvas to view the assessment criteria and particiapate in the course discussion.) 
+
+Lectures are Tuesdays 16:10-18:00 in WZ602 begnning July 18, 2023\
+
+## Lecture Topics
+Lecture 1 - Motivation for & history of computing leading to Bitcoin\
+Lecture 2 - Hash functions, merkle trees, block structure\
+Lecture 3 - Consensus: centralized & decentralized, double-spend attack\
+Lecture 4 - Mining: proof of work\
+Lecture 5 - Public key cryptography\
+Lecture 6 - Systems architecture\
 Lecture 7 - Security\
-Lecture 8 - Project Presentations\
-Lecture 9 - Technology stack, scalability, lightning network\
-Lecture 10 - Privacy\
-Lecture 11 - Future Outlook: IPFS, rollups & Eth2.0\
-Lecture 12 - Final Project Submission
+Lecture 8 - Decentralized Finance\
+Lecture 9 - Privacy & Data Sovereignty\
+Lecture 10 - IPFS\
+Lecture 11 - Scaling\
+Lecture 12 - Wrap up / guest lecture
 
-Tutorial 1 - block structure, hashing & merkle trees\
-Tutorial 2 - elliptic curve cryptography key generation\
-Tutorial 3 - proof of work\
-Tutorial 4 - Remix Part I\
-Tutorial 5 - Remix Part II\
-Tutorial 6 - Remix Part III
+## Tutorials
+Tutorial  1 - [Blockchain search and discovery](tutorials/blockchain_search.md)\
+Tutorial  2 - [Python Part I - Block structure, hashing & merkle trees](tutorials/python_1_blocks.ipynb)\
+Tutorial  3 - [App Design with Archimate](tutorials/archimate.md)\
+Tutorial  4 - [Python Part II - Proof-of-Work: mining, difficulty, probability](tutorials/python_2_PoW.ipynb)\
+Tutorial  5 - [Python Part III - Elliptic curve cryptography](tutorials/python_3_ECC.ipynb)\
+Tutorial  6 - [Remix Part I - Solidity & IDE](tutorials/remix_1.md)\
+Tutorial  7 - [Remix Part II - Metamask & Wallets](tutorials/remix_2.md)\
+Tutorial  8 - [Two-minute Presentations](tutorials/presentation_checkpoint.md)\
+Tutorial  9 - [NFTs Part I](tutorials/nft_1.md)\
+Tutorial 10 - [IPFS & NFTs Part II](tutorials/nft_2.md)\
+Tutorial 11 - [Blockchain Scaling](tutorials/scaling_1.md)\
+Tutorial 12 - Portfolio Wrap-up & Project Check-in
