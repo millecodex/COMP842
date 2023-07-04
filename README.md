@@ -38,7 +38,7 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 * [CS251: Blockchain Technologies](https://cs251.stanford.edu/syllabus.html) (Stanford)
 
 ## Other Academic Groups
-* [Resistance Money](https://www.resistance.money/)
+* [Resistance Money](https://www.resistance.money/) (Wyoming)
 * [RMIT Blockchain Innovation Hub](https://rmitblockchain.io/) (Melbourne)
 * [Decentralized Systems Lab](https://decentralize.ece.illinois.edu/) (Illinois)
 * [digital currency initiative](https://dci.mit.edu/) (MIT)
