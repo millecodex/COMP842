@@ -15,7 +15,13 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 3. Consensus Part I: Proof of Work
 4. Consensus Part II: Other
 5. Cryptography
-6. 
+6. Scaling
+7. Tokens
+8. Privacy
+9. Security
+10. DeFi
+11. Web3
+12. Social Factors
 
 ## Resources
 1. Course Discussion forum (you also earn participation credit here)
@@ -25,8 +31,9 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 ## Other Academic Courses
 (Open Source only, of course)
 1. 
-2. 
+2.
 
 ## Other Other Academic Groups
 1. [Resistance Money](https://www.resistance.money/)
 2. [RMIT Blockchain Innovation Hub](https://rmitblockchain.io/) (Melbourne)
+3. [Decentralized Systems Lab](https://decentralize.ece.illinois.edu/) (Illinois)
