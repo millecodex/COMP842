@@ -33,10 +33,15 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 
 ## Other Academic Courses
 (Open Source only, of course)
-* 
-*
+* [Cryptocurrency Engineering And Design](https://ocw.mit.edu/courses/mas-s62-cryptocurrency-engineering-and-design-spring-2018/) (MIT)
+* [Bitcoin and Cryptocurrency Technologies](https://bitcoinbook.cs.princeton.edu/) (Princeton)
+* [CS251: Blockchain Technologies](https://cs251.stanford.edu/syllabus.html) (Stanford)
 
 ## Other Academic Groups
 * [Resistance Money](https://www.resistance.money/)
 * [RMIT Blockchain Innovation Hub](https://rmitblockchain.io/) (Melbourne)
 * [Decentralized Systems Lab](https://decentralize.ece.illinois.edu/) (Illinois)
+* [digital currency initiative](https://dci.mit.edu/) (MIT)
+* [UZH Blockchain Center]([https://www.blockchain.uzh.ch/](https://blockchain.ethz.ch/)) (Zurich)
+* [ETH Blockchain Initiative](https://blockchain.ethz.ch/) (ETH Zurich)
+* [UNIC Blockchain](https://www.unic.ac.cy/blockchain/) (Nicosia)
