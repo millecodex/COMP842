@@ -42,6 +42,6 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 * [RMIT Blockchain Innovation Hub](https://rmitblockchain.io/) (Melbourne)
 * [Decentralized Systems Lab](https://decentralize.ece.illinois.edu/) (Illinois)
 * [digital currency initiative](https://dci.mit.edu/) (MIT)
-* [UZH Blockchain Center]([https://www.blockchain.uzh.ch/](https://blockchain.ethz.ch/)) (Zurich)
+* [UZH Blockchain Center](https://www.blockchain.uzh.ch/) (Zurich)
 * [ETH Blockchain Initiative](https://blockchain.ethz.ch/) (ETH Zurich)
 * [UNIC Blockchain](https://www.unic.ac.cy/blockchain/) (Nicosia)
