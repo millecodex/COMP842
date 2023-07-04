@@ -24,16 +24,19 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 12. Social Factors
 
 ## Resources
-1. Course Discussion forum (you also earn participation credit here)
-2. ChatGPT - Get an account!
-3. Resource page on the undergrad page for specific links
+* [Course Discussion forum](https://canvas.aut.ac.nz/courses/15421/discussion_topics) (you also earn participation credit here)
+* [ChatGPT](https://chat.openai.com/auth/login) - Get an account!
+
+## Links
+* [Distributed Systems Reading List](https://github.com/theanalyst/awesome-distributed-systems)
+* [Lopp's Bitcoin Resources](https://www.lopp.net/bitcoin-information.html)
 
 ## Other Academic Courses
 (Open Source only, of course)
-1. 
-2.
+* 
+*
 
-## Other Other Academic Groups
-1. [Resistance Money](https://www.resistance.money/)
-2. [RMIT Blockchain Innovation Hub](https://rmitblockchain.io/) (Melbourne)
-3. [Decentralized Systems Lab](https://decentralize.ece.illinois.edu/) (Illinois)
+## Other Academic Groups
+* [Resistance Money](https://www.resistance.money/)
+* [RMIT Blockchain Innovation Hub](https://rmitblockchain.io/) (Melbourne)
+* [Decentralized Systems Lab](https://decentralize.ece.illinois.edu/) (Illinois)
