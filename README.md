@@ -13,7 +13,7 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 1. Introduction & Bitcoin
 2. Cryptography
 3. Consensus Part I: Proof of Work
-4. Consensus Part II: Other
+4. Consensus Part II: Proof of Stake & Alternatives
 5. Scaling
 6. Wallets & Tokens
 7. Seminar
