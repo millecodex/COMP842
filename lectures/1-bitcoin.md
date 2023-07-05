@@ -1,6 +1,6 @@
-[↰ back](../../)
+[↰ back](../../..)
 
-# What is Bitcoin?
+# Lecture 1: Money & Bitcoin
 ### Contents
 1. [A Brief History of Digital Cash](bitcoin.md#a-brief-history)
 1. [Peer-to-Peer Networks & Consensus Mechanisms](bitcoin.md#peer-to-peer-networks--consensus-mechanisms)
