@@ -11,12 +11,12 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 
 ## Lecture Topics
 1. Introduction & Bitcoin
-2. Decentralisation
+2. Cryptography
 3. Consensus Part I: Proof of Work
 4. Consensus Part II: Other
-5. Cryptography
-6. Scaling
-7. Tokens
+5. Scaling
+6. Wallets & Tokens
+7. Seminar
 8. Privacy
 9. Security
 10. DeFi
@@ -32,7 +32,7 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 * [Lopp's Bitcoin Resources](https://www.lopp.net/bitcoin-information.html)
 
 ## Other Academic Courses
-(Open Source only, of course)
+(Open Source only, of course [and I hesitate to include Coursera links])
 * [Cryptocurrency Engineering And Design](https://ocw.mit.edu/courses/mas-s62-cryptocurrency-engineering-and-design-spring-2018/) (MIT)
 * [Bitcoin and Cryptocurrency Technologies](https://bitcoinbook.cs.princeton.edu/) (Princeton)
 * [CS251: Blockchain Technologies](https://cs251.stanford.edu/syllabus.html) (Stanford)
