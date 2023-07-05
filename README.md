@@ -10,7 +10,7 @@ Lectures are Tuesdays 16:10-18:00 in WZ602 begnning July 18, 2023
 This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecodex/COMP726/), and as such has more detail, less in-class time (no tutorials), and overall adjusted expectations with respect to the quality and output of coursework. Occasionally we may have overalapping seminars and announcements.
 
 ## Lecture Topics
-1. Introduction & Bitcoin
+1. [Money & Bitcoin](lectures/1-bitcoin.md)
 2. Cryptography
 3. Consensus Part I: Proof of Work
 4. Consensus Part II: Proof of Stake & Alternatives
