@@ -1,14 +1,48 @@
 [↰ back](../../..)
 
 # Lecture 1: Money & Bitcoin
-### Contents
-1. [A Brief History of Digital Cash](bitcoin.md#a-brief-history)
-1. [Peer-to-Peer Networks & Consensus Mechanisms](bitcoin.md#peer-to-peer-networks--consensus-mechanisms)
-1. [Proof-of-Work Mining & Network Security](bitcoin.md#proof-of-work-mining--network-security)
-1. [Economic Incentives & Monetary Supply](bitcoin.md#economic-incentives--monetary-supply)
-1. [Bitcoin Today](bitcoin.md#bitcoin-today)
-1. [What did we miss?](bitcoin.md#what-did-we-miss)
-1. [Further Reading - the very short list](bitcoin.md#further-reading---the-very-short-list)
+## Contents
+1. [Money](#money)
+2. [P2P digital cash](#p2p-digital-cash)
+3. [The Double-Spend Problem](#the-double-spend-problem)
+4. [Distributed Systems](#distributed-systems)
+5. [Bitcoin](#bitcoin)
+6. [Chain of blocks](#chain-of-blocks)
+7. [Characteristics and Quirks](#characteristics-and-quirks)
+8. [What did we miss?](#what-did-we-miss)
+9. [Further Reading - the very short list](#further-reading---the-very-short-list)
+10. [Exercises](#exercises)
+
+## Money
+[Text related to 'Money' here]
+
+## P2P digital cash
+[Text related to 'P2P digital cash' here]
+
+## The Double-Spend Problem
+[Text related to 'The Double-Spend Problem' here]
+
+## Distributed Systems
+[Text related to 'Distributed Systems' here]
+
+## Bitcoin
+[Text related to 'Bitcoin' here]
+
+## Chain of blocks
+[Text related to 'Chain of blocks' here]
+
+## Characteristics and Quirks
+[Text related to 'Characteristics and Quirks' here]
+
+## What did we miss?
+[Text related to 'What did we miss?' here]
+
+## Further Reading - the very short list
+[Text related to 'Further Reading - the very short list' here]
+
+## Exercises
+[Text related to 'Exercises' here]
+
 
 # A brief history
 What was the problem that Satoshi Nakamoto was looking to solve?
