@@ -1,5 +1,5 @@
+[↰ back](../../..)
 # Lecture 2: Cryptography
-
 ## Contents
 1. [Introduction](#introduction)
 2. [Hash Functions](#hash-functions)
@@ -59,6 +59,7 @@ If an adversary wishes to modify data in a block, such as financial transaction 
 The pages inside the books (data) can also be represented using hash pointers through a *Merkle tree*, named after computer scientist and cryptographer Ralph Merkle. The leaves of the binary tree structure[^1] are the data, and a hash pointer is created for every pair of leaves. When there are two pairs of leaves, the two hash pointers are combined and hashed into a third hash pointer. This continues until the root of the tree is a single hash representing all the data.
 
 ![An individual block contains a Merkle tree of all the transactions in the block. Note it also contains the transactions (pages) themselves. The Merkle root is quick to verify that none of the transactions have changed.][merkle]
+![merkle](https://github.com/millecodex/COMP842/assets/39792005/3a827ffb-f4fc-4931-810c-af6898a7230e)
 
 Following the tree in Figure [merkle], Page 1 is hashed as H(1), page 2 is hashed as H(2), and the two hashes are concatenated and hashed again as H(H₁+H₂). The hashing recurses until a single Merkle root is reached. The Merkle tree is secure in the same way as the blockchain -- if an adversary tries to modify some data, then the root hash pointer will change. Note that a block contains *two* separate hashes: one of the previous block and one of the transactions. See Chapter 9 in [Antonopoulos2017] for Bitcoin's block structure and an overview of Merkle trees. A Bitcoin block is output in Figure [bitcoin-block] showing the various metadata that is tracked.
 
@@ -72,9 +73,17 @@ A Merkle path from leaf to root takes $\log n$ time to traverse. If you need to 
 
 
 ## What did we miss?
+[Text related to 'What did we miss?' here]
 
-## Further Reading - the very short list
+# Exercises
+1. a
+2. b
+3. c
 
-## Exercises
+# Further Reading - the very short list
+* The 
+* On the
 
+# Next Lecture
+* :point_right: [Proof-of-Work Consensus](3-consensus-pow.md)
 
