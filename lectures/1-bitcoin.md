@@ -70,6 +70,80 @@ With a total value of around $1 trillion USD, It is the 14th largest [currency](
 
 What began as an experiment has bootstrapped an entire financial system with global settlement time in minutes and fees that are orders of magnitude cheaper and more secure than traditional banking infrastructure.
 
+# History of the Blockchain
+Many areas had to be developed, invented, and refined before the blockchain could come to fruition and encompass the widespread mania it has today. Many of the sections that follow may seem disjunct, or even irrelevant upon first reading, but all have had some influence that led to the development of cryptocurrencies and blockchains.
+
+The two main sources of motivation on the road to bitcoin are Finance and Computing. The finance portion traces right back to early human civilisation and the development of money.
+
+## Early Trading Systems
+Early humans could barter with their neighbours using goods or services on offer, but this quickly becomes cumbersome as values often do not align. In small tribes and families this is not a problem because the members trust each other. As societies or tribes get larger, inevitably there is interaction with another tribe whose members you do not trust. To resolve this peacefully elders of one tribe would negotiate with elders of another tribe, essentially keeping accounts of each other’s debt (Graeber, 2011). Thus arise two concepts that allow us to trust a neighbour: units of account and debt (Ferguson, 2008). There is still a problem with our early business environment though, what do you do with a tribe you’ve never encountered before? In the case that the elders have no previous history, how can they be trusted?
+
+## Cash
+Cash allows one person to transact with someone whom they don’t know, and therefore can’t trust. Myriad items throughout history have been used as cash such as: gold, cowrie shells, woodpecker scalps, stone discs, and NZ$20 notes (Agha, 2017).
+
+To be considered cash only two things need to hold true:
+
+1. Someone must be willing to accept your token, and
+2. The token must last long enough to be transacted again.
+
+To be an eligible NZ$20 note, a few more characteristics must hold true (Graeber, 2011):
+
+- affordable
+- available
+- durable
+- fungible
+- portable
+- reliable
+
+Any token that has these properties in addition to being issued by the state is called fiat money. Aside from the convenience that comes with a standard cash transacting system is the benefit of it being anonymous. You don’t know the history of your cowrie shell, or who previously used your $20 note.
+
+## Finance
+Finance could only evolve once stable systems for credit and debt and value transfer (cash) were widely accepted. In the fifteenth century in Italy, the Medici family were money changers that revolutionised banking. They were meticulous bookkeepers and adopted the new practice called double-entry bookkeeping where account debits were maintained in one column and credits in a separate column. Their success caused this style of banking to be the standard throughout Europe in the fifteenth and sixteenth century and is still standard today (Ferguson, 2008). Recording all account activity in a ledger is a core property of blockchain systems, including bitcoin.
+
+It’s not just the idea of a permanent ledger that bitcoin borrowed, but rather the motivation to create a system outside of the one the Medici’s of 15th century Italy pioneered, and hold to this day. Next we will look at the computing branch.
+
+## Databases
+Codd (1970), working at IBM was thinking about how to solve the problem of databases growing in size and still be able to access data efficiently. His paper detailed what is now common practice: relational databases. This allows data to be accessed by linking different chunks of data within tables. Previously a programmer would have to write a program to find what was required in a DB. The benefits allowed reliable storage of data across multiple data centers that could maintain consistency between many users
+(MacCormick, 2012).
+
+This means that a bank could have a single database with customer data, and operate in different cities without any inconsistencies in a users’ account. This is a distributed computing model where resources are located in different geographic locations, however for traditional banking this falls under a centralised structure. More on centralisation later.
+
+## Traditional Banking System
+The banking system we use today has capitalised on the internet infrastructure and computing ideas such as relational databases using an atomic transaction model, to truly become global. With relevance to blockchain development, this system:
+
+- Uses digital double-entry accounting
+- Has a centralised hierarchy and often distributed infrastructure
+- Maintains a permanent record of transactions that are opaque to the public.
+
+The bank is the middle-man, or final arbiter, of all transactions. The centralised architecture allows the bank to choose its customers and set fees. Among other monopolistic behaviours, this leads to censorship and in the digital age, hacks and breeches are increasingly common. Also, one may not want the bank to know exactly how and with whom you are transacting. As we learn more about the blockchain it will become apparent that bitcoin transactions are not anonymous, rather they are considered pseudonymous. Although your name is not attached to a transaction, the address and activity associated with it is permanently recorded in the blockchain. Digital privacy will be one of the most important consequences of the blockchain era.
+
+## Cryptography
+The 1980s saw a lot of research into the idea of being able to send a private digital message. Historically, this meant creating a cipher that converts a plaintext message into a ciphertext (encrypted message), sending the encrypted version, and the recipient has a matching cipher to enable them to decrypt the message. The key hurdle to this setup is that the cipher has to be transported to the recipient among eavesdroppers. A digital cryptosystem also involves distributing your cipher through any number of third-party servers that could have spies monitoring the connection.
+
+Public key cryptography is the solution to this problem and will be covered more in Lecture 3. Although neither a blockchain nor bitcoin is a crypto-system, they both utilize elements of cryptography: hash functions, and cryptographic keys.
+
+## Digital Cash
+Chaum, Fiat and Naor (1988) came up with a scheme for issuing unique digital coins that could be redeemed by a centralised authority in a way that conceals the user’s identity. Anonymous digital cash. His scheme used what are called blind signatures and are clever because it means you can not reuse a digital coin. This is referred to as the double-spending problem because it’s easy to copy a digital object and then turn around and offer it to many people while claiming it’s unique. Chaum et al. commercialized his company, calling it DigiCash but it never caught on (Narayanan, 2016). One of the reasons was that it wasn’t a truly peer-to-peer system.
+
+## Email
+The Simple Mail Transfer Protocol (SMTP) was defined in 1982 (Postel, 1982). As a standard, this would allow anyone to write an email client according to the SMTP guidelines and be able to send messages to anyone else that also followed the protocol. It is still used today and has undergone many updates, however SMTP has two problems: all text is sent as plaintext, and it is easy to spoof from addresses and generate spam.
+
+Email spam is an issue that was considered by Dwork and Naor (1993) when they wrote a paper describing the computational cost incurred by a spammer before sending an email. Titled Pricing via Processing, the idea is that your computer has to solve some computational puzzle before being permitted to send an email. For the average user this would take seconds
+and not be a nuisance but for a spam emailer, this would slow down their operation. A few years later in 1997, Back (2002) created Hashcash in a similar vein. Although Back was unaware of the previous work by Dwork and Naor, Back also implemented the idea of a cost function that has an easily verifiable solution. This is now known as Proof-of-Work and used by Bitcoin miners (Nakamoto, 2008a).
+
+## Linked Time-stamping
+The blockchain itself, as the name suggests, is a chain of blocks that are linked together using cryptographic hash functions. The idea was not unique to cryptocurrencies. Haber and Stornetta (1991) describe a method to use one-way hash functions to digitally time-stamp documents and maintain privacy. This hashing system is used to order the blocks in a blockchain while maintaining block integrity and security over time.
+
+## Cryptocurrencies and the Blockchain
+The Global Financial Crisis in the mid-2000’s created significant hardship and the blame was put clearly on the banking sector. While changes were called for in how banks managed risk, there was also social disquiet amongst those that felt that banks controlled too much financial and therefore, societal resource. In particular, libertarians called for an economic system free of the banking sector.
+
+A person named Satoshi Nakamoto (Nakamoto, 2008b) designed a technological solution as a cryptocurrency, Bitcoin. While digital cash systems have a long history, with some successes such as PayPal, most have failed to ignite support. Bitcoin’s success seems in part to derive from its decentralised peer-to-peer system that provides complete transactions without a singular or centralised banking system.
+
+The Bitcoin cryptocurrency architecture combines functions that provide money or coin creation, transactional cryptographic validation, and a highly redundant storage system that is publicly available but relatively anonymous (Brikman, 2014). An important measure that ensures cryptographically sound identification and verification of ownership is the use of SHA public/private key cryptography. This also provides a degree of anonymity, transactional integrity, and non-repudiation (Peteanu, 2014). The blockchain is a read-only public ledger of all transactions that have occurred within the cryptocurrency ecosystem and consists of a series of blocks that are created through proofing methods, such as Proof ofWork (Nakamoto, 2008b), Proof of Stake (Buterin, 2013; Larimer, 2013), plus any other proofs that may be required. To limit the number of transactions, Bitcoin transactions are completed every 10 minutes, each transaction returns a block that is added to the chain. Thus, each block contains the outputs of transactions, and with a cryptographic hash, they are added to a sequence, or chain, of blocks. The hash then provides ameans of referencing individual blocks (Wood, 2015).
+
+In an accounting or economic sense, the chain represents a journaling system, although due to size constraints, the journal does not contain the final state. The transaction series is punctuated with “incentives” for nodes to mine, where “mining is the process of dedicating effort (working) to bolster one series of transactions (a block) over any other potential competitor block” (p.2, (Wood, 2015)). A cryptocurrency ecosystem is comprised of nodes, where a node is defined as any device that is running on or creates transaction or block data to the blockchain network (Community, 2014). Thus, a node may exhibit a variety of behaviours depending on context and function. Each cryptocurrency defines the purpose and functionality of nodes on its network, but, in general, the nodes are used to mine and validate blocks. They may also be used to provide defence mechanisms, such as limitations on the number of transactions processed per minute to prevent denial of service attacks.
+
+
 # What did we miss?
 There are many topics not discussed here (trying to keep this as an overview) and so I encourage you, dear reader, to dig deeper into the following: 
 * 
