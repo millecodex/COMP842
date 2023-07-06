@@ -14,6 +14,76 @@
 11. [Exercises](#exercises)
 
 ## Introduction
+### What is Cryptography?
+Defined as the study of secret writing, cryptography has roots as old as history in message obfuscation. Traditional methods involve applying an algorithm or a key to a message to produce a cipher text. This process is known as encryption. The message recipient then applies secret knowledge to the ciphertext, decrypting it, to recover the original message. Curious eyes and self-serving couriers may intercept the cipher text before its destination and try to crack the code. This is the risk those take for secure communication. Cryptanalysis is the science of breaking codes to reveal messages without having knowledge of the key.
+
+A basic encryption scheme is one used by school children where letters are substituted with an alternate according to a prescribed routine. Shifting letters by a set number of characters in the alphabet is known as a *Caesar cipher*. Without knowing how many letters were shifted, it would take an eavesdropper at most 25 attempts to decrypt an English message by brute force.
+
+Other notable ciphers are the *Hill* cipher, *Vigenere* cipher, and *one-time pad* cipher (Singh, 1999). Hill and Vigenere both have weaknesses and can be broken; a well-constructed one-time-pad cipher can never be broken. The one-time works by transposing a message using a random key the same length as the message. This prevents repetition in both within key and from common phrases of speech, such as '*the*', or context such as '*Russians*'. If the key is sufficiently random, only someone with knowledge of the key can decrypt the message. Each new message requires a new key, and thus the name one-time pad. This poses many practical problems such as production and finding good sources of entropy (randomness). The primary limiting factor for this type of encryption is distribution of the keys to both parties. Long message require longer keys, and many messages require many keys.
+
+## Diffie-Hellman (& Merkle) key exchange
+The *Diffie-Hellman (& Merkle) key exchange* algorithm was devised so that two parties could use insecure communication channels to determine a common secret key (Diffie, 1976).
+
+This algorithm starts with two public values that are pre-computed, a large prime number $p$ and an integer value $a$ with $1 < a < p $  for which:
+$a, \quad a^2\mbox{ mod }p,\quad a^3\mbox{ mod }p,\quad \dots,\quad a^{p-1}\mbox{ mod }p$ are all distinct (yield a permutation of ${1,2,3,\dots, p-1}$)[^1]. If this is the case $a$ is called a *primitive root* of $p$.
+
+Once a primitive root $a$ of a prime $p$ has been found, for any integer $b$ there is a unique power $i<p$ for which 
+$b\mbox{ mod }p=a^i\mbox{ mod }p$
+and $i$ is called the *discrete logarithm* or *index* of $b$ modulo $p$ for the base $a$.
+
+**For example:** taking $p=7$ and $a=2$, determine $a^k\mod p$ for $k=\{1,2,\quad\dots\quad, p-1\}$.
+[^1]: $\mbox{mod}$ is the modulo arithmetic operator.
+
+| $2^1$ | $=2\mod7$ | $=2$ | |
+|-------|----------------------|------|---|
+| $2^2$ | $=4\mod7$ | $=4$ | |
+| $2^3$ | $=8\mod7$ | $=1$ | |
+| $2^4$ | $=16\mod7$ | $=\textbf{2}$ | |
+| $2^5$ | $=32\mod7$ | $=\textbf{4}$ | repeated roots means 2 is not a primitive root of 7 |
+| $2^6$ | $=64\mod7$ | $=\textbf{1}$ | |
+
+Now for $a=3$:
+
+| $3^1$ | $=3\mod7$ | $=3$ | |
+|-------|-----------------------|------|---|
+| $3^2$ | $=9\mod7$ | $=2$ | |
+| $3^3$ | $=27\mod7$ | $=6$ | distinct roots up to $p-1$ means 3 is a primitive root of 7 |
+| $3^4$ | $=81\mod7$ | $=4$ | |
+| $3^5$ | $=243\mod7$ | $=5$ | |
+| $3^6$ | $=729\mod7$ | $=1$ | |
+
+Thus to find the discrete logarithm of an integer such as $b=1762$ we are looking for the $i$ value in the relation 
+$1762\text{ mod } 7=3^i$
+$1762\text{ mod } 7=5$
+and from row 5 above, $3^5\text{ mod } 7=5$, and so $i=5$.
+
+The security of the Diffie-Hellman key exchange relies on the difficulty of reversing this computation above. Given $b=a^i\mbox{ mod }p$, there is no pattern for relating $b$ to $i$. Stated another way: for any integer, $b$, there is a unique $i$ where $i$ is called the discrete logarithm and is computationally difficult to find.
+
+So how do two people use this to exchange information publicly such that they each end up with a shared secret key that others can not deduce?
+
+Alice and Jeff are going to agree on a large prime, $p$, and a base $a$. These values can be published. Each then selects their own secret number $x<p$. This will act as a private key. Both then calculate $y=a^x\mbox{ mod }p$ which is a quick calculation. After exchanging $y$ values, each can then calculate the same secret key, $k=y^x\mbox{ mod }p$. No secret information has been swapped, and both parties now have a common value, $k$, as a secret key.
+
+Note that both Alice ($A$) and Jeff ($J$) calculate the same key ($k$):
+
+```math
+k_\text{Jeff}=
+```
+
+```math
+k_\text{Jeff}=\left(y_{A}\right)^{x_J}\mbox{ mod }p
+
+=\left(a^{x_A}\mbox{ mod }p\right)^{x_J} \mbox{ mod }p
+=a^{x_A x_J}\mbox{ mod }p 
+=\left(a^{x_J}\right)^{x_A}\mbox{ mod }p
+=\left({y_J}\right)^{x_A}\mbox{ mod }p
+\therefore k_\text{Jeff}=k_\text{Alice}
+```
+
+and a cryptanalyst cannot calculate $k$ without knowing either $x_A$ or $x_J$. Obtaining these values would require calculating the discrete logarithm of an intercepted $y_A$ or $y_J$. For large enough $p$, this is infeasible. In practice, $p$ should be at least 160 bits, and for contemporary standards 1024 is more comfortable[^2] (Hoffman, 2005).
+
+[^2]: 160 bits is $\approx 49$ digit decimal number, and 1024 bits is $\approx 309$ digit decimal number.
+
+One drawback of this system is that to communicate there has to be some back-and-forth between participants to agree on a secret key which can be particularly cumbersome if one participant is offline. If a third person wants to communicate, then a another pair of exchanges must take place. Every pair that needs to communicate needs their own secret key. A group of 40 students in this class requires 780 keys. What if instead each person had their own key and everyone else could use that same key to communicate with them?
 
 ## Hash Functions
 A hash function takes a variable length input and produces a fixed length output with no discernible pattern. In this sense, the hash function is *one-way* which means that there is no decryption algorithm that can undo it[^2].
