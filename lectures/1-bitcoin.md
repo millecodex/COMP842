@@ -28,8 +28,23 @@
 ## Bitcoin
 [Text related to 'Bitcoin' here]
 
-## Chain of blocks
-[Text related to 'Chain of blocks' here]
+## Chain of blocks: The Blockchain Data Structure
+In Lecture 1 it was mentioned that [Haber1991] described a method to use one-way hash functions to digitally time-stamp documents. This creates an ordered list of the documents that itself is useful enough to act as a time-stamp. If document A appears in the list before document B, then it can be concluded that A was published to the list earlier (in time) than document B. This is important because digital items such as timestamps can be forged. It is only in relation to the other documents in the list that we pinpoint a window in time when document A came into existence. An isolated document or moment in history is not nearly as valuable without the context in which that event happened. The blockchain doesn't just provide context, it provides the entire history. How can a blockchain do this without being vulnerable to forged timestamps? First we must describe how data is organized on disc and the structures that allow its retrieval.
+
+### Where are objects stored in memory?
+When a program writes to disc or to memory there will be a predetermined area it is allowed to use. Usually this is allocated by the operating system at runtime. Because programs require lots of writing and rewriting to disc the data ends up being disorganized, or in seemingly sporadic locations. Thus, one item is probably not stored physically beside its related item. Data structures track where their items are located in memory and possibly other important information like the location of the last element or the maximum number allowed. Described here will be two data structures: a linked-list, and a tree. Both have simple diagrams to visualize how they work, but in practice can be tricky to implement. For this reason, all useful programming languages come with built-in data structure operations.
+
+### Linked Lists
+A linked list is a sequence of data that has a reference to previous or subsequent item. Figure [list] shows a schematic for integer elements that are linked to a subsequent item in their list. A key property of lists is that there is no absolute reference to individual elements. To find an element in the middle, say 99, you have to start at the beginning (12) and then traverse the list. Additionally in this manner it is easiest to append elements to the end of the list and much more difficult to insert elements part way through. For an introduction to lists and their programmatic implementation, see [Johnson2014] (available on Blackboard).
+![Various linked lists. Top: a standard implementation with a reference pointer to the next element. Middle: a doulble-linked list with previous and subsequent pointers. Bottom: a circular linked list with reference back to the first element. Source: [source].][list]
+
+### Chains of Blocks
+A blockchain is a data structure whereby a single block of data contains a hashed reference to a previous block. The chain of blocks can represent a chronological ordering of data as mentioned above. If blocks are appended regularly then the time-stamping effect can be as good as an actual time-stamp. When a new block is created it must include a reference pointer to the previous block in the chain. An ordinary linked list would contain a pointer referencing the object in memory. A blockchain reference is known as a *hash pointer* because it also includes a hash of the previous block.
+
+![The first three blocks in a blockchain. Each block contains a hash pointer referencing the previous block. Should any individual hash pointer change, the chain will be broken.][blockchain]
+
+The blockchain must be created one block at a time and mass deletion or appending of new blocks is not possible while maintaining the correct hash linking. If there are multiple new blocks to be added to the data structure,
+
 
 ## Characteristics and Quirks
 [Text related to 'Characteristics and Quirks' here]
