@@ -197,6 +197,9 @@ The pages inside the books (data) can also be represented using hash pointers th
 
 Following the tree in Figure [merkle], Page 1 is hashed as H(1), page 2 is hashed as H(2), and the two hashes are concatenated and hashed again as H(H₁+H₂). The hashing recurses until a single Merkle root is reached. The Merkle tree is secure in the same way as the blockchain -- if an adversary tries to modify some data, then the root hash pointer will change. Note that a block contains *two* separate hashes: one of the previous block and one of the transactions. See Chapter 9 in [Antonopoulos2017] for Bitcoin's block structure and an overview of Merkle trees. A Bitcoin block is output in Figure [bitcoin-block] showing the various metadata that is tracked.
 
+![merkle](https://github.com/millecodex/COMP842/assets/39792005/911f0ab1-eea8-4b8b-b268-5c21322a711a)
+
+
 A Merkle path from leaf to root takes $\log n$ time to traverse. If you need to verify a transaction in a block it must be found in a tree and any transaction path in a binary tree of $n$ nodes requires $\log n$ operations. Lightweight nodes do not need to store the entire data in the blockchain, they just keep the Merkle root and then can connect to a full node to verify the path. Simplified payment verification (SPV) clients work this way, for example in a mobile application, where it's impractical to store the entire chain. The trade off here is that the SPV node does not store a full copy of the blockchain and must trust the nodes it is verifying against.
 
 
