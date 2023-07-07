@@ -124,10 +124,10 @@ $$y^2 = x^3+ax+b.$$
 
 Further, if $a=0$ and $b=7$, we get $y^2=(x^3+7)$ taken over a field of primes $\mathbb{Z}_p$ as seen in[^6] (Antonopoulos, 2017). This can be plotted as a series of points similar to Figure 1. Compare to Figure 2 on Page 2 which is plotted over the real numbers. 
 
-> ![Plot of a field of primes up to 17 (Antonopoulos, 2017). ECC operates on integers and when plotted appear as distinct points.](fieldOfPrimes.png)
+> <img width="346" alt="fieldOfReals" src="https://github.com/millecodex/COMP842/assets/39792005/2bca0a05-c619-4219-9b7c-3b15ada4758e">\
 > Figure: Plot of a field of primes up to 17 (Antonopoulos, 2017). ECC operates on integers and when plotted appear as distinct points.*
 
-> ![Plot of $y^2=(x^3+7)$ over real numbers for visualization only; the same theory applies.](fieldOfReals.png)
+> <img width="346" alt="fieldOfReals" src="https://github.com/millecodex/COMP842/assets/39792005/341f93cb-e46f-4fcc-9964-45570fde9633">\
 > Figure: Plot of $y^2=(x^3+7)$ over real numbers for visualization only; the same theory applies.*
 
 ECC can be utilized for key exchange by making public the chosen field ($p$ or $2^m$), the curve ($a$ and $b$ values in the field), and a generator point $G$ for which there are many multiples $G, 2G, 3G, \dots, nG$ that are all distinct. These distinct multiples are related to the discrete logarithm problem describe above. In this manner the security of an elliptic curve cryptosystem relies on the difficulty in finding the discrete logarithm. This is the method that Bitcoin uses for generating public-private key-pairs; the public part which are used as addresses. Selection of the curve (equation 1) is very important as there may be case-by-case weaknesses. [^7] (Brown, 2010) outlines the standards for curve `secp256k1` that is used by Bitcoin.
