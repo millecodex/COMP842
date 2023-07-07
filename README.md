@@ -11,7 +11,7 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 
 ## Lecture Topics
 1. [Money & Bitcoin](lectures/1-bitcoin.md)
-2. Cryptography
+2. [Cryptography](lectures/2-cryptography.md)
 3. Consensus Part I: Proof of Work
 4. Consensus Part II: Proof of Stake & Alternatives
 5. Scaling
