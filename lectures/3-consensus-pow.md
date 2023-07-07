@@ -157,10 +157,16 @@ And what about Eve changing history? She would have to alter the block where the
 
 
 ## 51% attack
-text here
+Should a single entity gain control of more than half of the hashpower in the network, this could lead to a 51% attack[^11]. The attacker can't steal coins directly as this involves subverting elliptic curve cryptography. The attacker can however user their majority status in some interesting ways. At >50% you have the ability to find more blocks and direct consensus of the blockchain. The attacker can censor transactions by refusing to add blocks containing someone's address. This would be akin to blacklisting certain addresses, but does not completely exclude these from being included in blocks mined by honest nodes (the 49%). As the proportion in control increases, it will be harder to get a blacklisted transaction published on the blockchain. With this majority, the attacker will now earn a larger proportion of block rewards, but still has to find `SHA256` hashes like everyone else. 
+
+It is tempting at this point to ask: Can I change the block reward and earn more per block found? This will be rejected by the network because the block reward is hard-coded and so the malicious extra-reward transaction can never be spent. In a distributed system everyone has a version of the consensus rules that must agree with everyone else. A different block reward would have to be done as a software upgrade and falls under Community Level Security.
+
+Discussed further in the lecture on security.
 
 ## Selfish mining
-text here
+Discussed further in the lecture on security.
+
+An adversary doesn't necessarily need 51% of the hashpower, but with a large number of nodes in the network they could gain an advantage. An interesting analysis was published in 2014 by~\citeA{Eyal2014} that showed a conglomerate of miners could form with as little as one-third of the hashpower. This mining cartel can continuously mine without broadcasting their blocks until some set time in the future. In the short term the miner is sacrificing the immediate block reward by not propagating their found blocks to neighbouring nodes. In the long run however, the result is that the honest miners are doing work that is not in competition with the selfish miners, increasing the attacker's expected rewards. The results of Eyal \& Sirer's study conclude a group can increase their mining payout with a little as $\frac{1}{3}$ of the network's hashpower.
 
 
 ### question
