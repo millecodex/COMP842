@@ -2,49 +2,31 @@
 
 # Lecture 5: Scaling
 ## Contents
-1. [Money](#money)
-2. [P2P digital cash](#p2p-digital-cash)
-3. [The Double-Spend Problem](#the-double-spend-problem)
-4. [Distributed Systems](#distributed-systems)
-5. [Bitcoin](#bitcoin)
-6. [Chain of blocks](#chain-of-blocks)
-7. [Characteristics and Quirks](#characteristics-and-quirks)
-8. [What did we miss?](#what-did-we-miss)
-9. [Further Reading - the very short list](#further-reading---the-very-short-list)
-10. [Exercises](#exercises)
+1. [Blockchain Stack](#blockchain-stack)
+2. [The Trilemma](#the-trilemma)
+3. [Scalability](#scalability)
+4. [Storage](#storage)
+5. [State Channels](#state-channels)
+6. [Side Chains](#side-chains)
+7. [What did we miss?](#what-did-we-miss)
+8. [Further Reading - the very short list](#further-reading---the-very-short-list)
+9. [Exercises](#exercises)
 
-## Money
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin tincidunt arcu, et ultrices nunc luctus ac. Fusce accumsan eleifend urna, sit amet suscipit mi convallis id. Donec dapibus lobortis ligula, vitae posuere felis laoreet a. Sed ullamcorper, elit eu dapibus pulvinar, est massa ornare lacus, ut consequat ligula mi id massa. Mauris id dolor in felis pharetra pharetra.
+## Blockchain Stack
 
-## P2P digital cash
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+## The Trilemma
 
-## The Double-Spend Problem
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+## Scalability
 
-## Distributed Systems
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+## Storage
 
-## Bitcoin
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+## State Channels
 
-## Chain of blocks
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-## Characteristics and Quirks
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+## Side Chains
 
 ## What did we miss?
-* i
-* ii
-* iii 
 
 ## Further Reading - the very short list
-* a
-* B
-* C
 
 ## Exercises
-1. a
-2. b
-3. c
+
