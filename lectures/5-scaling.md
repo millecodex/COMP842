@@ -45,8 +45,9 @@ The main criticism of Bitcoin is that the network has a limit on throughput; the
 
 ## The Trilemma
 
-> <img width="800" alt="The blockchain trilemma" src="<update>">\
+> <img width="400" alt="The blockchain trilemma: pick any two ideal properties at the risk of sacrificing the third." src="https://github.com/millecodex/COMP842/assets/39792005/7489c108-9d92-47c0-8b26-94f8a0920163">\
 > Figure: The blockchain trilemma: pick any two ideal properties at the risk of sacrificing the third.
+
 
 ## Scalability
 Two design decisions fundamentally limit the number of transactions the network can process: the block-time and the block-size, hard-coded to ten minutes and 1 MB. Each block in bitcoin is 1 MB, or 1,000,000 bytes and the average transaction size is 580 bytes so $\frac{1000000}{580}=1724$ standard transactions per block. The average block time is 576 seconds[^1] and so 
@@ -77,6 +78,11 @@ This backwards compatible software upgrade separates witness data from the list 
 The other variable in our equation -- block time -- can be reduced but at the expense of latency. Doubling the block size will result in double the time for the block to propagate through the network. If block propagation time exceeds or comes near to the time needed to mine a new block then the network will fork and be unable to achieve consensus.
 
 
+### Sharding
+Sharding takes its name from replicated hardware: A **S**ystem for **H**ighly **A**vailable **R**eplicated **D**ata, but simply splits a data-table horizontally to allow for smaller index size. Sharding leads to a hierarchical, and perhaps less decentralized, structure, seen in myriad natural and social systems. Systems by Google, for example Spanner (Corbett, 2012) and BigTable are databases with automatic fail-over and re-sharding for load balancing.
+
+Blockchains can also be sharded and current projects include Elastico, Rapidchain, OmniLedger, and of course, Ethereum's Casper. Every node in a standard blockchain stores a copy of the entire ledger and validates all activity. Partitioning the ledger into parent/child shards, or even horizontally, can improve scalability. Given enough nodes to validate a portion of the ledger it can remain relatively secure. Each shard will manage its own history and only be updated if required. The downside is that decentralization erodes with more shards added to the network.
+
 ## State Channels
 A state channel is a communication rail that is opened between a main chain and an intermediary. This allows you to transact with the intermediary and occasionally as required settle on the main chain. Communication can be two-way such that you can send and receive via the intermediary given that appropriate constraints are met (like enough funds).
 
@@ -89,12 +95,13 @@ Imagine three friends go to dinner and one person pays the bill. The next day th
 
 The lightning network allows Alice to make payments to parties she does not have a direct link with. First she must open a payment channel which is a bi-directional commitment of funds. If Alice and Bob have a channel this means that Alice can only pay Bob. However, if Bob has a separate channel with a third party, then Bob can act as a router and transfer Alice's payment to Carol. Bob will receive a small fee for his efforts in forwarding payment.
 
-> <img width="800" alt="The blockchain trilemma" src="<update>">\
+> <img width="479" alt="Lightning network: A path of four payment channels between five nodes in a second layer network as described by Antonopoulos" src="https://github.com/millecodex/COMP842/assets/39792005/620695d8-ef05-4b71-9489-25f74da6bfd2">\
 > Figure: A path of four payment channels between five nodes in a second layer network as described by Antonopoulos (2017, p.315).
+
 
 If Alice and Bob each commit 2 coins, their channel has a total capacity of 4. They cannot commit more than 2 coins to a transaction because then one party would be at risk of loss. For Alice to pay Eric 1 coin, she will first need an invoice from Eric for payment. Eric's invoice will contain a hashed-secret that is stored by nodes along the way and used to redeem their fees. There is a separate part of the network that keeps track of what nodes are in the network and this allows for Alice to have directions to Eric. Next, Alice creates a transaction to Bob and includes a bit extra to pay the intermediary nodes, along with the hashed-secret. If Bob knows the secret, he can redeem the full amount. Next Bob will create a *new* transaction with Carol using the funds in his separate Bob-Carol channel, but with the details he received from Alice. Part of this will include 0.002 fee for the upcoming nodes. Note Bob's balance here: 2 coins in his Alice-Bob channel and 0.998 coins in his Bob-Carol channel. These are steps 2-3 in figure [^fig:ln2].
 
-> <img width="800" alt="The blockchain trilemma" src="<update>">\
+> <img width="481" alt="Lightning network: Details for Alice to indirectly pay Eric" src="https://github.com/millecodex/COMP842/assets/39792005/0f6e58da-efc8-46bc-a459-c73adeac94f6">\
 > Figure: Details for Alice to indirectly pay Eric. Source: (Antonopoulos p.316, 2017).
 
 Following along the example in Antonopolous, when Eric receives payment from Diana, he has the secret to unlock the funds in the transaction and receive the 1 coin he originally invoiced Alice for. The secret will propagate back through the nodes, unlocking everyone's commitment. At the end, Bob, Carol, and Diana all have earned a fee of 0.001 coins. There is no additional blockchain here and so there is no wait time for blocks to be mined or confirmed. These lightning transactions happen at network speed and are promising for merchants that want to offer goods and services using cryptocurrency.
@@ -103,10 +110,16 @@ At some point Alice will want to settle the dinner party transactions between he
 
 Various off-chain or *second-layer* solutions exist for other blockchains as well: [Raiden](https://raiden.network/) for Ethereum, and Trinity for NEO. These networks add a settlement layer to the system to increase capacity but they still must only transact within the constraints of the original design.
 
-[^fig:ln2]: Details for Alice to indirectly pay Eric [^Source].
-[^Source]: Source: Antonopolous, A. M. (2017). Mastering Bitcoin: Unlocking Digital Cryptocurrencies. O'Reilly Media.
+
 
 ## Side Chains
+Side chains are separate blockchains that can interact with a main chain. Interoperability is when two chains can exchange messages and tokens. If value is transferred away from chain A and appear on chain B then it must be settled on chain A and cannot reappear.
+
+This is different from a state channel where the off-chain transacting happens at network speed without the constraints of consensus inherited from the main chain. A side chain is subject to its own (new) design consensus rules. Plasma and Polkadot are example side chain projects. Plasma is a proposal to interact with Ethereum (in addition to Raiden) and Polkadot was conceived by Gavin Wood (co-founder of Ethereum) as a stand alone chain (Wood, 2017). Wood summarizes the approach:
+
+> Scalability is addressed through a divide-and-conquer approach to [security and transport], scaling out of its bonded core through the incentivisation of untrusted public nodes. The heterogeneous nature of this architecture enables many highly divergent types of consensus systems interoperating in a trustless, fully decentralised "federation", allowing open and closed networks to have trust-free access to each other.
+
+The benefit of using a side chain is that you can have enhanced properties such as faster timing or lower fees and then only settle transactions on the main chain when necessary. The risk is that you are essentially outsourcing some portion of the protocol.
 
 ## What did we miss?
 
