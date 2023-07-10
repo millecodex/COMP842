@@ -24,12 +24,10 @@ Early humans could barter with their neighbours using goods or services on offer
 Cash allows one person to transact with someone whom they don’t know, and therefore can’t trust. Myriad items throughout history have been used as cash such as: gold, cowrie shells, woodpecker scalps, stone discs, and NZ$20 notes (Agha, 2017).
 
 To be considered cash only two things need to hold true:
-
 1. Someone must be willing to accept your token, and
 2. The token must last long enough to be transacted again.
 
 To be an eligible NZ$20 note, a few more characteristics must hold true (Graeber, 2011):
-
 - affordable
 - available
 - durable
@@ -109,6 +107,7 @@ The primary purpose of Bitcoin is to track transactions in a ledger. (Recall: Th
 	
 The blockchain is a read-only public ledger of all transactions that have occurred within the cryptocurrency ecosystem and consists of a series of blocks that are created through proofing methods, such as proof-of-work (Back, 1997; and Nakamoto, 2008), proof-of-stake (Buterin, 2013; Larimer, 2013), or other unique methods or combinations of methods. The blockchain must be created one block at a time and mass deletion or appending of new blocks is not possible while maintaining the correct hash linking. If there are multiple new blocks to be added to the data structure, they must be added in series to create, and then preserve the total ordering.
 
+What do these blocks look like?
 ```json
 	"hash": "00000000000000000000534d3d2c7758fab39dabb98d23b954813379f053c580",
 	"confirmations": 1,
@@ -143,6 +142,7 @@ The blockchain is a read-only public ledger of all transactions that have occurr
 ```
 > The fields of block `620229` mined on March 05, 2020 in the Bitcoin blockchain. The transaction list has been truncated; this block has 350 transactions in total. The block ID is called *height* as if blocks are built on top of each other. Details of a block can be found in many third-party providers such as http://chainquery.com/bitcoin-api/getblock.
 
+### Mining
 
 “mining is the process of dedicating effort (working) to bolster one series of transactions (a block) over any other potential competitor block” (Wood, 2015)
 
@@ -166,12 +166,12 @@ and not be a nuisance but for a spam emailer, this would slow down their operati
 ## Bitcoin Today
 Satoshi sent his whitepaper out to a [mailing list](https://satoshi.nakamotoinstitute.org/emails/cryptography/1/#selection-117.66-117.78) of like-minded cryptography cypherpunks on October 31, 2008. A few months later in January 2009 he started running the software and mined the genesis block. Since this time the Bitcoin network has been the most robust computing network humans have ever created. There has been almost no downtime, few bugs, no hacks, and exponential growth. 
 
-With a total value of around $1 trillion USD, It is the 14th largest [currency](https://coinmarketcap.com/fiat-currencies/) next to the Russian Ruble and Swiss Franc. It is estimated that 1-2% of the global population have used or interacted with bitcoin, and [16% of Americans](https://www.pewresearch.org/fact-tank/2021/11/11/16-of-americans-say-they-have-ever-invested-in-traded-or-used-cryptocurrency/) have used or invested in cryptocurrency. There are reachable nodes running the core software in 87 countries. In El Salvador bitcoin is legal tender. 
+With a total value of around $1 trillion USD, It is the 20th largest [currency](https://coinmarketcap.com/fiat-currencies/) next to the Vietnamese Dong and Singaporean Dollar. It is estimated that 1-2% of the global population have used or interacted with bitcoin, and [16% of Americans](https://www.pewresearch.org/fact-tank/2021/11/11/16-of-americans-say-they-have-ever-invested-in-traded-or-used-cryptocurrency/) have used or invested in cryptocurrency. There are reachable nodes running the core software in 87 countries. In El Salvador bitcoin is legal tender. 
 
 What began as an experiment has bootstrapped an entire financial system with global settlement time in minutes and fees that are orders of magnitude cheaper and more secure than traditional banking infrastructure.
 
-## What did we miss?
-[Text related to 'What did we miss?' here]
+# What did we miss?
+* History of money. There is a whole other half to the Bitcoin story that has to do with Money and Economics and Social Incentives. While we cannot completely disentangle the two side (Money & Tech) we will concentrate on the technology in this course. Perhaps a question to ponder: here in New Zealand, specifically in this classroom, everyone has a smartphone perpetually connected to a wireless network that can send no-fee transactions between each other (through NZ banks). But, what if you were not in New Zealand? How do these assumptions and things we take for granted start to change?
 
 # Exercises
 1. What is the double-spend problem for digital cash? How do banks ensure you can't spend your money multiple times?
