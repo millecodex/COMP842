@@ -3,8 +3,7 @@
 # Lecture 1: Money & Bitcoin
 ## Contents
 1. [Money](#money)
-2. [P2P digital cash](#p2p-digital-cash)
-3. [The Double-Spend Problem](#the-double-spend-problem)
+2. [P2P Digital Cash](#p2p-digital-cash)
 4. [Distributed Systems](#distributed-systems)
 5. [Bitcoin](#bitcoin)
 6. [Chain of blocks](#chain-of-blocks)
@@ -14,7 +13,6 @@
 10. [Exercises](#exercises)
 
 ## Money
-#### History of the Blockchain
 Many areas had to be developed, invented, and refined before the blockchain could come to fruition and encompass the widespread mania it has today. Many of the sections that follow may seem disjunct, or even irrelevant upon first reading, but all have had some influence that led to the development of cryptocurrencies and blockchains.
 
 The two main sources of motivation on the road to bitcoin are Finance and Computing. The finance portion traces right back to early human civilisation and the development of money.
@@ -39,38 +37,31 @@ To be an eligible NZ$20 note, a few more characteristics must hold true (Graeber
 - portable
 - reliable
 
-Any token that has these properties in addition to being issued by the state is called fiat money. Aside from the convenience that comes with a standard cash transacting system is the benefit of it being anonymous. You don’t know the history of your cowrie shell, or who previously used your $20 note.
+Any token that has these properties in addition to being issued by the state is called fiat money. Aside from the convenience that comes with a standard cash transacting system is the benefit of it being anonymous. You don’t know the history of your cowrie shell, or who previously used your $20 note. This applies forward as well as your $20 note can't be traced back to you in the future. [Q: Why would you care about that note being traced back to your transaction?]
 
 ### Finance
-Finance could only evolve once stable systems for credit and debt and value transfer (cash) were widely accepted. In the fifteenth century in Italy, the Medici family were money changers that revolutionised banking. They were meticulous bookkeepers and adopted the new practice called double-entry bookkeeping where account debits were maintained in one column and credits in a separate column. Their success caused this style of banking to be the standard throughout Europe in the fifteenth and sixteenth century and is still standard today (Ferguson, 2008). Recording all account activity in a ledger is a core property of blockchain systems, including bitcoin.
+Finance could only evolve once stable systems for credit and debt and value transfer (cash) were widely accepted. In the fifteenth century in Italy, the Medici family were money changers that revolutionised banking. They were meticulous bookkeepers and adopted the new practice called double-entry bookkeeping where account debits were maintained in one column and credits in a separate column. Their success caused this style of banking to be the standard throughout Europe in the fifteenth and sixteenth century and is still standard today (Ferguson, 2008). Recording all account activity in a ledger is a core property of blockchain systems, including Bitcoin.
 
 It’s not just the idea of a permanent ledger that bitcoin borrowed, but rather the motivation to create a system outside of the one the Medici’s of 15th century Italy pioneered, and hold to this day. Next we will look at the computing branch.
 
 ## Traditional Banking System
-The banking system we use today has capitalised on the internet infrastructure and computing ideas such as relational databases using an atomic transaction model, to truly become global. With relevance to blockchain development, this system:
+The banking system we use today has capitalised on the internet infrastructure and computing ideas such as relational databases and atomic transactions to become global. With relevance to blockchain development, this system:
 
-- Uses digital double-entry accounting
-- Has a centralised hierarchy and often distributed infrastructure
+- Uses digital double-entry accounting,
+- Has a centralised hierarchy and often distributed infrastructure,
 - Maintains a permanent record of transactions that are opaque to the public.
 
-The bank is the middle-man, or final arbiter, of all transactions. The centralised architecture allows the bank to choose its customers and set fees. Among other monopolistic behaviours, this leads to censorship and in the digital age, hacks and breeches are increasingly common. Also, one may not want the bank to know exactly how and with whom you are transacting. As we learn more about the blockchain it will become apparent that bitcoin transactions are not anonymous, rather they are considered pseudonymous. Although your name is not attached to a transaction, the address and activity associated with it is permanently recorded in the blockchain. Digital privacy will be one of the most important consequences of the blockchain era.
+The bank is the middle-man, or final arbiter, of all transactions. The centralised architecture allows the bank to choose its customers, set fees, and even decide what to do with user deposits. Among other monopolistic behaviours, this leads to censorship and in the digital age, in addition to risks posed by hacks and breeches. Also, one may not want the bank to know exactly how and with whom you are transacting. As we learn more about the blockchain it will become apparent that Bitcoin transactions are not anonymous, rather they are considered pseudonymous. Although your name is not attached to a transaction, the address and activity associated with it is permanently recorded in the blockchain. Digital privacy will be one of the most important consequences of the blockchain era.
 
-
-
-
-## Digital Cash (without the bank)
+## P2P Digital Cash
 The 80's & 90's saw many attempts to create a digital version of money that could have a token, both private and untraceable, treated as a bearer instrument and not subject to the fragilities of third party issuers and verifiers. To name a few there was David Chaum's work on *Untraceable Electronic Cash*, Wei Dai's [*b-money*](http://www.weidai.com/bmoney.txt), and Nick Szabo's [*Bit Gold*](https://unenumerated.blogspot.com/2005/12/bit-gold.html).
 
 Many technical challenges along the road were overcome by advances in cryptography such as digital signatures and hash functions. However, one problem always stood out: how to prevent someone from using a digital coin at one shop, copying it, and spending it again? Known as the *double-spend problem*, this is easily sovled using a centralized authority to check someone's balance and update it accordingly; by the time you arrive at the second retailer your card will be declined for insufficient funds. Here the bank is saying, "You can only spend your dollar once."
 
-The decentralized approach removes the bank entirely from the transaction and is one of the revolutionary ideas put forward by Satoshi in his whitepaper.
+Chaum, Fiat and Naor (1988) came up with a scheme for issuing unique digital coins that could be redeemed by a centralised authority in a way that conceals the user’s identity. Anonymous digital cash. His scheme used what are called blind signatures and are clever because it means you can not reuse (double-spend) a digital coin. The double-spending problem is particularly difficult in the digital age because its so easy to copy a digital object (`ctrl+c`) and then turn around and offer it to many people while claiming it’s unique. Chaum et al. commercialized his company, calling it DigiCash but it never caught on (Narayanan, 2016). One of the reasons was that it wasn’t a truly peer-to-peer system still relying on the trusted thrid party.
 
-### Digital Cash *check continuity*
-Chaum, Fiat and Naor (1988) came up with a scheme for issuing unique digital coins that could be redeemed by a centralised authority in a way that conceals the user’s identity. Anonymous digital cash. His scheme used what are called blind signatures and are clever because it means you can not reuse a digital coin. This is referred to as the double-spending problem because it’s easy to copy a digital object and then turn around and offer it to many people while claiming it’s unique. Chaum et al. commercialized his company, calling it DigiCash but it never caught on (Narayanan, 2016). One of the reasons was that it wasn’t a truly peer-to-peer system.
+The decentralized approach removes the bank entirely from the transaction and is one of the revolutionary ideas put forward by Satoshi in his whitepaper. This is the nature of *peer-to-peer*: I send you money without any entity, person, or corportion being involved.
 
-
-## The Double-Spend Problem
-[Text related to 'The Double-Spend Problem' here]
 
 ## Distributed Systems
 The key to the double-spend is to distribute the record of transactions to every participant in the network. In this manner every seller can verify independently that any buyer has the required unspent amount. Every new transaction is shared through the network with everyone else in a peer-to-peer (p2p) manner, rather than sending to a central server and having a gatekeeper update the accounts, this is handled at the individual level. The distributed ledger removes both the need for centralized accounting, and for trust between users. There is no reason for Alice to trust Bob because the network consensus says that Bob has the authority to spend his coins.
@@ -142,7 +133,7 @@ The blockchain must be created one block at a time and mass deletion or appendin
 		  "e406e599aeb4974473bf9a4bcdcc5de35d15fac296acceb217779680ae927d91",
 		  "d55c96ce6ccf995035338f4ded57850f307299b0756b44c61b2fe5e5c2c89a51",
 		  ,
-		  ...truncated...,
+		  "...truncated...",
 		  ,
 	 	  "22ba973e71869d1e64cdd8572fa94754429d52d84bce61b2374f082606e02ec5",
 		  "35525a4db6c1fdea573780c9726ceebcd71788db66d05b83e661d864820b59c6",
@@ -190,7 +181,7 @@ What began as an experiment has bootstrapped an entire financial system with glo
 [Text related to 'What did we miss?' here]
 
 # Exercises
-1. a
+1. What is the double-spend problem for digital cash? How do banks ensure you can't spend your money multiple times?
 2. b
 3. c
 
@@ -200,3 +191,10 @@ What began as an experiment has bootstrapped an entire financial system with glo
 
 # Next Lecture
 * :point_right: [Secret Writing (Cryptography)](2-cryptography.md)
+
+# References
+Chaum 1988
+Ferguson
+Graeber
+Nakamoto
+Narayanan
