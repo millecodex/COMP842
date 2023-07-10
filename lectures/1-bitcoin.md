@@ -4,13 +4,13 @@
 ## Contents
 1. [Money](#money)
 2. [P2P Digital Cash](#p2p-digital-cash)
-4. [Distributed Systems](#distributed-systems)
 5. [Bitcoin](#bitcoin)
-6. [Chain of blocks](#chain-of-blocks)
+6. [The Blockchain Data Structure](#the-blockchain-data-structure)
 7. [Characteristics and Quirks](#characteristics-and-quirks)
 8. [What did we miss?](#what-did-we-miss)
-9. [Further Reading - the very short list](#further-reading---the-very-short-list)
 10. [Exercises](#exercises)
+11. [Readings](#readings)
+
 
 ## Money
 Many areas had to be developed, invented, and refined before the blockchain could come to fruition and encompass the widespread mania it has today. Many of the sections that follow may seem disjunct, or even irrelevant upon first reading, but all have had some influence that led to the development of cryptocurrencies and blockchains.
@@ -80,7 +80,7 @@ Practically speaking, each peer in the network listens for new blocks of transac
  
 Because the chain is public you can do an inventory of nodes online at any given time. This also removes gatekeepers as anyone is free to join or leave whenever they want. At the end of 2021 the number of [bitcoin nodes](https://bitnodes.io/nodes/all/) globally was about 45,000. (Compare this with centralized systems like Facebook that keep your data on anywhere from 3-5 nodes.)
 
-## The Blockchain Data Struture
+## The Blockchain Data Structure
 ### Where are objects stored in memory?
 When a program writes to disc or to memory there will be a predetermined area it is allowed to use. Usually this is allocated by the operating system at runtime. Because programs require lots of writing and rewriting to disc the data ends up being disorganized, or in seemingly sporadic locations. Thus, one item is probably not stored physically beside its related item. Data structures track where their items are located in memory and possibly other important information like the location of the last element or the maximum number allowed. Described here will be two data structures: a linked-list, and a tree. Both have simple diagrams to visualize how they work, but in practice can be tricky to implement. For this reason, all useful programming languages come with built-in data structure operations.
 
