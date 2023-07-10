@@ -143,25 +143,24 @@ What do these blocks look like?
 > The fields of block `620229` mined on March 05, 2020 in the Bitcoin blockchain. The transaction list has been truncated; this block has 350 transactions in total. The block ID is called *height* as if blocks are built on top of each other. Details of a block can be found in many third-party providers such as http://chainquery.com/bitcoin-api/getblock.
 
 ### Mining
+The process of adding blocks to the chain is called mining. Bitcoin mining is down with proof-of-work computing and involves rewarding lucky miners with bitcoin(s)[^b]. Mining is cruicial for the nodes in the Bitcoin network to stay in agreement, but also to generate new tokens for the system to use. This will be discussed at length in the lecture on [consensus methods](3-consensus-pow.md).
+[^b]: Generally I will use "bitcoin" to be both singular and plural, holding back from the slighly awkwards "bitcoins". Also, Bitcoin with a capital B is to refer to the network consisting of nodes and miners, while small b is for the cryptocurrency.
 
-“mining is the process of dedicating effort (working) to bolster one series of transactions (a block) over any other potential competitor block” (Wood, 2015)
-
-### Other pieces
 ### Cryptography
 The 1980s saw a lot of research into the idea of being able to send a private digital message. Historically, this meant creating a cipher that converts a plaintext message into a ciphertext (encrypted message), sending the encrypted version, and the recipient has a matching cipher to enable them to decrypt the message. The key hurdle to this setup is that the cipher has to be transported to the recipient among eavesdroppers. A digital cryptosystem also involves distributing your cipher through any number of third-party servers that could have spies monitoring the connection.
 
-Public key cryptography is the solution to this problem and will be covered more in Lecture 3. Although neither a blockchain nor bitcoin is a crypto-system, they both utilize elements of cryptography: hash functions, and cryptographic keys.
-
-### Email
-The Simple Mail Transfer Protocol (SMTP) was defined in 1982 (Postel, 1982). As a standard, this would allow anyone to write an email client according to the SMTP guidelines and be able to send messages to anyone else that also followed the protocol. It is still used today and has undergone many updates, however SMTP has two problems: all text is sent as plaintext, and it is easy to spoof from addresses and generate spam.
-
-Email spam is an issue that was considered by Dwork and Naor (1993) when they wrote a paper describing the computational cost incurred by a spammer before sending an email. Titled Pricing via Processing, the idea is that your computer has to solve some computational puzzle before being permitted to send an email. For the average user this would take seconds
-and not be a nuisance but for a spam emailer, this would slow down their operation. A few years later in 1997, Back (2002) created Hashcash in a similar vein. Although Back was unaware of the previous work by Dwork and Naor, Back also implemented the idea of a cost function that has an easily verifiable solution. This is now known as Proof-of-Work and used by Bitcoin miners (Nakamoto, 2008a).
+Public key cryptography is the solution to this problem and will be covered more in Lecture 3. Although neither a blockchain nor bitcoin is a crypto-system, they both utilize elements of cryptography: hash functions, and cryptographic keys with digital signatures.
 
 ## Characteristics and Quirks
-* fixed supply
-* block reward
-* difficulty adjustment
+### Fixed Supply
+The killer feature of Bitcoin is the use as a currency and one of the features is that there is a programmed upper limit to the number of bitcoin that will ever be created: 21 million[^21]. This is known as a fixed monetary supply and contrasted with fiat (New Zealand) dollars that can grow arbitrarily due our political and central banking structure.
+
+[^21]: Due to the beautiful and messy nature of math applied through computer science the actual limit is just under 21 million. See Antonopolous.
+### Block Reward
+Incentives in social systems are very important - for example, why would someone want to dedicate electricity and computing power to an open source network? They can be rewarded for their effort, of course. The block reward is a minting of new bitcoin for every block that miners add to the chain. This occurs according to a fixed schedule and is a decreasing geometric series. Presently the block reward is 6.25 bitcoin, and will be split in half (3.125) sometime in 2024.
+
+### Difficulty Ddjustment
+To help slow the distribution of new bitcoin a difficulty adjustment make it harder to win the block reward as more participants join the network. If large organizations or governments wanted to take over a network, they would dedicate a lot of resources to doing so. This is how industries become centralized. To limit the growth there is a difficulty adjustment every two weeks which affects the rate of bitcoin issuance.
 
 ## Bitcoin Today
 Satoshi sent his whitepaper out to a [mailing list](https://satoshi.nakamotoinstitute.org/emails/cryptography/1/#selection-117.66-117.78) of like-minded cryptography cypherpunks on October 31, 2008. A few months later in January 2009 he started running the software and mined the genesis block. Since this time the Bitcoin network has been the most robust computing network humans have ever created. There has been almost no downtime, few bugs, no hacks, and exponential growth. 
