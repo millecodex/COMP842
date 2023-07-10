@@ -56,6 +56,8 @@ Referring back to the Figure, who gets to propose these blocks and earn the bloc
 ### Mining
 A miner is a network participant that contributes their computing power in a demonstrable way. A fair way to allocate the incentives would be by some resource that can not be gamed or monopolized. One such way is by computing power as proposed by Dwork and Naor in 1993 in relation to email spam, and refined by Hashcash in 2002 for digital currency. Bitcoin miners participate by using their hardware to validate transactions and suggest new blocks. For this effort they receive rewards in proportion of their contribution to the network as a whole. A fair way to determine effort used by the miners is to have them search for a particular hash that meets a target. Bitcoin uses the `SHA256` hashing algorithm as the hash puzzle that miners have to find a solution for.
 
+> “mining is the process of dedicating effort (working) to bolster one series of transactions (a block) over any other potential competitor block” (Wood, 2015)
+
 ### Mining/nodes
 So, PoW is called mining because of the non-redeemable effort that goes into finding new new coins. Every ten minumtes on average a new block is  mined and with it the miner can redeem the block reward → freshly minted bitcoins.
 
