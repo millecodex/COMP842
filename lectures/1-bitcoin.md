@@ -37,7 +37,8 @@ To be an eligible NZ$20 note, a few more characteristics must hold true (Graeber
 - portable
 - reliable
 
-Any token that has these properties in addition to being issued by the state is called fiat money. Aside from the convenience that comes with a standard cash transacting system is the benefit of it being anonymous. You don’t know the history of your cowrie shell, or who previously used your $20 note. This applies forward as well as your $20 note can't be traced back to you in the future. [Q: Why would you care about that note being traced back to your transaction?]
+Any token that has these properties in addition to being issued by the state is called fiat money. Aside from the convenience that comes with a standard cash transacting system is the benefit of it being anonymous. You don’t know the history of your cowrie shell, or who previously used your $20 note. This applies forward as well as your $20 note can't be traced back to you in the future. 
+> Q: Why would you care about that note being traced back to your transaction?
 
 ### Finance
 Finance could only evolve once stable systems for credit and debt and value transfer (cash) were widely accepted. In the fifteenth century in Italy, the Medici family were money changers that revolutionised banking. They were meticulous bookkeepers and adopted the new practice called double-entry bookkeeping where account debits were maintained in one column and credits in a separate column. Their success caused this style of banking to be the standard throughout Europe in the fifteenth and sixteenth century and is still standard today (Ferguson, 2008). Recording all account activity in a ledger is a core property of blockchain systems, including Bitcoin.
@@ -63,59 +64,50 @@ Chaum, Fiat and Naor (1988) came up with a scheme for issuing unique digital coi
 The decentralized approach removes the bank entirely from the transaction and is one of the revolutionary ideas put forward by Satoshi in his whitepaper. This is the nature of *peer-to-peer*: I send you money without any entity, person, or corportion being involved.
 
 
-## Distributed Systems
-The key to the double-spend is to distribute the record of transactions to every participant in the network. In this manner every seller can verify independently that any buyer has the required unspent amount. Every new transaction is shared through the network with everyone else in a peer-to-peer (p2p) manner, rather than sending to a central server and having a gatekeeper update the accounts, this is handled at the individual level. The distributed ledger removes both the need for centralized accounting, and for trust between users. There is no reason for Alice to trust Bob because the network consensus says that Bob has the authority to spend his coins.
-
-Practically speaking, each peer in the network listens for new blocks of transactions, verifies them, and adds them to their own local database. Should two nodes have conflicting information because they received new blocks at slightly different times, or with different transactions in them, then the state is said to fork, and for a short time *both* forks are valid. Resolving forks happens often, is expected, and is the job of the consensus mechanism. The way that Bitcoin does this is by a longest chain rule, meaning that whatever node has the longest chain of blocks is the most likely to receive a new block and therefore continue to be the canonical chain. If a node falls behind, then it abandons its chain and starts contributing to the longest. This method of distributed system consensus is now known as *Nakamoto* conseneus.
- 
-Because the chain is public you can do an inventory of nodes online at any given time. This also removes gatekeepers as anyone is free to join or leave whenever they want. At the end of 2021 the number of [bitcoin nodes](https://bitnodes.io/) globally was just under 15,000. (Compare this with centralized systems like Facebook that keep your data on anywhere from 3-5 nodes.)
-
 ## Bitcoin
-[Text related to 'Bitcoin' here]
-### The Whitepaper
-<p align="center"><img width="800" alt="header to the bitcoin whitepaper" src="https://user-images.githubusercontent.com/39792005/145146212-c35aff55-97ab-478a-8e10-de2977bc7a7f.PNG"></p>
+The Global Financial Crisis in the mid-2000’s created significant hardship and the blame was put clearly on the banking sector. While changes were called for in how banks managed risk, there was also social disquiet amongst those that felt that banks controlled too much financial, and therefore, societal resources. In particular, libertarians called for an economic system free of the banking sector.
 
-There are many components to this system that will be introduced. Individually it can be difficult to see the connection between them and how they contribute to a peer-to-peer monetary system. This is intended to be an overview and if you are just learning about Bitcoin don't be disuaded if the pieces seem disjointed or don't fall into place quickly. *(Learning is hard!)*
+> <p align="center"><img width="800" alt="header to the bitcoin whitepaper" src="https://user-images.githubusercontent.com/39792005/145146212-c35aff55-97ab-478a-8e10-de2977bc7a7f.PNG"></p>
+> Figure: Header to Satoshi Nakamoto's description of p2p electronic cash (required reading) distributed via mailing list on October 31, 2008. Regarding historical timelines, Lehman Brothers bankruptcy was on September 15, 2008, [cited](https://en.wikipedia.org/wiki/Bankruptcy_of_Lehman_Brothers) as the "climax of the subprime mortgage crisis.
 
-### Cryptocurrencies and the Blockchain
-The Global Financial Crisis in the mid-2000’s created significant hardship and the blame was put clearly on the banking sector. While changes were called for in how banks managed risk, there was also social disquiet amongst those that felt that banks controlled too much financial and therefore, societal resource. In particular, libertarians called for an economic system free of the banking sector.
+An unknown person named Satoshi Nakamoto designed a technological solution as a cryptocurrency, Bitcoin. While digital cash systems have a long history (briefly mentioned above), some have had a modicum of success such as PayPal, most have failed to ignite support. Bitcoin’s success seems in part to derive from its decentralised peer-to-peer system (the Bitcoin network) that provides complete transactions (bitcoin the cryptocurrency) without a singular or centralised banking authority.
 
-A person named Satoshi Nakamoto (Nakamoto, 2008b) designed a technological solution as a cryptocurrency, Bitcoin. While digital cash systems have a long history, with some successes such as PayPal, most have failed to ignite support. Bitcoin’s success seems in part to derive from its decentralised peer-to-peer system that provides complete transactions without a singular or centralised banking system.
-
-The Bitcoin cryptocurrency architecture combines functions that provide money or coin creation, transactional cryptographic validation, and a highly redundant storage system that is publicly available but relatively anonymous (Brikman, 2014). An important measure that ensures cryptographically sound identification and verification of ownership is the use of SHA public/private key cryptography. This also provides a degree of anonymity, transactional integrity, and non-repudiation (Peteanu, 2014). The blockchain is a read-only public ledger of all transactions that have occurred within the cryptocurrency ecosystem and consists of a series of blocks that are created through proofing methods, such as Proof ofWork (Nakamoto, 2008b), Proof of Stake (Buterin, 2013; Larimer, 2013), plus any other proofs that may be required. To limit the number of transactions, Bitcoin transactions are completed every 10 minutes, each transaction returns a block that is added to the chain. Thus, each block contains the outputs of transactions, and with a cryptographic hash, they are added to a sequence, or chain, of blocks. The hash then provides ameans of referencing individual blocks (Wood, 2015).
-
-In an accounting or economic sense, the chain represents a journaling system, although due to size constraints, the journal does not contain the final state. The transaction series is punctuated with “incentives” for nodes to mine, where “mining is the process of dedicating effort (working) to bolster one series of transactions (a block) over any other potential competitor block” (p.2, (Wood, 2015)). A cryptocurrency ecosystem is comprised of nodes, where a node is defined as any device that is running on or creates transaction or block data to the blockchain network (Community, 2014). Thus, a node may exhibit a variety of behaviours depending on context and function. Each cryptocurrency defines the purpose and functionality of nodes on its network, but, in general, the nodes are used to mine and validate blocks. They may also be used to provide defence mechanisms, such as limitations on the number of transactions processed per minute to prevent denial of service attacks.
+The Bitcoin cryptocurrency architecture combines functions that provide coin creation, transactional cryptographic validation, and a highly redundant storage system that is publicly available, relatively anonymous, and incentivises users. An important measure that ensures cryptographically sound identification and verification of ownership is the use of SHA public/private key cryptography. This also provides a degree of anonymity, transactional integrity, and non-repudiation. 
 
 
-## The Blockchain Data Structure
-In Lecture 1 it was mentioned that [Haber1991] described a method to use one-way hash functions to digitally time-stamp documents. This creates an ordered list of the documents that itself is useful enough to act as a time-stamp. If document A appears in the list before document B, then it can be concluded that A was published to the list earlier (in time) than document B. This is important because digital items such as timestamps can be forged. It is only in relation to the other documents in the list that we pinpoint a window in time when document A came into existence. An isolated document or moment in history is not nearly as valuable without the context in which that event happened. The blockchain doesn't just provide context, it provides the entire history. How can a blockchain do this without being vulnerable to forged timestamps? First we must describe how data is organized on disc and the structures that allow its retrieval.
+### Distributed Systems
+The key to solving the double-spend problem is to distribute the record of transactions to every participant in the network. In this manner every seller can verify independently that any buyer has the required unspent amount. Every new transaction is shared through the network with everyone else in a peer-to-peer (p2p) manner, rather than sending to a central server and having a gatekeeper update the accounts, this is handled at the individual level. The distributed ledger removes both the need for centralized accounting, and for trust between users. There is no reason for Alice to trust Bob because the network consensus says that Bob has the authority to spend his coins.
 
+Practically speaking, each peer in the network listens for new blocks of transactions, verifies them, and adds them to their own local database. Should two nodes have conflicting information because they received new blocks at slightly different times, or with different transactions in them, then the state is said to *fork*, and for a short time *both* forks are equally valid states. Resolving forks happens often, is expected, and is the job of the consensus mechanism. The way that Bitcoin does this is by a longest chain rule, meaning that whatever node has the longest chain of blocks is the most likely to receive a new block and therefore continue to be the canonical chain. If a node falls behind, then it abandons its chain and starts contributing to the longest. This method of distributed system consensus is now known as *Nakamoto* conseneus.
+ 
+Because the chain is public you can do an inventory of nodes online at any given time. This also removes gatekeepers as anyone is free to join or leave whenever they want. At the end of 2021 the number of [bitcoin nodes](https://bitnodes.io/nodes/all/) globally was about 45,000. (Compare this with centralized systems like Facebook that keep your data on anywhere from 3-5 nodes.)
+
+## The Blockchain Data Struture
 ### Where are objects stored in memory?
 When a program writes to disc or to memory there will be a predetermined area it is allowed to use. Usually this is allocated by the operating system at runtime. Because programs require lots of writing and rewriting to disc the data ends up being disorganized, or in seemingly sporadic locations. Thus, one item is probably not stored physically beside its related item. Data structures track where their items are located in memory and possibly other important information like the location of the last element or the maximum number allowed. Described here will be two data structures: a linked-list, and a tree. Both have simple diagrams to visualize how they work, but in practice can be tricky to implement. For this reason, all useful programming languages come with built-in data structure operations.
 
+### Linked Lists
+A linked list is a sequence of data that has a reference to previous or subsequent item. The figure shows a schematic for integer elements that are linked to a subsequent item in their list. A key property of lists is that there is no absolute reference to individual elements. To find an element in the middle, say 99, you have to start at the beginning (12) and then traverse the list. Additionally in this manner it is easiest to append elements to the end of the list and much more difficult to insert elements part way through.
 
+> <p align="center"><img width="800" alt="asdf" src="https://github.com/millecodex/COMP842/assets/39792005/468aafe3-f855-478e-80c9-adcd5139dd7e"></p>\
+> Figure: Various linked lists. Top: a standard implementation with a reference pointer to the next element. Middle: a doulble-linked list with previous and subsequent pointers. Bottom: a circular linked list with reference back to the first element.
 
-### Linked Time-stamping *CHECK*
+### Linked Time-stamping
 The blockchain itself, as the name suggests, is a chain of blocks that are linked together using cryptographic hash functions. The idea was not unique to cryptocurrencies. Haber and Stornetta (1991) describe a method to use one-way hash functions to digitally time-stamp documents and maintain privacy. This hashing system is used to order the blocks in a blockchain while maintaining block integrity and security over time.
 
+If document A appears in the list before document B, then it can be concluded that A was published to the list earlier (in time) than document B. This is important because digital items such as timestamps can be forged. It is only in relation to the other documents in the list that we pinpoint a window in time when document A came into existence. An isolated document or moment in history is not nearly as valuable without the context in which that event happened. The blockchain doesn't just provide context, it provides the entire history. 
 
-### Linked Lists
-A linked list is a sequence of data that has a reference to previous or subsequent item. Figure [list] shows a schematic for integer elements that are linked to a subsequent item in their list. A key property of lists is that there is no absolute reference to individual elements. To find an element in the middle, say 99, you have to start at the beginning (12) and then traverse the list. Additionally in this manner it is easiest to append elements to the end of the list and much more difficult to insert elements part way through. For an introduction to lists and their programmatic implementation, see [Johnson2014] (available on Blackboard).
-![Various linked lists. Top: a standard implementation with a reference pointer to the next element. Middle: a doulble-linked list with previous and subsequent pointers. Bottom: a circular linked list with reference back to the first element. Source: [source].][list]
-![linkedLists](https://github.com/millecodex/COMP842/assets/39792005/468aafe3-f855-478e-80c9-adcd5139dd7e)
-
-![blockchain](https://github.com/millecodex/COMP842/assets/39792005/34e431d1-4a41-42cc-9828-ea4d6385fd2f)
-
+> Q: How can a blockchain maintain integrity without being vulnerable to forged timestamps?
 
 ### Chains of Blocks
-A blockchain is a data structure whereby a single block of data contains a hashed reference to a previous block. The chain of blocks can represent a chronological ordering of data as mentioned above. If blocks are appended regularly then the time-stamping effect can be as good as an actual time-stamp. When a new block is created it must include a reference pointer to the previous block in the chain. An ordinary linked list would contain a pointer referencing the object in memory. A blockchain reference is known as a *hash pointer* because it also includes a hash of the previous block.
+A blockchain is a data structure whereby a single block of data contains a hashed reference to a previous block. The chain of blocks can represent a chronological ordering of data as mentioned above. If blocks are appended regularly then the time-stamping effect can be as good as an actual time-stamp. When a new block is created it must include a reference pointer to the previous block in the chain, which, in turn contains reference to its previous block. An ordinary linked list would contain a pointer referencing the object's address in memory. A blockchain reference is known as a *hash pointer* because it also includes a hash of the previous block.
 
-> <p align="center"><img width="800" alt="blockchain data structure resembles ledger books" src="https://user-images.githubusercontent.com/39792005/152084209-bbde7db2-ddef-4f1b-bc98-354c0bc2e2ed.PNG"></p>
-> 
-> Each individual ledger is analagous to a block. When one book is full a new one begins with the account balances being copied over, thus linking the 'blocks'. The ledger is an accounting system that starts all the way back in the 1400's when the Medici family in Florence popularized double-entry accounting. The blockchain can be thought of as triple-entry accounting, where the third entry is the distributed copies that maintain consensus. Here, the second block has a cryptographic hash of the first block, and the third block has a hash of the second block, which, by definition includes the hash of the first block. This is how the chain maintains its integrity.
+> <p align="center"><img width="800" alt="asdf" src="https://github.com/millecodex/COMP842/assets/39792005/34e431d1-4a41-42cc-9828-ea4d6385fd2f"></p>\
+> Figure: Each individual ledger is analagous to a block. When one book is full a new one begins with the account balances being copied over, thus linking the 'blocks'. 
 
-**Check text continuity**
-The blockchain must be created one block at a time and mass deletion or appending of new blocks is not possible while maintaining the correct hash linking. If there are multiple new blocks to be added to the data structure,
+The primary purpose of Bitcoin is to track transactions in a ledger. (Recall: The accounting system that starts all the way back in the 1400's when the Medici family in Florence popularized double-entry accounting.) The blockchain can be thought of as triple-entry accounting, where the third entry is the distributed copies that maintain consensus. In the figure, the second block has a cryptographic hash of the first block, and the third block has a hash of the second block, which, by definition includes the hash of the first block. This is how the chain maintains its integrity.
+	
+The blockchain is a read-only public ledger of all transactions that have occurred within the cryptocurrency ecosystem and consists of a series of blocks that are created through proofing methods, such as proof-of-work (Back, 1997; and Nakamoto, 2008), proof-of-stake (Buterin, 2013; Larimer, 2013), or other unique methods or combinations of methods. The blockchain must be created one block at a time and mass deletion or appending of new blocks is not possible while maintaining the correct hash linking. If there are multiple new blocks to be added to the data structure, they must be added in series to create, and then preserve the total ordering.
 
 ```json
 	"hash": "00000000000000000000534d3d2c7758fab39dabb98d23b954813379f053c580",
@@ -149,9 +141,10 @@ The blockchain must be created one block at a time and mass deletion or appendin
 	"nTx": 350,
 	"previousblockhash": "000000000000000000070be3e6873e60481b5e3c71322c8ced8315f6e44edd6e"
 ```
+> The fields of block `620229` mined on March 05, 2020 in the Bitcoin blockchain. The transaction list has been truncated; this block has 350 transactions in total. The block ID is called *height* as if blocks are built on top of each other. Details of a block can be found in many third-party providers such as http://chainquery.com/bitcoin-api/getblock.
 
-The fields of block `620229` mined on March 05, 2020 in the Bitcoin blockchain. The transaction list has been truncated; this block has 350 transactions in total. The block ID is called *height* as if blocks are built on top of each other. Details of a block can be found at http://chainquery.com/bitcoin-api/getblock .
-	
+
+“mining is the process of dedicating effort (working) to bolster one series of transactions (a block) over any other potential competitor block” (Wood, 2015)
 
 ### Other pieces
 ### Cryptography
@@ -182,12 +175,13 @@ What began as an experiment has bootstrapped an entire financial system with glo
 
 # Exercises
 1. What is the double-spend problem for digital cash? How do banks ensure you can't spend your money multiple times?
-2. b
-3. c
+2. How can a blockchain maintain integrity without being vulnerable to forged timestamps?
+3. What are the three items referred to in triple-entry accounting?
 
-# Further Reading - the very short list
+# Readings
 * The Whitepaper: [*Bitcoin: A Peer-to-Peer Electronic Cash System* ](https://bitcoin.org/bitcoin.pdf)
 * On the Shoulder of Giants - History of the tech: [*Bitcoin's Academic Pedigree*, Communications of the ACM](https://cacm.acm.org/magazines/2017/12/223058-bitcoins-academic-pedigree/fulltext)
+* 
 
 # Next Lecture
 * :point_right: [Secret Writing (Cryptography)](2-cryptography.md)
@@ -196,5 +190,7 @@ What began as an experiment has bootstrapped an entire financial system with glo
 Chaum 1988
 Ferguson
 Graeber
+Wood 2015
+Haber and Stornetta (1991) 
 Nakamoto
 Narayanan
