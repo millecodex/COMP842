@@ -15,47 +15,47 @@
 ## Money
 Many areas had to be developed, invented, and refined before the blockchain could come to fruition and encompass the widespread mania it has today. Many of the sections that follow may seem disjunct, or even irrelevant upon first reading, but all have had some influence that led to the development of cryptocurrencies and blockchains.
 
-The two main sources of motivation on the road to bitcoin are Finance and Computing. The finance portion traces right back to early human civilisation and the development of money.
+The two main sources of motivation on the road to Bitcoin are Finance and Computing. The finance portion traces right back to early human civilisation and the development of money.
 
 ### Early Trading Systems
-Early humans could barter with their neighbours using goods or services on offer, but this quickly becomes cumbersome as values often do not align. In small tribes and families this is not a problem because the members trust each other. As societies or tribes get larger, inevitably there is interaction with another tribe whose members you do not trust. To resolve this peacefully elders of one tribe would negotiate with elders of another tribe, essentially keeping accounts of each other’s debt (Graeber, 2011). Thus arise two concepts that allow us to trust a neighbour: units of account and debt (Ferguson, 2008). There is still a problem with our early business environment though, what do you do with a tribe you’ve never encountered before? In the case that the elders have no previous history, how can they be trusted?
+Early humans could barter with their neighbours using goods or services on offer, but this quickly becomes cumbersome as values often do not align. In small tribes and families this is not a problem because the members trust each other. As societies or tribes get larger, inevitably there is interaction with another tribe whose members you do not trust. To resolve this peacefully elders of one tribe would negotiate with elders of another tribe, essentially keeping accounts of each other’s debt (Graeber, 2011). This gives rise to two concepts that allow us to trust a neighbour: units of account and debt (Ferguson, 2008). However, a question remains: how do you conduct business with a tribe you’ve never met before? In the case that the elders have no previous history, how can they be trusted?
 
 ### Cash
-Cash allows one person to transact with someone whom they don’t know, and therefore can’t trust. Myriad items throughout history have been used as cash such as: gold, cowrie shells, woodpecker scalps, stone discs, and NZ$20 notes (Agha, 2017).
+Cash offers a solution by enabling transactions between individuals who are unfamiliar and, thus, untrustworthy to each other. Myriad items throughout history have been used as cash such as gold, cowrie shells, woodpecker scalps, stone discs, and NZD$20 notes (Agha, 2017).
 
-To be considered cash only two things need to hold true:
+For a token to be considered cash, two conditions must be satisfied:
 1. Someone must be willing to accept your token, and
-2. The token must last long enough to be transacted again.
+2. The token must endure long enough to be transacted again.
 
-To be an eligible NZ$20 note, a few more characteristics must hold true (Graeber, 2011):
-- affordable
-- available
-- durable
-- fungible
-- portable
-- reliable
+For a token to qualify as an NZ$20 note, it must possess additional characteristics (Graeber, 2011):
+- Affordability
+- Availability
+- Durability
+- Fungibility
+- Portability
+- Reliability
 
-Any token that has these properties in addition to being issued by the state is called fiat money. Aside from the convenience that comes with a standard cash transacting system is the benefit of it being anonymous. You don’t know the history of your cowrie shell, or who previously used your $20 note. This applies forward as well as your $20 note can't be traced back to you in the future. 
+Any token that has these properties in addition to being issued by the state is called fiat money. The advantages of a standardized cash transaction system extend beyond mere convenience—it also offers anonymity. You don’t know the history of your cowrie shell, or who previously used your $20 note. This applies forward as well as your $20 note can't be traced back to you in the future. 
 > Q: Why would you care about that note being traced back to your transaction?
 
 ### Finance
-Finance could only evolve once stable systems for credit and debt and value transfer (cash) were widely accepted. In the fifteenth century in Italy, the Medici family were money changers that revolutionised banking. They were meticulous bookkeepers and adopted the new practice called double-entry bookkeeping where account debits were maintained in one column and credits in a separate column. Their success caused this style of banking to be the standard throughout Europe in the fifteenth and sixteenth century and is still standard today (Ferguson, 2008). Recording all account activity in a ledger is a core property of blockchain systems, including Bitcoin.
+Finance evolved once systems for credit, debt, and value transfer (cash) gained widespread acceptance. The Medici family in 15th-century Italy revolutionized banking as meticulous money changers who adopted double-entry bookkeeping—where debits were maintained in one column and credits in another. This practice quickly became standard throughout Europe and remains so today (Ferguson, 2008). The concept of recording all account activity in a ledger is a fundamental characteristic of blockchain systems, including Bitcoin.
 
-It’s not just the idea of a permanent ledger that bitcoin borrowed, but rather the motivation to create a system outside of the one the Medici’s of 15th century Italy pioneered, and hold to this day. Next we will look at the computing branch.
+It’s not just the idea of a permanent ledger that bitcoin borrowed, but rather the motivation to create a system independent of the one pioneered by the Medicis in 15th-century Italy. 
 
 ## Traditional Banking System
-The banking system we use today has capitalised on the internet infrastructure and computing ideas such as relational databases and atomic transactions to become global. With relevance to blockchain development, this system:
+The contemporary banking system leverages internet infrastructure and computing concepts such as relational databases and atomic transactions to operate on a global scale. With relevance to blockchain development, this system:
 
 - Uses digital double-entry accounting,
 - Has a centralised hierarchy and often distributed infrastructure,
-- Maintains a permanent record of transactions that are opaque to the public.
+- Maintains a permanent, but publicly opaque, record of transactions.
 
-The bank is the middle-man, or final arbiter, of all transactions. The centralised architecture allows the bank to choose its customers, set fees, and even decide what to do with user deposits. Among other monopolistic behaviours, this leads to censorship and in the digital age, in addition to risks posed by hacks and breeches. Also, one may not want the bank to know exactly how and with whom you are transacting. As we learn more about the blockchain it will become apparent that Bitcoin transactions are not anonymous, rather they are considered pseudonymous. Although your name is not attached to a transaction, the address and activity associated with it is permanently recorded in the blockchain. Digital privacy will be one of the most important consequences of the blockchain era.
+The bank serves as an intermediary, the final arbiter, of all transactions. The centralised architecture allows the bank to choose its customers, set fees, and even decide what to do with user deposits. Among other monopolistic behaviours, this leads to censorship and in the digital age, in addition to risks posed by hacks and breeches. Also, one may not want the bank to know exactly how and with whom you are transacting. As we learn more about the blockchain it will become apparent that Bitcoin transactions are not anonymous, rather they are considered pseudonymous. Although your name is not attached to a transaction, the address and activity associated with it is permanently recorded in the blockchain. Digital privacy is one of the most significant outcomes of the blockchain era.
 
 ## P2P Digital Cash
-The 80's & 90's saw many attempts to create a digital version of money that could have a token, both private and untraceable, treated as a bearer instrument and not subject to the fragilities of third party issuers and verifiers. To name a few there was David Chaum's work on *Untraceable Electronic Cash*, Wei Dai's [*b-money*](http://www.weidai.com/bmoney.txt), and Nick Szabo's [*Bit Gold*](https://unenumerated.blogspot.com/2005/12/bit-gold.html).
+The 80's & 90's saw many attempts to create a digital version of money that could have a token, both private and untraceable, treated as a bearer instrument, and resist the fragility associated with third-party issuers and verifiers. Some notable examples include David Chaum's work on *Untraceable Electronic Cash* (1988), Wei Dai's [*b-money*](http://www.weidai.com/bmoney.txt), and Nick Szabo's [*Bit Gold*](https://unenumerated.blogspot.com/2005/12/bit-gold.html).
 
-Many technical challenges along the road were overcome by advances in cryptography such as digital signatures and hash functions. However, one problem always stood out: how to prevent someone from using a digital coin at one shop, copying it, and spending it again? Known as the *double-spend problem*, this is easily sovled using a centralized authority to check someone's balance and update it accordingly; by the time you arrive at the second retailer your card will be declined for insufficient funds. Here the bank is saying, "You can only spend your dollar once."
+Advancements in cryptography helped overcome many technical challenges, including those associated with digital signatures and hash functions. However, one issue remained unsolved: how can double-spending—a situation where someone spends the same digital coin twice—be prevented? A centralized authority could easily address this by checking someone's balance and updating it accordingly. However, in the absence of a centralized authority, this becomes a challenge; by the time you arrive at the second retailer your stolen card will be declined for insufficient funds or suspicious activity. Here the bank is saying, "You can only spend your dollar once."
 
 Chaum, Fiat and Naor (1988) came up with a scheme for issuing unique digital coins that could be redeemed by a centralised authority in a way that conceals the user’s identity. Anonymous digital cash. His scheme used what are called blind signatures and are clever because it means you can not reuse (double-spend) a digital coin. The double-spending problem is particularly difficult in the digital age because its so easy to copy a digital object (`ctrl+c`) and then turn around and offer it to many people while claiming it’s unique. Chaum et al. commercialized his company, calling it DigiCash but it never caught on (Narayanan, 2016). One of the reasons was that it wasn’t a truly peer-to-peer system still relying on the trusted thrid party.
 
@@ -68,21 +68,21 @@ The Global Financial Crisis in the mid-2000’s created significant hardship and
 > <p align="center"><img width="800" alt="header to the bitcoin whitepaper" src="https://user-images.githubusercontent.com/39792005/145146212-c35aff55-97ab-478a-8e10-de2977bc7a7f.PNG"></p>
 > Figure: Header to Satoshi Nakamoto's description of p2p electronic cash (required reading) distributed via mailing list on October 31, 2008. Regarding historical timelines, Lehman Brothers bankruptcy was on September 15, 2008, [cited](https://en.wikipedia.org/wiki/Bankruptcy_of_Lehman_Brothers) as the "climax of the subprime mortgage crisis.
 
-An unknown person named Satoshi Nakamoto designed a technological solution as a cryptocurrency, Bitcoin. While digital cash systems have a long history (briefly mentioned above), some have had a modicum of success such as PayPal, most have failed to ignite support. Bitcoin’s success seems in part to derive from its decentralised peer-to-peer system (the Bitcoin network) that provides complete transactions (bitcoin the cryptocurrency) without a singular or centralised banking authority.
+An anonymous individual, Satoshi Nakamoto, responded to this call by designing Bitcoin, a cryptocurrency. Despite the long history of digital cash systems, and notwithstanding the partial success of platforms like PayPal, many have failed to secure widespread support. Bitcoin’s success seems in part to derive from its decentralised peer-to-peer system (the Bitcoin network) that provides complete transactions (bitcoin the cryptocurrency) without a singular or centralised banking authority.
 
 The Bitcoin cryptocurrency architecture combines functions that provide coin creation, transactional cryptographic validation, and a highly redundant storage system that is publicly available, relatively anonymous, and incentivises users. An important measure that ensures cryptographically sound identification and verification of ownership is the use of SHA public/private key cryptography. This also provides a degree of anonymity, transactional integrity, and non-repudiation. 
 
 
 ### Distributed Systems
-The key to solving the double-spend problem is to distribute the record of transactions to every participant in the network. In this manner every seller can verify independently that any buyer has the required unspent amount. Every new transaction is shared through the network with everyone else in a peer-to-peer (p2p) manner, rather than sending to a central server and having a gatekeeper update the accounts, this is handled at the individual level. The distributed ledger removes both the need for centralized accounting, and for trust between users. There is no reason for Alice to trust Bob because the network consensus says that Bob has the authority to spend his coins.
+The key to solving the double-spend problem is to distribute the record of transactions to every participant in the network. In this manner every seller can verify independently that any buyer has the required unspent amount. Every new transaction is shared through the network with everyone else in a peer-to-peer (p2p) manner, rather than sending to a central server and having a gatekeeper update the accounts, this is handled at the individual level. This distributed ledger eliminates the need for centralized accounting and trust among users; no one needs to trust anyone else because the network consensus confirms the authority to spend coins.
 
-Practically speaking, each peer in the network listens for new blocks of transactions, verifies them, and adds them to their own local database. Should two nodes have conflicting information because they received new blocks at slightly different times, or with different transactions in them, then the state is said to *fork*, and for a short time *both* forks are equally valid states. Resolving forks happens often, is expected, and is the job of the consensus mechanism. The way that Bitcoin does this is by a longest chain rule, meaning that whatever node has the longest chain of blocks is the most likely to receive a new block and therefore continue to be the canonical chain. If a node falls behind, then it abandons its chain and starts contributing to the longest. This method of distributed system consensus is now known as *Nakamoto* conseneus.
+Practically speaking, each peer in the network listens for new blocks of transactions, verifies them, and adds them to their own local database. Should two nodes have conflicting information because they received new blocks at slightly different times, or with different transactions in them, then the state is said to *fork*, and for a short time *both* forks are equally valid states. Resolving forks is expected and is the job of the consensus mechanism. Bitcoin resolves this issue using the longest chain rule. This means the node with the longest block chain is most likely to receive a new block and continue as the canonical chain. If a node falls behind, it abandons its chain and starts contributing to the longest one. This method of distributed system consensus is now known as *Nakamoto consensus*.
  
-Because the chain is public you can do an inventory of nodes online at any given time. This also removes gatekeepers as anyone is free to join or leave whenever they want. At the end of 2021 the number of [bitcoin nodes](https://bitnodes.io/nodes/all/) globally was about 45,000. (Compare this with centralized systems like Facebook that keep your data on anywhere from 3-5 nodes.)
+Because the chain is public you can do an inventory of nodes online at any given time. This also removes gatekeepers as anyone is free to join or leave whenever they want. Midway through 2023 the number of [bitcoin nodes](https://bitnodes.io/nodes/all/) globally is about 45,000. (Compare this with centralized systems like Facebook and Twitter that keep your data on anywhere from 3-5 nodes.)
 
 ## The Blockchain Data Structure
 ### Where are objects stored in memory?
-When a program writes to disc or to memory there will be a predetermined area it is allowed to use. Usually this is allocated by the operating system at runtime. Because programs require lots of writing and rewriting to disc the data ends up being disorganized, or in seemingly sporadic locations. Thus, one item is probably not stored physically beside its related item. Data structures track where their items are located in memory and possibly other important information like the location of the last element or the maximum number allowed. Described here will be two data structures: a linked-list, and a tree. Both have simple diagrams to visualize how they work, but in practice can be tricky to implement. For this reason, all useful programming languages come with built-in data structure operations.
+When a program writes to disc or memory, it typically uses a predetermined area allocated by the operating system at runtime. Since programs frequently write and rewrite to disc, the data can end up disorganized and scattered. Data structures help track the location of items in memory, including potentially other crucial information like the last element's location or the maximum quantity allowed. Here, we'll discuss two data structures: linked lists and trees (in a future lecture). These structures have simple visual representations but can be challenging to implement, hence all useful programming languages come equipped with built-in data structure operations.
 
 ### Linked Lists
 A linked list is a sequence of data that has a reference to previous or subsequent item. The figure shows a schematic for integer elements that are linked to a subsequent item in their list. A key property of lists is that there is no absolute reference to individual elements. To find an element in the middle, say 99, you have to start at the beginning (12) and then traverse the list. Additionally in this manner it is easiest to append elements to the end of the list and much more difficult to insert elements part way through.
@@ -101,11 +101,11 @@ If document A appears in the list before document B, then it can be concluded th
 A blockchain is a data structure whereby a single block of data contains a hashed reference to a previous block. The chain of blocks can represent a chronological ordering of data as mentioned above. If blocks are appended regularly then the time-stamping effect can be as good as an actual time-stamp. When a new block is created it must include a reference pointer to the previous block in the chain, which, in turn contains reference to its previous block. An ordinary linked list would contain a pointer referencing the object's address in memory. A blockchain reference is known as a *hash pointer* because it also includes a hash of the previous block.
 
 > <p align="center"><img width="800" alt="asdf" src="https://github.com/millecodex/COMP842/assets/39792005/34e431d1-4a41-42cc-9828-ea4d6385fd2f"></p>\
-> Figure: Each individual ledger is analagous to a block. When one book is full a new one begins with the account balances being copied over, thus linking the 'blocks'. 
+> Figure: Each individual ledger is analogous to a block. When one book fills up, a new one begins, carrying over the account balances and thus linking the 'blocks'. 
 
-The primary purpose of Bitcoin is to track transactions in a ledger. (Recall: The accounting system that starts all the way back in the 1400's when the Medici family in Florence popularized double-entry accounting.) The blockchain can be thought of as triple-entry accounting, where the third entry is the distributed copies that maintain consensus. In the figure, the second block has a cryptographic hash of the first block, and the third block has a hash of the second block, which, by definition includes the hash of the first block. This is how the chain maintains its integrity.
+Bitcoin's primary purpose is to track transactions in a ledger (recall the double-entry accounting system popularized by the Medici family in Florence in the 1400s). The blockchain can be viewed as triple-entry accounting, where the third entry is the distributed copies maintaining consensus. In the figure, the second block contains a cryptographic hash of the first block, and the third block holds a hash of the second block, which, by definition, includes the first block's hash. This process is how the chain maintains its integrity.
 	
-The blockchain is a read-only public ledger of all transactions that have occurred within the cryptocurrency ecosystem and consists of a series of blocks that are created through proofing methods, such as proof-of-work (Back, 1997; and Nakamoto, 2008), proof-of-stake (Buterin, 2013; Larimer, 2013), or other unique methods or combinations of methods. The blockchain must be created one block at a time and mass deletion or appending of new blocks is not possible while maintaining the correct hash linking. If there are multiple new blocks to be added to the data structure, they must be added in series to create, and then preserve the total ordering.
+The blockchain is a read-only public ledger of all transactions that have occurred within the cryptocurrency ecosystem and consists of a series of blocks that are created through proofing methods, such as proof-of-work (Back, 1997; and Nakamoto, 2008), proof-of-stake (Buterin, 2013 and Wood, 2014), or other unique methods or combinations of methods. The blockchain must be created one block at a time and mass deletion or appending of new blocks is not possible while maintaining the correct hash linking. If there are multiple new blocks to be added to the data structure, they must be added in series to create, and then preserve the total ordering.
 
 What do these blocks look like?
 ```json
@@ -149,7 +149,7 @@ The process of adding blocks to the chain is called mining. Bitcoin mining is do
 ### Cryptography
 The 1980s saw a lot of research into the idea of being able to send a private digital message. Historically, this meant creating a cipher that converts a plaintext message into a ciphertext (encrypted message), sending the encrypted version, and the recipient has a matching cipher to enable them to decrypt the message. The key hurdle to this setup is that the cipher has to be transported to the recipient among eavesdroppers. A digital cryptosystem also involves distributing your cipher through any number of third-party servers that could have spies monitoring the connection.
 
-Public key cryptography is the solution to this problem and will be covered more in Lecture 3. Although neither a blockchain nor bitcoin is a crypto-system, they both utilize elements of cryptography: hash functions, and cryptographic keys with digital signatures.
+Public key cryptography is the solution to this problem and will be covered more [next lecture](2-cryptography.md). Although neither a blockchain nor bitcoin is a crypto-system, they both utilize elements of cryptography: hash functions, and cryptographic keys with digital signatures.
 
 ## Characteristics and Quirks
 ### Fixed Supply
@@ -157,15 +157,15 @@ The killer feature of Bitcoin is the use as a currency and one of the features i
 
 [^21]: Due to the beautiful and messy nature of math applied through computer science the actual limit is just under 21 million. See Antonopolous.
 ### Block Reward
-Incentives in social systems are very important - for example, why would someone want to dedicate electricity and computing power to an open source network? They can be rewarded for their effort, of course. The block reward is a minting of new bitcoin for every block that miners add to the chain. This occurs according to a fixed schedule and is a decreasing geometric series. Presently the block reward is 6.25 bitcoin, and will be split in half (3.125) sometime in 2024.
+Incentives in social systems are very important - for example, why would someone want to dedicate electricity and computing power to an open source network? They can be rewarded for their effort, of course. The block reward is a minting of new bitcoin for every block that miners add to the chain. This occurs according to a fixed schedule and is a decreasing geometric series. Presently the block reward is 6.25 bitcoin, and will be split in half (3.125) sometime in 2024, an event known as the *halving*.
 
-### Difficulty Ddjustment
-To help slow the distribution of new bitcoin a difficulty adjustment make it harder to win the block reward as more participants join the network. If large organizations or governments wanted to take over a network, they would dedicate a lot of resources to doing so. This is how industries become centralized. To limit the growth there is a difficulty adjustment every two weeks which affects the rate of bitcoin issuance.
+### Difficulty Adjustment
+A difficulty adjustment helps control the distribution of new bitcoins, making it more challenging to win the block reward as network participants increase. If large organizations or governments wanted to control a network, they would dedicate substantial resources to doing so, leading to industry centralization. To limit this growth, a difficulty adjustment occurs every two weeks, impacting the rate of bitcoin issuance.
 
 ## Bitcoin Today
 Satoshi sent his whitepaper out to a [mailing list](https://satoshi.nakamotoinstitute.org/emails/cryptography/1/#selection-117.66-117.78) of like-minded cryptography cypherpunks on October 31, 2008. A few months later in January 2009 he started running the software and mined the genesis block. Since this time the Bitcoin network has been the most robust computing network humans have ever created. There has been almost no downtime, few bugs, no hacks, and exponential growth. 
 
-With a total value of around $1 trillion USD, It is the 20th largest [currency](https://coinmarketcap.com/fiat-currencies/) next to the Vietnamese Dong and Singaporean Dollar. It is estimated that 1-2% of the global population have used or interacted with bitcoin, and [16% of Americans](https://www.pewresearch.org/fact-tank/2021/11/11/16-of-americans-say-they-have-ever-invested-in-traded-or-used-cryptocurrency/) have used or invested in cryptocurrency. There are reachable nodes running the core software in 87 countries. In El Salvador bitcoin is legal tender. 
+With a total value of around $600 million USD, it is the 20th largest [currency](https://coinmarketcap.com/fiat-currencies/) next to the Vietnamese Dong and Singaporean Dollar. It is estimated that 1-2% of the global population have used or interacted with bitcoin, and [16% of Americans](https://www.pewresearch.org/fact-tank/2021/11/11/16-of-americans-say-they-have-ever-invested-in-traded-or-used-cryptocurrency/) have used or invested in cryptocurrency. There are reachable nodes running the core software in 87 countries. In El Salvador bitcoin is legal tender. 
 
 What began as an experiment has bootstrapped an entire financial system with global settlement time in minutes and fees that are orders of magnitude cheaper and more secure than traditional banking infrastructure.
 
@@ -180,16 +180,24 @@ What began as an experiment has bootstrapped an entire financial system with glo
 # Readings
 * The Whitepaper: [*Bitcoin: A Peer-to-Peer Electronic Cash System* ](https://bitcoin.org/bitcoin.pdf)
 * On the Shoulder of Giants - History of the tech: [*Bitcoin's Academic Pedigree*, Communications of the ACM](https://cacm.acm.org/magazines/2017/12/223058-bitcoins-academic-pedigree/fulltext)
-* 
 
 # Next Lecture
 * :point_right: [Secret Writing (Cryptography)](2-cryptography.md)
 
 # References
-Chaum 1988
-Ferguson
-Graeber
-Wood 2015
-Haber and Stornetta (1991) 
-Nakamoto
-Narayanan
+Agha, A. 2017. *Money talk and conduct from cowries to bitcoin*. [(pdf)](https://cpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/1/494/files/2018/08/1Agha2017Money-1ridnhk.pdf)\
+Back, A. 2002. *Hashcash: A denial of service counter-measure*. [(pdf)](http://www.hashcash.org/)\
+Buterin, V. (2013). *Ethereum: A Next-Generation Smart Contract and Decentralized Application Platform*. White Paper. [web](https://ethereum.org/en/whitepaper/)\
+Chaum, D., Fiat, A., Naor, M. 1988. *Untraceable electronic cash*. [(pdf)](http://link.springer.com/10.1007/0-387-34799-2_25)\
+Dwork, C., Naor, M. 1993. *Pricing via processing or combatting junk mail*. [(pdf)](http://www.wisdom.weizmann.ac.il/~naor/PAPERS/pvp.pdf)\
+Ferguson, N. 2008. *The Ascent of Money: A Financial History of the World*. Penguin.\
+Graeber, D. 2011. *Debt: The First 5000 Years*. Melville House.\
+Haber, S. & Stornetta, W. S. 1991. *How to time-stamp a digital document*. [(pdf)](https://www.anf.es/pdf/Haber_Stornetta.pdf)\
+Nakamoto, S. 2008. *Bitcoin: A Peer-to-Peer Electronic Cash System*. [(pdf)](https://bitcoin.org/bitcoin.pdf)\
+Narayanan, A., Bonneau, J., Felten, E., Miller, A., & Goldfeder, S. 2016. *Bitcoin and Cryptocurrency Technologies: A Comprehensive Introduction*. Princeton University Press. [(pdf)](https://d28rh4a8wq0iu5.cloudfront.net/bitcointech/readings/princeton_bitcoin_book.pdf)\
+Wood, G. (2014). *Ethereum: A Secure Decentralised Generalised Transaction Ledger*. Yellow Paper. [(pdf)](https://ethereum.github.io/yellowpaper/paper.pdf)
+
+
+
+
+
