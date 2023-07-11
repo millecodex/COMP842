@@ -100,7 +100,12 @@ A Merkle path from leaf to root takes $\log n$ time to traverse. If you need to 
 ![merkle](merkle.gif)
 > Figure: Objects `A` to `P` stored as leaf nodes in a Merkle tree. Tracing a path to verify a letter is present should occur in $\log n$ time. Note: *.gif doesn't play.
 
+The cryptographic methods discussed so far, including hash functions and Merkle trees, serve two important roles. First, they obfuscate data: from a given hash, we cannot deduce the original data inputted into the hash function. This provides a level of data security. Second, these techniques enable quick and efficient data verification. For example, when we receive a software binary file along with its hash value, we can promptly verify the integrity of the software. This means checking that the hash of the received file matches the given hash, ensuring that the file has not been tampered with and accurately represents the intended source code.
+
+These tools do not, however, allow us to communicate privately.
+
 ## Symmetric Encryption
+
 ### Diffie-Hellman (& Merkle) key exchange
 The *Diffie-Hellman (& Merkle) key exchange* algorithm was devised so that two parties could use insecure communication channels to determine a common secret key (Diffie, 1976).
 
