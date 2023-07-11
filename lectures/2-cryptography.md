@@ -3,25 +3,79 @@
 ## Contents
 1. [Introduction](#introduction)
 2. [Hash Functions](#hash-functions)
-3. [Symmetric Cryptography](#symmetric-cryptography)
-4. [Asymmetric Cryptography](#asymmetric-cryptography)
-5. [RSA](#rsa)
-6. [ECC](#ecc)
-7. [Digital Signatures](#digital-signatures)
-8. [Merkle Trees](#merkle-trees)
-9. [What did we miss?](#what-did-we-miss)
-10. [Further Reading - the very short list](#further-reading---the-very-short-list)
-11. [Exercises](#exercises)
+3. [Merkle Trees](#merkle-trees)
+4. [Symmetric Encryption](#symmetric-encryption)
+5. [Asymmetric Encryption](#asymmetric-encryption)
+6. [Digital Signatures](#digital-signatures)
+7. [Summary](#summary)
+8. [What did we miss?](#what-did-we-miss)
+9. [Readings](#readings)
+10. [Exercises](#exercises)
 
 ## Introduction
-### What is Cryptography?
 Defined as the study of secret writing, cryptography has roots as old as history in message obfuscation. Traditional methods involve applying an algorithm or a key to a message to produce a cipher text. This process is known as encryption. The message recipient then applies secret knowledge to the ciphertext, decrypting it, to recover the original message. Curious eyes and self-serving couriers may intercept the cipher text before its destination and try to crack the code. This is the risk those take for secure communication. Cryptanalysis is the science of breaking codes to reveal messages without having knowledge of the key.
 
 A basic encryption scheme is one used by school children where letters are substituted with an alternate according to a prescribed routine. Shifting letters by a set number of characters in the alphabet is known as a *Caesar cipher*. Without knowing how many letters were shifted, it would take an eavesdropper at most 25 attempts to decrypt an English message by brute force.
 
 Other notable ciphers are the *Hill* cipher, *Vigenere* cipher, and *one-time pad* cipher (Singh, 1999). Hill and Vigenere both have weaknesses and can be broken; a well-constructed one-time-pad cipher can never be broken. The one-time works by transposing a message using a random key the same length as the message. This prevents repetition in both within key and from common phrases of speech, such as '*the*', or context such as '*Russians*'. If the key is sufficiently random, only someone with knowledge of the key can decrypt the message. Each new message requires a new key, and thus the name one-time pad. This poses many practical problems such as production and finding good sources of entropy (randomness). The primary limiting factor for this type of encryption is distribution of the keys to both parties. Long message require longer keys, and many messages require many keys.
 
-## Symmetric Cryptography
+## Hash Functions
+A hash function takes a variable length input and produces a fixed length output with no discernible pattern. In this sense, the hash function is *one-way* which means that there is no decryption algorithm that can undo it[^2].
+
+```plaintext
+    +------------+         +-------------+
+    |   message  |   --->  | hash function| ---> message digest
+    |     (x)    |         |     H(x)     |
+    +------------+         +-------------+
+```
+A good hash is easy to calculate (verify) but difficult to reverse. Given a hash, it should be computationally infeasible to both produce the data that created the hash or to find a message that produces the same hash. The figure below shows a simple hash function that takes characters as inputs and outputs 1 if the character is in the first half of the alphabet (a-m) and 0 otherwise.
+```plaintext
+    +------------+         +-----------------+
+    |   `code`   |   --->  |   H(`code`)     | ---> `1011`
+    +------------+         +-----------------+
+```
+If you begin with the hashed value of 1011, it is merely guesswork to try to determine the original string because 13 possible values could all produce a 1. After hashing more words, you realize that many other possibilities also produce 1011 as their hashed value, such as joke. If two or more different strings produce the same hash, this is called a collision. Finding a hash function that doesn't output collisions is trickier than it first appears because you can't test the entire solution space. For a blockchain to be secure, it should be built using a collision-resistant hash function.
+
+### SHA-256
+SHA-256 is a secure hashing algorithm that outputs a 256-bit message digest. It is part of a family of hash functions designed and tested by the National Institute of Standards and Technology[^3]. One of the key components is the bitwise XOR (exclusive-or) operation which outputs 0 if the two inputs are the same and 1 otherwise. The algorithm and notes can be found in [May2012]. SHA-256 has been used to hash the messages jeff and Jeff.
+```plaintext
+    +------------+         +---------------+
+    |   `jeff`   |   --->  |   SHA-256     | ---> `2e0b8d61fa2a6959d254b6ff5d0fb512249329097336a35568089933b49abdde`
+    +------------+         +---------------+
+
+    +------------+         +---------------+
+    |   `Jeff`   |   --->  |   SHA-256     | ---> `aea5a5ee6792fab36f3c60e62ef64e40061a8dac7d868b359aff7a4786a32e51`
+    +------------+         +---------------+
+```
+If an adversary wishes to modify data in a block, such as financial transaction data, the resulting hash pointer will have changed and need to be updated. So rather than having to store the entire dataset for verification, we can store the hash pointers and easily see if they are correct. Our adversary that altered some data would have to change every subsequent hash pointer to the tip of the blockchain. Simply storing the most recent hash in a place that can't be modified is enough to verify the whole chain. This can be done by keeping multiple copies in different locations.
+### used in bitcoin mining
+
+### Email
+The Simple Mail Transfer Protocol (SMTP) was defined in 1982 (Postel, 1982). As a standard, this would allow anyone to write an email client according to the SMTP guidelines and be able to send messages to anyone else that also followed the protocol. It is still used today and has undergone many updates, however SMTP has two problems: all text is sent as plaintext, and it is easy to spoof from addresses and generate spam.
+
+Email spam is an issue that was considered by Dwork and Naor (1993) when they wrote a paper describing the computational cost incurred by a spammer before sending an email. Titled Pricing via Processing, the idea is that your computer has to solve some computational puzzle before being permitted to send an email. For the average user this would take seconds
+and not be a nuisance but for a spam emailer, this would slow down their operation. A few years later in 1997, Back (2002) created Hashcash in a similar vein. Although Back was unaware of the previous work by Dwork and Naor, Back also implemented the idea of a cost function that has an easily verifiable solution. This is now known as Proof-of-Work and used by Bitcoin miners (Nakamoto, 2008a).
+
+
+## Merkle Trees
+The pages inside the books (data) can also be represented using hash pointers through a *Merkle tree*, named after computer scientist and cryptographer Ralph Merkle. The leaves of the binary tree structure[^leaves] are the data, and a hash pointer is created for every pair of leaves. When there are two pairs of leaves, the two hash pointers are combined and hashed into a third hash pointer. This continues until the root of the tree is a single hash representing all the data.
+
+> <img width="300" alt="Merkle Tree" src="https://github.com/millecodex/COMP842/assets/39792005/3a827ffb-f4fc-4931-810c-af6898a7230e">\
+> Figure: An individual block contains a Merkle tree of all the transactions in the block. Note it also contains the transactions (pages) themselves. The Merkle root is quick to verify that none of the transactions have changed.
+
+Following the tree in Figure [merkle], Page 1 is hashed as H(1), page 2 is hashed as H(2), and the two hashes are concatenated and hashed again as H(H₁+H₂). The hashing recurses until a single Merkle root is reached. The Merkle tree is secure in the same way as the blockchain -- if an adversary tries to modify some data, then the root hash pointer will change. Note that a block contains *two* separate hashes: one of the previous block and one of the transactions. See Chapter 9 in [Antonopoulos2017] for Bitcoin's block structure and an overview of Merkle trees. A Bitcoin block is output in Figure [bitcoin-block] showing the various metadata that is tracked.
+
+![merkle](https://github.com/millecodex/COMP842/assets/39792005/911f0ab1-eea8-4b8b-b268-5c21322a711a)
+> Gif doesn't play
+
+A Merkle path from leaf to root takes $\log n$ time to traverse. If you need to verify a transaction in a block it must be found in a tree and any transaction path in a binary tree of $n$ nodes requires $\log n$ operations. Lightweight nodes do not need to store the entire data in the blockchain, they just keep the Merkle root and then can connect to a full node to verify the path. Simplified payment verification (SPV) clients work this way, for example in a mobile application, where it's impractical to store the entire chain. The trade off here is that the SPV node does not store a full copy of the blockchain and must trust the nodes it is verifying against.
+
+
+[^leaves]: [Johnson2014] contains a good overview of tree structures.
+
+
+
+## Symmetric Encryption
 ### Diffie-Hellman (& Merkle) key exchange
 The *Diffie-Hellman (& Merkle) key exchange* algorithm was devised so that two parties could use insecure communication channels to determine a common secret key (Diffie, 1976).
 
@@ -86,14 +140,14 @@ and a cryptanalyst cannot calculate $k$ without knowing either $x_A$ or $x_J$. O
 One drawback of this system is that to communicate there has to be some back-and-forth between participants to agree on a secret key which can be particularly cumbersome if one participant is offline. If a third person wants to communicate, then a another pair of exchanges must take place. Every pair that needs to communicate needs their own secret key. A group of 40 students in this class requires 780 keys. What if instead each person had their own key and everyone else could use that same key to communicate with them?
 
 
-## Asymmetric Cryptography
+## Asymmetric Encryption
 ### Public-Key Cryptography
 The search for a personal key involves finding a one-way function that some insider information can quickly reverse. This is the foundation of public-key cryptography. A user has a key that they can share and use to encrypt messages, called the public-key. They also have a *trapdoor* into that one-way function to decrypt messages, called the private-key. Sometimes the term *backdoor* is used to indicate insider access unknown to users. This is different from a trapdoor as it introduces a deliberate weakness into the cryptosystem, whereas a trapdoor is simply information that is easy to compute one-way.
 
 ### RSA
-In 1977, Ron Rivest came up with a scheme to deliver exactly this: a key-pair system that allows universal encryption with some additional information to allow the owner (and only that owner) to decrypt messages. Rivest and his colleagues Adi Shamir and Leonard Adleman's system is simply referred to eponymously as RSA encryption[^3] (Rivest, 1978). The details will be skipped here, but in brief, RSA uses the properties of large prime numbers to generate encryption keys that are hard to reverse engineer. It is easy to multiply two prime numbers and calculate the output (semi-prime), but given a large semi-prime it is much more difficult to determine the two factors. 
+In 1977, Ron Rivest came up with a scheme to deliver exactly this: a key-pair system that allows universal encryption with some additional information to allow the owner (and only that owner) to decrypt messages. Rivest and his colleagues Adi Shamir and Leonard Adleman's system is simply referred to eponymously as RSA encryption (Rivest, 1978). The details will be skipped here, but in brief, RSA uses the properties of large prime numbers to generate encryption keys that are hard to reverse engineer. It is easy to multiply two prime numbers and calculate the output (semi-prime), but given a large semi-prime it is much more difficult to determine the two factors. 
 
-[^3]: Rivest, R., Shamir, A., & Adleman, L. (1978). A method for obtaining digital signatures and public-key cryptosystems. Communications of the ACM, 21(2), 120-126.
+
 
 ### ECC
 ### Elliptic Curve Cryptography
@@ -153,63 +207,6 @@ If a sender encrypts a message with their *private* key, anyone with the public 
 
 
 
-## Hash Functions
-A hash function takes a variable length input and produces a fixed length output with no discernible pattern. In this sense, the hash function is *one-way* which means that there is no decryption algorithm that can undo it[^2].
-
-```plaintext
-    +------------+         +-------------+
-    |   message  |   --->  | hash function| ---> message digest
-    |     (x)    |         |     H(x)     |
-    +------------+         +-------------+
-```
-A good hash is easy to calculate (verify) but difficult to reverse. Given a hash, it should be computationally infeasible to both produce the data that created the hash or to find a message that produces the same hash. The figure below shows a simple hash function that takes characters as inputs and outputs 1 if the character is in the first half of the alphabet (a-m) and 0 otherwise.
-```plaintext
-    +------------+         +-----------------+
-    |   `code`   |   --->  |   H(`code`)     | ---> `1011`
-    +------------+         +-----------------+
-```
-If you begin with the hashed value of 1011, it is merely guesswork to try to determine the original string because 13 possible values could all produce a 1. After hashing more words, you realize that many other possibilities also produce 1011 as their hashed value, such as joke. If two or more different strings produce the same hash, this is called a collision. Finding a hash function that doesn't output collisions is trickier than it first appears because you can't test the entire solution space. For a blockchain to be secure, it should be built using a collision-resistant hash function.
-
-### SHA-256
-SHA-256 is a secure hashing algorithm that outputs a 256-bit message digest. It is part of a family of hash functions designed and tested by the National Institute of Standards and Technology[^3]. One of the key components is the bitwise XOR (exclusive-or) operation which outputs 0 if the two inputs are the same and 1 otherwise. The algorithm and notes can be found in [May2012]. SHA-256 has been used to hash the messages jeff and Jeff.
-```plaintext
-    +------------+         +---------------+
-    |   `jeff`   |   --->  |   SHA-256     | ---> `2e0b8d61fa2a6959d254b6ff5d0fb512249329097336a35568089933b49abdde`
-    +------------+         +---------------+
-
-    +------------+         +---------------+
-    |   `Jeff`   |   --->  |   SHA-256     | ---> `aea5a5ee6792fab36f3c60e62ef64e40061a8dac7d868b359aff7a4786a32e51`
-    +------------+         +---------------+
-```
-If an adversary wishes to modify data in a block, such as financial transaction data, the resulting hash pointer will have changed and need to be updated. So rather than having to store the entire dataset for verification, we can store the hash pointers and easily see if they are correct. Our adversary that altered some data would have to change every subsequent hash pointer to the tip of the blockchain. Simply storing the most recent hash in a place that can't be modified is enough to verify the whole chain. This can be done by keeping multiple copies in different locations.
-
-
-### Email
-The Simple Mail Transfer Protocol (SMTP) was defined in 1982 (Postel, 1982). As a standard, this would allow anyone to write an email client according to the SMTP guidelines and be able to send messages to anyone else that also followed the protocol. It is still used today and has undergone many updates, however SMTP has two problems: all text is sent as plaintext, and it is easy to spoof from addresses and generate spam.
-
-Email spam is an issue that was considered by Dwork and Naor (1993) when they wrote a paper describing the computational cost incurred by a spammer before sending an email. Titled Pricing via Processing, the idea is that your computer has to solve some computational puzzle before being permitted to send an email. For the average user this would take seconds
-and not be a nuisance but for a spam emailer, this would slow down their operation. A few years later in 1997, Back (2002) created Hashcash in a similar vein. Although Back was unaware of the previous work by Dwork and Naor, Back also implemented the idea of a cost function that has an easily verifiable solution. This is now known as Proof-of-Work and used by Bitcoin miners (Nakamoto, 2008a).
-
-
-
-
-
-## Merkle Trees
-The pages inside the books (data) can also be represented using hash pointers through a *Merkle tree*, named after computer scientist and cryptographer Ralph Merkle. The leaves of the binary tree structure[^leaves] are the data, and a hash pointer is created for every pair of leaves. When there are two pairs of leaves, the two hash pointers are combined and hashed into a third hash pointer. This continues until the root of the tree is a single hash representing all the data.
-
-> <img width="300" alt="Merkle Tree" src="https://github.com/millecodex/COMP842/assets/39792005/3a827ffb-f4fc-4931-810c-af6898a7230e">\
-> Figure: An individual block contains a Merkle tree of all the transactions in the block. Note it also contains the transactions (pages) themselves. The Merkle root is quick to verify that none of the transactions have changed.
-
-Following the tree in Figure [merkle], Page 1 is hashed as H(1), page 2 is hashed as H(2), and the two hashes are concatenated and hashed again as H(H₁+H₂). The hashing recurses until a single Merkle root is reached. The Merkle tree is secure in the same way as the blockchain -- if an adversary tries to modify some data, then the root hash pointer will change. Note that a block contains *two* separate hashes: one of the previous block and one of the transactions. See Chapter 9 in [Antonopoulos2017] for Bitcoin's block structure and an overview of Merkle trees. A Bitcoin block is output in Figure [bitcoin-block] showing the various metadata that is tracked.
-
-![merkle](https://github.com/millecodex/COMP842/assets/39792005/911f0ab1-eea8-4b8b-b268-5c21322a711a)
-> Gif doesn't play
-
-A Merkle path from leaf to root takes $\log n$ time to traverse. If you need to verify a transaction in a block it must be found in a tree and any transaction path in a binary tree of $n$ nodes requires $\log n$ operations. Lightweight nodes do not need to store the entire data in the blockchain, they just keep the Merkle root and then can connect to a full node to verify the path. Simplified payment verification (SPV) clients work this way, for example in a mobile application, where it's impractical to store the entire chain. The trade off here is that the SPV node does not store a full copy of the blockchain and must trust the nodes it is verifying against.
-
-
-[^leaves]: [Johnson2014] contains a good overview of tree structures.
-
 
 
 ## Summary
@@ -226,17 +223,19 @@ Digital signatures allow a blockchain user to transfer ownership of a token by v
 
 
 ## What did we miss?
-[Text related to 'What did we miss?' here]
+* Zero-knowledge proofs are an applied branch of cryptography. We will return to these (at a high level) in our lecture on Privacy.
 
 # Exercises
 1. a
 2. b
 3. c
 
-# Further Reading - the very short list
-* The 
-* On the
+# Readings
+* 
 
 # Next Lecture
 * :point_right: [Proof-of-Work Consensus](3-consensus-pow.md)
 
+# References
+Rivest, R., Shamir, A., & Adleman, L. (1978). A method for obtaining digital signatures and public-key cryptosystems. Communications of the ACM, 21(2), 120-126.
+Singh, S. 1999. The Code Book. 
