@@ -10,7 +10,7 @@
 6. [Chain of blocks](#chain-of-blocks)
 7. [Characteristics and Quirks](#characteristics-and-quirks)
 8. [What did we miss?](#what-did-we-miss)
-9. [Further Reading - the very short list](#further-reading---the-very-short-list)
+9. [Readings](#readings)
 10. [Exercises](#exercises)
 
 ## Money
@@ -35,16 +35,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ## What did we miss?
-* i
-* ii
-* iii 
+* Zero-knowledge proofs are an applied branch of cryptography. We will return to these (at a high level) in our lecture on Privacy.
 
-## Further Reading - the very short list
-* a
-* B
-* C
-
-## Exercises
+# Exercises
 1. a
 2. b
 3. c
+
+# Readings
+* 
+
+# Next Lecture
+* :point_right: [Proof-of-Work Consensus](3-consensus-pow.md)
+
+# References
+Singh, S. 1999. The Code Book. 
