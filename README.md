@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/millecodex/COMP842)
+
 ## COMP842 - Applied Blockchains and Cryptocurrencies
 ### Auckland University of Technology
 
@@ -48,4 +50,4 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 * [UNIC Blockchain](https://www.unic.ac.cy/blockchain/) (Nicosia)
 
 ## Open Source Contributions
-Notice something that doesn't seem right? Could be explained better? Have an analogy that helps with your understanding? Want to include something new that I've missed? Feel free to fork and submit a pull-request. :
+Notice something that doesn't seem right? Could be explained better? Have an analogy that helps with your understanding? Want to include something new that I've missed? Feel free to fork and submit a pull-request.
