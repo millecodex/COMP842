@@ -27,7 +27,7 @@ A hash function takes a variable length input and produces a fixed length output
 ```plaintext
     +------------+         +-------------+
     |   message  |   --->  | hash function| ---> message digest
-    |     (x)    |         |     H(x)     |
+    |     `x`    |         |     H(x)     |
     +------------+         +-------------+
 ```
 A good hash is easy to calculate (verify) but difficult to reverse. Given a hash, it should be computationally infeasible to both produce the data that created the hash (pre-image resistance) or to find a message that produces the same hash (2nd pre-image resistance). The figure below shows a simple hash function that takes characters as inputs and outputs 1 if the character is in the first half of the alphabet (a-m) and 0 otherwise.
@@ -36,10 +36,20 @@ A good hash is easy to calculate (verify) but difficult to reverse. Given a hash
     |   `code`   |   --->  |   H(`code`)     | ---> `1011`
     +------------+         +-----------------+
 ```
-If you begin with the hashed value of 1011, it is merely guesswork to try to determine the original string because 13 possible values could all produce a 1. After hashing more words, you realize that many other possibilities also produce 1011 as their hashed value, such as joke (or lame, lone, male, mine, etc.). If two or more different strings produce the same hash, this is called a collision. Finding a hash function that doesn't output collisions is trickier than it first appears because you can't test the entire solution space. For a blockchain to be secure, it should be built using a collision-resistant hash function.
+If you begin with the hashed value of 1011, it is merely guesswork to try to determine the original string because 13 possible values could all produce a 1. After hashing more words, you realize that many other possibilities also produce 1011 as their hashed value, such as joke (or lame, lone, male, mine, etc.). If two or more different strings produce the same hash, this is called a collision. 
+```plaintext
+    +------------+         +-----------------+
+    |   `joke`   |   --->  |   H(`joke`)     | ---> `1011`
+    +------------+         +-----------------+
+```
+Finding a hash function that doesn't output collisions  $H(\text{code})\ne H(\text{joke})$ is trickier than it first appears because you can't test the entire solution space. In this trivial example the entire solution space is $`\{0|1\}^4=2^4=16`$ possible outputs. Lets enable all letters, not just $0$ or $1$, so twenty-six characters. This grows to $26^4=456,976$ possible outputs. Its a lot more, but still possible to check them all with a modern processor. We'll return to this in a moment after introducing SHA-256. For a blockchain (or application) to be secure, it should be built using a collision-resistant hash function.
 
 ### SHA-256
-SHA-256 is a secure hashing algorithm that outputs a 256-bit message digest. It is part of a family of hash functions designed and tested by the National Institute of Standards and Technology (see required reading). One of the key components is the bitwise XOR (exclusive-or) operation which outputs 0 if the two inputs are the same and 1 otherwise. 
+SHA-256 is a secure hashing algorithm that outputs a 256-bit message digest. It is part of a family of hash functions designed and tested by the National Institute of Standards and Technology (see required reading). One of the key components is the bitwise XOR (exclusive-or) operation which outputs 0 if the two inputs are the same and 1 otherwise. This inclusion makes it difficult to back-track from a hash and figure out what data went into it. (Using the simple example above, if the hash is `1111` you know characters all map to the first half of the alphabet.) Just like trying to figure out the Colonel's 11 herbs and spices[^kfc] from tasting, it could take a lifetime to recreate the secret recipe.
+[^kfc]: The true recipe, it is said, is locked away in a vault at KFC's headquarters in Louisville, Kentucky.
+
+Here you see the SHA-256 output of the message `jeff` as compared to `Jeff`. It is a string of 64 hexidecimal characters, which has been converted from a string of 256 bits (binary digits).
+
 ```plaintext
     +------------+         +---------------+
     |   `jeff`   |   --->  |   SHA-256     | ---> `2e0b8d61fa2a6959d254b6ff5d0fb512249329097336a35568089933b49abdde`
@@ -51,15 +61,29 @@ SHA-256 is a secure hashing algorithm that outputs a 256-bit message digest. It 
 ```
 > Figure: SHA-256 has been used to hash the messages `jeff` and `Jeff`. There should be no way to link the two hashes.
 
-Recall that the links between blocks are called hash pointers. If an adversary wishes to modify data in a block, such as financial transaction data, the resulting hash pointer will have changed and need to be updated. So rather than having to store the entire dataset for verification, we can store the hash pointers and easily see if they are correct. Our adversary that altered some data would have to change every subsequent hash pointer to the tip of the blockchain. Simply storing the most recent hash in a place that can't be modified is enough to verify the whole chain. A good way to do this is by keeping multiple copies in different locations.
+Each hex character has 16 possible options, so the size of the solution space for SHA-256 is 
 
-SHA-256 is used in various places in Bitcoin (and blockchains) such as: address generation, block pointers, Merkle trees, and proof-of-work mining. 
+$$
+16^{64}=115792089237316195423570985008687907853269984665640564039457584007913129639936
+$$ 
+
+In more manageable scientific notation this is about $1.16\times 10^{77}$. So the number of possible hashes that SHA256 can output is very large[^atoms]. To manipulate some data to find a collision you would have vary the input, run it through the hash function, and check the outupt against your target. If you only had 16 possible outputs, this would be fast. But with $10^{77}$ its impossible in practice.
+
+[^atoms]: A somewhat close comparison is the estimated number of atoms in the universe at about $10^{80}$. There are 1000 times more atoms than potential hashes. This is comforting. 
+
+Hashing is sometimes referred to as a one-way function. This is in the mathematical sense that it is easy to follow the algorithm and create a hash using some input string, but hard to start with the string and determine the data. You cannot go backwards. This property gives rise to verification. If someone sends you a hash, you can easily run your own computation to verify that the message used to produce the hash is authentic. 
+
+> **Verification** is a key concept. If Alice sends Bob an important message such as "attack at dawn", its in Bob's best interest to verify the message is genuine and has not been altered. Alice can send the plaintext: `attack at dawn`, and the hash: `d502810c71aeb17e5ea1cbf930b46b87bb645a75df45f500230d061992aeb90a`. Upon receipt, Bob needs to spend a small amount of effort using his computer to verify the hash.
 
 ### A quick note about Email
 The Simple Mail Transfer Protocol (SMTP) was defined by [Jon Postel](https://www.rfc-editor.org/rfc/rfc821) in 1982. As a standard, this would allow anyone to write an email client according to the SMTP guidelines and be able to send messages to anyone else that also followed the protocol. It is still used today and has undergone many updates, however SMTP has two problems: all text is sent as plaintext, and it is easy to spoof from addresses and generate spam.
 
-Email spam is an issue that was considered by Dwork and Naor (1993) when they wrote a paper describing the computational cost incurred by a spammer before sending an email. Titled Pricing via Processing, the idea is that your computer has to solve some computational puzzle before being permitted to send an email. For the average user this would take seconds and not be a nuisance but for a spam emailer, this would slow down their operation. A few years later in 1997, Back (2002) created Hashcash in a similar vein. Although Back was unaware of the previous work by Dwork and Naor, Back also implemented the idea of a cost function that has an easily verifiable solution. This is now known as Proof-of-Work and used by Bitcoin miners.
+Email spam is an issue that was considered by Dwork and Naor (1993) when they wrote a paper describing the computational cost incurred by a spammer before sending an email. Titled *Pricing via Processing*, the idea is that your computer has to solve some computational puzzle before being permitted to send an email. For the average user this would take seconds in the background and not be a nuisance, but for a spam emailer this would slow down their operation. A few years later in 1997, Back (2002) created *Hash*cash in a similar vein. Although Back was unaware of the previous work by Dwork and Naor, Back also implemented the idea of a cost function that has an easily verifiable solution. The cost here is the work that your computer does to run a hashing algorithm which adds up when trying to scale a spam operation. This is now known as Proof-of-Work and used by Bitcoin miners.
 
+### Back to blockchain
+Recall that the links between blocks are called hash pointers. If an adversary wishes to modify data in a block, such as financial transaction data, the resulting hash pointer will have changed and need to be updated. So rather than having to store the entire dataset for verification, we can store the hash pointers and easily see if they are correct. Our adversary that altered some data would have to change every subsequent hash pointer to the tip of the blockchain. Simply storing the most recent hash in a place that can't be modified is enough to verify the whole chain. A good way to do this is by keeping multiple copies in different locations.
+
+SHA-256 is used in various places in Bitcoin (and blockchains) such as: address generation, block pointers, Merkle trees, and proof-of-work mining. 
 
 ## Merkle Trees
 Recall our ledger consisting of pages (transaction data) that is bundled into entire books (blocks) and linked by a numbering system (hash pointer). The pages inside the books can also be represented using hash pointers through a *Merkle tree*, named after computer scientist and cryptographer [Ralph Merkle](https://en.wikipedia.org/wiki/Ralph_Merkle). The leaves of the binary tree structure are the data, and a hash pointer is created for every pair of leaves. When there are two pairs of leaves, the two hash pointers are combined and hashed into a third hash pointer. This continues until the root of the tree is a single hash representing all the data.
