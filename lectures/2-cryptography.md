@@ -117,7 +117,7 @@ Following the tree in the Figure, Page 1 is hashed as $H(1)$, page 2 is hashed a
 	"nTx": 350,
 	"previousblockhash": "000000000000000000070be3e6873e60481b5e3c71322c8ced8315f6e44edd6e"
 ```
-> Figure: block header info in Bitcoin, note the `merkleroot`.
+> Figure: block header info for Bitcoin block #620229, note the `merkleroot`.
 
 A Merkle path from leaf to root takes $\log n$ time to traverse. If you need to verify a transaction in a block it must be found in a tree and any transaction path in a binary tree of $n$ nodes requires $\log n$ operations. Lightweight nodes do not need to store the entire data in the blockchain, they just keep the Merkle root and then can connect to a full node to verify the path. Simplified payment verification (SPV) clients work this way, for example in a mobile application, where it's impractical to store the entire chain. The trade off here is that the SPV node does not store a full copy of the blockchain and must trust the nodes it is verifying against.
 
@@ -284,21 +284,14 @@ Digital signatures allow a blockchain user to transfer ownership of a token by v
 * :point_right: [Proof-of-Work Consensus](3-consensus-pow.md)
 
 # References
-Antonopoulos, A. 2017. Mastering Bitcoin: Unlocking digital cryptocurrencies. O'Reilly Media, Inc.
-Back, A. 2002. *Hashcash: A denial of service counter-measure*. http://www.hashcash.org/
-Brown, D. R. L. 2010. SEC 2: Recommended elliptic curve domain parameters. Standards for Efficient Cryptography (SEC) (Certicom Research). https://www.secg.org/sec2-v2.pdf
-
-Diffie, W., Hellman, M. 1976. "New Directions in Cryptography." *IEEE Transactions on Information Theory*. 22 (6): 644–654.
+1. Antonopoulos, A. 2017. Mastering Bitcoin: Unlocking digital cryptocurrencies. O'Reilly Media, Inc.
+2. Back, A. 2002. *Hashcash: A denial of service counter-measure*. http://www.hashcash.org/
+3. Brown, D. R. L. 2010. SEC 2: Recommended elliptic curve domain parameters. Standards for Efficient Cryptography (SEC) (Certicom Research). https://www.secg.org/sec2-v2.pdf
+4. Diffie, W., Hellman, M. 1976. "New Directions in Cryptography." *IEEE Transactions on Information Theory*. 22 (6): 644–654.
 5. Dwork, C., Naor, M. 1993. *Pricing via processing or combatting junk mail*. http://www.wisdom.weizmann.ac.il/~naor/PAPERS/pvp.pdf
-
-Hoffman, P. 2005. "Algorithms for Internet Key Exchange (IKEv2)." RFC 4109. Internet Engineering Task Force. https://tools.ietf.org/html/rfc4109
-
-
-Postel, J. 1982. "Simple Mail Transfer Protocol." RFC 821. Internet Engineering Task Force. https://www.rfc-editor.org/rfc/rfc821
-
-Rivest, R., Shamir, A., & Adleman, L. 1978. "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems." *Communications of the ACM*. 21(2), 120-126.
-
-Singh, S. 1999. "The Code Book." *Doubleday*.
-
-Stallings, W. 2017. Cryptography and Network Security: Principles and Practice. Pearson.
+6. Hoffman, P. 2005. "Algorithms for Internet Key Exchange (IKEv2)." RFC 4109. Internet Engineering Task Force. https://tools.ietf.org/html/rfc4109
+7. Postel, J. 1982. "Simple Mail Transfer Protocol." RFC 821. Internet Engineering Task Force. https://www.rfc-editor.org/rfc/rfc821
+8. Rivest, R., Shamir, A., & Adleman, L. 1978. "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems." *Communications of the ACM*. 21(2), 120-126.
+9. Singh, S. 1999. "The Code Book." *Doubleday*.
+10. Stallings, W. 2017. Cryptography and Network Security: Principles and Practice. Pearson.
 
