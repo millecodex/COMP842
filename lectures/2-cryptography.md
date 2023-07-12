@@ -45,7 +45,7 @@ If you begin with the hashed value of 1011, it is merely guesswork to try to det
 Finding a hash function that doesn't output collisions  $H(\text{code})\ne H(\text{joke})$ is trickier than it first appears because you can't test the entire solution space. In this trivial example the entire solution space is $`\{0|1\}^4=2^4=16`$ possible outputs. Lets enable all letters, not just $0$ or $1$, so twenty-six characters. This grows to $26^4=456,976$ possible outputs. Its a lot more, but still possible to check them all with a modern processor. We'll return to this in a moment after introducing SHA-256. For a blockchain (or application) to be secure, it should be built using a collision-resistant hash function.
 
 ### SHA-256
-SHA-256 is a secure hashing algorithm that outputs a 256-bit message digest. It is part of a family of hash functions designed and tested by the National Institute of Standards and Technology (see required reading). One of the key components is the bitwise XOR (exclusive-or) operation which outputs 0 if the two inputs are the same and 1 otherwise. This inclusion makes it difficult to back-track from a hash and figure out what data went into it. (Using the simple example above, if the hash is `1111` you know characters all map to the first half of the alphabet.) Just like trying to figure out the Colonel's 11 herbs and spices[^kfc] from tasting, it could take a lifetime to recreate the secret recipe.
+SHA-256 is a secure hashing algorithm that outputs a 256-bit message digest. It is part of a family of hash functions designed by the United States National Security Agency and published by the National Institute of Standards and Technology (see required reading). One of the key components is the bitwise XOR (exclusive-or) operation which outputs 0 if the two inputs are the same and 1 otherwise. This inclusion makes it difficult to back-track from a hash and figure out what data went into it. (Using the simple example above, if the hash is `1111` you know characters all map to the first half of the alphabet.) Just like trying to figure out the Colonel's 11 herbs and spices[^kfc] from tasting, it could take a lifetime to recreate the secret recipe.
 [^kfc]: The true recipe, it is said, is locked away in a vault at KFC's headquarters in Louisville, Kentucky.
 
 Here you see the SHA-256 output of the message `jeff` as compared to `Jeff`. It is a string of 64 hexidecimal characters, which has been converted from a string of 256 bits (binary digits).
@@ -243,15 +243,15 @@ ECC can be utilized for key exchange by making public the chosen field ($p$ or $
 
 ## Digital Signatures
 A digital signature arises as a consequence of public-key cryptosystems such as RSA & ECC. It allows a user to do three things:
-1. Verify the authenticity of the sender of a message; e.g. if Jacinda Ardern posts a message it is helpful to trust the source,
+1. Verify the authenticity of the sender of a message; e.g. if the IRD sends you a tax invoice it is helpful to trust the source,
 2. Prevent a sender from denying they sent the message; this is called non-repudiation and prevents someone from saying they were not responsible, and
-3. Validate the integrity of the message to ensure it wasn't tampered with during transport; e.g. if a general sends a scout to deliver a message the recipient can be sure the scout did not change the content.
+3. Validate the integrity of the message to ensure it wasn't tampered with during transport; e.g. if a general sends a scout to deliver a message the recipient can be sure the scout did not change the content en route.
 
-Any standard public-key encryption algorithm such as RSA or ECC combined with a cryptographic hash function such as SHA-1[^8] can be used to create a digital signature, so long as recipients are aware of which encryption algorithm and hash function have been chosen and the correct public key is available to the recipients. Bitcoin and Ethereum both use the elliptic curve digital signature algorithm (ECDSA). 
+Any standard public-key encryption algorithm such as RSA or ECC combined with a cryptographic hash function such as the SHA-1 family can be used to create a digital signature, so long as recipients are aware of which encryption algorithm and hash function have been chosen and the correct public key is available to the recipients. Bitcoin and Ethereum both use the elliptic curve digital signature algorithm (ECDSA). 
 
 If a sender encrypts a message with their *private* key, anyone with the public key can decrypt the message. Since the public key is available, anyone has the ability to quickly verify that a message or transaction came from the holder of the private key. This is all done without exposing the private keys and so is as secure as having someone encrypt a message with your public key.
 
-[^8]: SHA-1 is a cryptographic hash function which takes an input and produces a 160-bit (20-byte) hash value known as a message digest – typically rendered as a hexadecimal number, 40 digits long. It was designed by the United States National Security Agency and published by the NIST.
+
 
 
 ## Summary
