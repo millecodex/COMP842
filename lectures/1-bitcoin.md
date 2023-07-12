@@ -41,7 +41,7 @@ Any token that has these properties in addition to being issued by the state is 
 ### Finance
 Finance evolved once systems for credit, debt, and value transfer (cash) gained widespread acceptance. The Medici family in 15th-century Italy revolutionized banking as meticulous money changers who adopted double-entry bookkeeping—where debits were maintained in one column and credits in another. This practice quickly became standard throughout Europe and remains so today (Ferguson, 2008). The concept of recording all account activity in a ledger is a fundamental characteristic of blockchain systems, including Bitcoin.
 
-> <p align="center"><img width="400" alt="Medici Ledger of accounts from 1573" src="https://github.com/millecodex/COMP842/assets/39792005/5a95b958-ddc5-458b-99f3-de6410b8e361"></p>
+> <img width="400" alt="Medici Ledger of accounts from 1573" src="https://github.com/millecodex/COMP842/assets/39792005/5a95b958-ddc5-458b-99f3-de6410b8e361">\
 > Figure: Medici Ledger of accounts from 1573. Source: University of Pennsylvania, OPENN Library.
 
 It’s not just the idea of a permanent ledger that bitcoin borrowed, but rather the motivation to create a system independent of the one pioneered by the Medicis in 15th-century Italy. 
@@ -68,12 +68,12 @@ The decentralized approach removes the bank entirely from the transaction and is
 ## Bitcoin
 The Global Financial Crisis in the mid-2000’s created significant hardship and the blame was put clearly on the banking sector. While changes were called for in how banks managed risk, there was also social disquiet amongst those that felt that banks controlled too much financial, and therefore, societal resources. In particular, libertarians called for an economic system free of the banking sector.
 
-> <p align="center"><img width="800" alt="header to the bitcoin whitepaper" src="https://user-images.githubusercontent.com/39792005/145146212-c35aff55-97ab-478a-8e10-de2977bc7a7f.PNG"></p>
+> <img width="800" alt="header to the bitcoin whitepaper" src="https://user-images.githubusercontent.com/39792005/145146212-c35aff55-97ab-478a-8e10-de2977bc7a7f.PNG">\
 > Figure: Header to Satoshi Nakamoto's description of p2p electronic cash (required reading) distributed via mailing list on October 31, 2008. Regarding historical timelines, Lehman Brothers bankruptcy was on September 15, 2008, said to be the "climax of the subprime mortgage crisis." Source: https://en.wikipedia.org/wiki/Bankruptcy_of_Lehman_Brothers.
 
 An anonymous individual, Satoshi Nakamoto, responded to this call by designing Bitcoin, a cryptocurrency. Despite the long history of digital cash systems, and notwithstanding the partial success of platforms like PayPal, many have failed to secure widespread support. Bitcoin’s success seems in part to derive from its decentralised peer-to-peer system (the Bitcoin network) that provides complete transactions (bitcoin the cryptocurrency) without a singular or centralised banking authority.
 
-> <p align="center"><img width="200" alt="Satoshi Nakamoto's avatar on the P2P foundation" src="https://github.com/millecodex/COMP842/assets/39792005/7c0e14a1-c74a-40e8-a375-abe22dbd9054"></p>
+> <img width="200" alt="Satoshi Nakamoto's avatar on the P2P foundation" src="https://github.com/millecodex/COMP842/assets/39792005/7c0e14a1-c74a-40e8-a375-abe22dbd9054">\
 > Figure: Satoshi Nakamoto's avatar on the P2P foundation site where he news of the first bitcoin reference implementation. Source: https://p2pfoundation.ning.com/forum/topics/bitcoin-open-source.
 
 The Bitcoin cryptocurrency architecture combines functions that provide coin creation, transactional cryptographic validation, and a highly redundant storage system that is publicly available, relatively anonymous, and incentivises users. An important measure that ensures cryptographically sound identification and verification of ownership is the use of SHA public/private key cryptography. This also provides a degree of anonymity, transactional integrity, and non-repudiation. 
@@ -93,7 +93,7 @@ When a program writes to disc or memory, it typically uses a predetermined area 
 ### Linked Lists
 A linked list is a sequence of data that has a reference to previous or subsequent item. The figure shows a schematic for integer elements that are linked to a subsequent item in their list. A key property of lists is that there is no absolute reference to individual elements. To find an element in the middle, say 99, you have to start at the beginning (12) and then traverse the list. Additionally in this manner it is easiest to append elements to the end of the list and much more difficult to insert elements part way through.
 
-> <p align="center"><img width="800" alt="asdf" src="https://github.com/millecodex/COMP842/assets/39792005/468aafe3-f855-478e-80c9-adcd5139dd7e"></p>
+> <img width="800" alt="asdf" src="https://github.com/millecodex/COMP842/assets/39792005/468aafe3-f855-478e-80c9-adcd5139dd7e">\
 > Figure: Various linked lists. Top: a standard implementation with a reference pointer to the next element. Middle: a doulble-linked list with previous and subsequent pointers. Bottom: a circular linked list with reference back to the first element. Source: https://en.wikipedia.org/wiki/Linked_list.
 
 ### Linked Time-stamping
@@ -106,7 +106,7 @@ If document A appears in the list before document B, then it can be concluded th
 ### Chains of Blocks
 A blockchain is a data structure whereby a single block of data contains a hashed reference to a previous block. The chain of blocks can represent a chronological ordering of data as mentioned above. If blocks are appended regularly then the time-stamping effect can be as good as an actual time-stamp. When a new block is created it must include a reference pointer to the previous block in the chain, which, in turn contains reference to its previous block. An ordinary linked list would contain a pointer referencing the object's address in memory. A blockchain reference is known as a *hash pointer* because it also includes a hash of the previous block.
 
-> <p align="center"><img width="800" alt="asdf" src="https://github.com/millecodex/COMP842/assets/39792005/34e431d1-4a41-42cc-9828-ea4d6385fd2f"></p>
+> <img width="800" alt="asdf" src="https://github.com/millecodex/COMP842/assets/39792005/34e431d1-4a41-42cc-9828-ea4d6385fd2f">\
 > Figure: Each individual ledger is analogous to a block. When one book fills up, a new one begins, carrying over the account balances and thus linking the 'blocks'. 
 
 Bitcoin's primary purpose is to track transactions in a ledger (recall the double-entry accounting system popularized by the Medici family in Florence in the 1400s). The blockchain can be viewed as triple-entry accounting, where the third entry is the distributed copies maintaining consensus. In the figure, the second block contains a cryptographic hash of the first block, and the third block holds a hash of the second block, which, by definition, includes the first block's hash. This process is how the chain maintains its integrity.
@@ -202,8 +202,3 @@ What began as an experiment has bootstrapped an entire financial system with glo
 9. Nakamoto, S. 2008. *Bitcoin: A Peer-to-Peer Electronic Cash System*. [(pdf)](https://bitcoin.org/bitcoin.pdf)
 10. Narayanan, A., Bonneau, J., Felten, E., Miller, A., & Goldfeder, S. 2016. *Bitcoin and Cryptocurrency Technologies: A Comprehensive Introduction*. Princeton University Press. [(pdf)](https://d28rh4a8wq0iu5.cloudfront.net/bitcointech/readings/princeton_bitcoin_book.pdf)
 11. Wood, G. 2014. *Ethereum: A Secure Decentralised Generalised Transaction Ledger*. Yellow Paper. [(pdf)](https://ethereum.github.io/yellowpaper/paper.pdf)
-
-
-
-
-
