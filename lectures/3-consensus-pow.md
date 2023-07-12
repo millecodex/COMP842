@@ -11,11 +11,17 @@
 10. [Exercises](#exercises)
 
 ## Introduction
-Consensus broadly defines the process used by a network to reach a state of agreement. This process is a communication algorithm that allows nodes to determine what has happened. An activity initiated by a user (or by an autonomous process) needs to be recorded by the `system` which means that all participating nodes must be aware of the activity. 
+Consensus broadly defines the process used by a network to reach a state of agreement. This process is a communication algorithm that allows nodes to determine what has happened and act accordingly. An activity initiated by a user (or by an autonomous process) needs to be recorded by the system which means that all participating nodes must be aware of the activity.
 
-three types of networks: centralized, decentralized, and distributed. The centralized network has a server that controls all the events. As organizations scale, this approach becomes more decentralized either due to computing resource constraints or organizational limits in the case of a global system, such as a bank. 
+> <img width="800" alt="" src="https://github.com/millecodex/COMP842/assets/39792005/e4342bb3-f119-4836-8e53-8151f65dd89b">\
+> Figure: Democratic parliaments work this way - a member proposes an update to the legislation, then through the course of debate (and perhaps incentivising favours) the house comes to agreement on updating the legislature. Source: https://www.parliament.nz/en/get-involved/features/parliament-s-debating-chamber-turns-100/
 
-centralizatiin figure
+In the parliament-nodes metaphor, each MP needs to be aware of the proposed update, and then make an informed decision to support or deny the change. Not every citizen has equal influence as MPs represent a constituency. The same can be true in computing networks - not all nodes are equal. We can classify computing networks by three types: centralized, decentralized, and distributed. The centralized network has a main server that controls all the events. This is where the rules are implemented, and also where the off switch can be found. As organizations scale, this approach becomes more decentralized either due to computing resource constraints or organizational limits in the case of a global system, such as a bank. The tech giants we are used to todays are distributed - they have nodes, including data centers, in various jurisdictions while operating as a single entity.
+
+> <img width="800" alt="" src="https://github.com/millecodex/COMP842/assets/39792005/ac182253-3850-4667-bc72-ed32550de671">\
+> Figure: Degrees of decentralisation. The dots are nodes in the network and the graph edges are communication links. Source: Baran (1964) for an excellent overview of redundancy and vulnerability of digital communications networks.
+
+On the right in the figure is a distributed (mesh) network which shows a high degree of decentralisation. If any node goes offline, the remainder of the network is largely unaffected. Compare with the middle figure where certain nodes can have large effects in the network should they be compromised or need to be repaired. 
 
 ### Centralized Consensus
 Lets consider the case of withdrawing money from an ATM. The bank operates a network of ATM machines that maintain connection to a central server. A user requests \$100 from her local ATM. The machine must connect to the bank's server and query the database for an account balance, confirm that it is greater than the requested amount and respond to the ATM. The machine now sends a second request for withdrawal (step 3 in figure below) and the server will debit the users account, sending a message back to the ATM. It is only at this point that the \$100 can be dispensed; after the account has been debited. This is known as a two-phase commit; the first phase is a request, and the second phase is an action.
@@ -81,8 +87,9 @@ The bits here should be randomly distributed, like a lottery, to prevent gaming 
 
 Figure is a plot of the mining difficulty showing an exponential increase. The slope roughly correlates to the growth of the network. As the bitcoin network has matured, dedicated hardware called ASICs (application specific integrated circuits) to solve the `SHA256` algorithm have dominated. It is no longer feasible for a single participant to mine bitcoin without dedicated hardware.
 
-> <img width="800" alt="A simplified ATM network" src="https://github.com/millecodex/COMP842/assets/39792005/d47aafa7-529f-495b-ad18-d03e3aa7281f">\
-> Bitcoin mining difficulty plotted on a logarithmic scale. Source: https://www.blockchain.com/charts/difficulty
+> <img width="800" alt="Bitcoin mining difficulty plotted on a logarithmic scale." src="https://github.com/millecodex/COMP842/assets/39792005/a877855a-795f-431d-8d82-2c45b6b9cfe8">\
+> Bitcoin mining difficulty plotted on a logarithmic scale. Source: https://www.blockchain.com/explorer/charts/difficulty
+
 
 Consider a simulation using an Intel Core i5 6400 looking for `SHA256` hashes with leading zeroes. The difficulty in this case is increasing by powers of 16. Five leading 0's were found in 8364 seconds and, as of writing this, six leading 0's are predicted to take `≈ 8364×16=133824` seconds, or 37 hours.
 
@@ -209,4 +216,5 @@ Lets now return to the question posed at the beginning: How can a blockchain pro
 # Next Lecture
 * :point_right: [Proof-of-Stake Consensus](4-consensus-pos.md)
 
-
+# References
+Baran, P. 1964. On distributed communications: I. introduction to distributed communications networks. Santa Monica, CA: RAND Corporation. https://www.rand.org/pubs/research_memoranda/RM3420.html 
