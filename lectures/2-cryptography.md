@@ -189,7 +189,7 @@ $$
 
 and a cryptanalyst cannot calculate $k$ without knowing either $x_A$ or $x_J$. Obtaining these values would require calculating the discrete logarithm of an intercepted $y_A$ or $y_J$. For large enough $p$, this is infeasible. In practice, $p$ should be at least 160 bits, and for contemporary standards 1024 is more comfortable[^2] (Hoffman, 2005).
 
-[^2]: 160 bits is $\approx 49$ digit decimal number, and 1024 bits is $\approx 309$ digit decimal number.
+[^2]: 160 bits is about a 49 digit decimal number, and 1024 bits is a 309 digit decimal number.
 
 One drawback of this system is that to communicate there has to be some back-and-forth between participants to agree on a secret key which can be particularly cumbersome if one participant is offline. If a third person wants to communicate, then a another pair of exchanges must take place. Every pair that needs to communicate needs their own secret key. A group of 40 students in this class requires 780 keys. What if instead each person had their own key and everyone else could use that same key to communicate with them?
 
@@ -267,12 +267,12 @@ Digital signatures allow a blockchain user to transfer ownership of a token by v
 
 
 
-## What did we miss?
+# What did we miss?
 * Zero-knowledge proofs are an applied branch of cryptography. We will return to these (at a high level) in our lecture on Privacy.
 
 # Exercises
 1. Find out what encryption your browser site is using. Now check a different site, do you notice any difference?
-2. SHA256 - Open a terminal window.
+2. SHA256 - Open a terminal window.\
 Windows: `windows key + R`, type `powershell`, press enter. Change where it says `YourString` to your string and paste in[^windows].
 ```
 $stringAsStream = [System.IO.MemoryStream]::new()
