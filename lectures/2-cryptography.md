@@ -271,9 +271,24 @@ Digital signatures allow a blockchain user to transfer ownership of a token by v
 * Zero-knowledge proofs are an applied branch of cryptography. We will return to these (at a high level) in our lecture on Privacy.
 
 # Exercises
-1. a
-2. b
-3. c
+1. Find out what encryption your browser site is using. Now check a different site, do you notice any difference?
+2. SHA256 - Open a terminal window.
+Windows: `windows key + R`, type `powershell`, press enter. Change where it says `YourString` to your string and paste in[^windows].
+```
+$stringAsStream = [System.IO.MemoryStream]::new()
+$writer = [System.IO.StreamWriter]::new($stringAsStream)
+$writer.write("YourString")
+$writer.Flush()
+$stringAsStream.Position = 0
+Get-FileHash -InputStream $stringAsStream | Select-Object Hash
+```
+OSX: `Command + Space`, type `Terminal`, press enter. Change where it says `my name is Jeff` to your string and paste in
+```
+echo -n "my name is Jeff" | shasum -a 256
+```
+3. What is the main mathematical difference between RSA and ECC cryptosystems?
+
+[^windows]: Crazy complicated to do on Windows because they won't natively handle a string, so it has to be converted to a [stream](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.3)
 
 # Readings
 * New Directions in Cryptography by Whitfield Diffie and Martin Hellman [(pdf)](https://www-ee.stanford.edu/~hellman/publications/24.pdf)
