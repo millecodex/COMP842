@@ -1,7 +1,7 @@
 [↰ back](../../..)
 # Lecture 3: Consensus Part I: Proof of Work
 ## Contents
-1. [BFT](#bft)
+1. [Introduction](#introduction)
 2. [Longest chain](#longest-chain)
 3. [Mining/nodes](#miningnodes)
 6. [Difficulty Adjustment](#difficulty-adjustment)
@@ -10,9 +10,14 @@
 9. [Further Reading - the very short list](#further-reading---the-very-short-list)
 10. [Exercises](#exercises)
 
-## BFT
-Consensus broadly defines the process used by a network to reach a state of agreement. This process is a communication algorithm that allows nodes to determine what has happened. An activity initiated by a user (or by an autonomous process) needs to be recorded by the `system` which means that all participating nodes must be aware of the activity. Recall from lecture 1 the three types of networks: centralized, decentralized, and distributed. The centralized network has a server that controls all the events. As organizations scale, this approach becomes more decentralized either due to computing resource constraints or organizational limits in the case of a global system, such as a bank. 
+## Introduction
+Consensus broadly defines the process used by a network to reach a state of agreement. This process is a communication algorithm that allows nodes to determine what has happened. An activity initiated by a user (or by an autonomous process) needs to be recorded by the `system` which means that all participating nodes must be aware of the activity. 
 
+three types of networks: centralized, decentralized, and distributed. The centralized network has a server that controls all the events. As organizations scale, this approach becomes more decentralized either due to computing resource constraints or organizational limits in the case of a global system, such as a bank. 
+
+centralizatiin figure
+
+### Centralized Consensus
 Lets consider the case of withdrawing money from an ATM. The bank operates a network of ATM machines that maintain connection to a central server. A user requests \$100 from her local ATM. The machine must connect to the bank's server and query the database for an account balance, confirm that it is greater than the requested amount and respond to the ATM. The machine now sends a second request for withdrawal (step 3 in figure below) and the server will debit the users account, sending a message back to the ATM. It is only at this point that the \$100 can be dispensed; after the account has been debited. This is known as a two-phase commit; the first phase is a request, and the second phase is an action.
 
 > <img width="800" alt="A single node simplified ATM network" src="https://github.com/millecodex/COMP842/assets/39792005/1fc47f55-f2d3-459a-8447-4a7f595eed3e">\
