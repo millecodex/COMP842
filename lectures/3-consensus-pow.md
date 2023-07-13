@@ -4,7 +4,6 @@
 1. [Introduction](#introduction)
 2. [Byzantine Fault Tolerance](#byzantine-fault-tolerance)
 3. [The Double-Spend Problem](#the-double-spend-problem)
-4. [Proof-of-Work](#proof-of-work)
 5. [Mining](#mining)
 6. [PoW Vulnerabilities](#pow-vulnerabilities)
 7. [Incentives - Why Participate in the Network?](#incentives---why-participate-in-the-network)
