@@ -221,16 +221,10 @@ Consensus is the process of networks coming to agreement when new information is
 * :point_right: [Proof-of-Stake Consensus](4-consensus-pos.md)
 
 # References
-Baran, P. 1964. On distributed communications: I. introduction to distributed communications networks. Santa Monica, CA: RAND Corporation. https://www.rand.org/pubs/research_memoranda/RM3420.html 
-
-Chang, F., Dean, J., Ghemawat, S., Hsieh, W. C., Wallach, D. A., Burrows, M., Chandra, T., Fikes, A. & Gruber, R. E. 2006. Bigtable: A distributed storage system for structured data. In 7th USENIX symposium on operating systems design and implementation (osdi) (pp. 205–218).
-
-Decandia, G., Hastorun, D., Jampani, M., Kakulapati, G., Lakshman, A., Pilchin, A., Sivasubramanian, S., Vosshall, P. & Vogels, W. 2007. Dynamo: Amazon’s highly available key-value store (Tech. Rep.). https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf
-
-Eyal, I., Sirer, E. G. (2014). Majority Is Not Enough: Bitcoin Mining Is Vulnerable. *Financial Cryptography and Data Security*, 436–454. https://doi.org/10.1007/978-3-662-45472-5_28
- 
-Fischer, M. J., Lynch, N. A. & Paterson, M. S. 1985. Impossibility of distributed consensus with one faulty process. ACM, 32(2), 374–382. https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf
-
-Lamport, L., Shostak, R., & Pease, M. 1982. The Byzantine Generals Problem. ACM Transactions on Programming Languages and Systems, Volume 4, Issue 3, pp. 382–401. https://doi.org/10.1145/357172.357176
-
-Lamport, L. 1998, May. The part-time parliament. ACM Trans. Comput. Syst., 16(2), 133–169. http://doi.acm.org/10.1145/279227.279229 doi: 10.1145/279227.279229
+1. Baran, P. 1964. On distributed communications: I. introduction to distributed communications networks. Santa Monica, CA: RAND Corporation. https://www.rand.org/pubs/research_memoranda/RM3420.html
+2. Chang, F., Dean, J., Ghemawat, S., Hsieh, W. C., Wallach, D. A., Burrows, M., Chandra, T., Fikes, A. & Gruber, R. E. 2006. Bigtable: A distributed storage system for structured data. In 7th USENIX symposium on operating systems design and implementation (osdi) (pp. 205–218).
+3. Decandia, G., Hastorun, D., Jampani, M., Kakulapati, G., Lakshman, A., Pilchin, A., Sivasubramanian, S., Vosshall, P. & Vogels, W. 2007. Dynamo: Amazon’s highly available key-value store (Tech. Rep.). https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf
+4. Eyal, I., Sirer, E. G. (2014). Majority Is Not Enough: Bitcoin Mining Is Vulnerable. *Financial Cryptography and Data Security*, 436–454. https://doi.org/10.1007/978-3-662-45472-5_28
+5. Fischer, M. J., Lynch, N. A. & Paterson, M. S. 1985. Impossibility of distributed consensus with one faulty process. ACM, 32(2), 374–382. https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf
+6. Lamport, L., Shostak, R., & Pease, M. 1982. The Byzantine Generals Problem. ACM Transactions on Programming Languages and Systems, Volume 4, Issue 3, pp. 382–401. https://doi.org/10.1145/357172.357176
+7. Lamport, L. 1998, May. The part-time parliament. ACM Trans. Comput. Syst., 16(2), 133–169. http://doi.acm.org/10.1145/279227.279229 doi: 10.1145/279227.279229
