@@ -161,7 +161,7 @@ Public key cryptography is the solution to this problem and will be covered more
 ### Fixed Supply
 The killer feature of Bitcoin is the use as a currency and one of the features is that there is a programmed upper limit to the number of bitcoin that will ever be created: 21 million[^21]. This is known as a fixed monetary supply and contrasted with fiat (New Zealand) dollars that can grow arbitrarily due our political and central banking structure.
 
-[^21]: Due to the beautiful and messy nature of math applied through computer science the actual limit is just under 21 million. See Antonopolous.
+[^21]: Due to the beautiful and messy nature of math applied through computer science the actual limit is just under 21 million. See [Lecture 3](./3-consensus-pow.md).
 ### Block Reward
 Incentives in social systems are very important - for example, why would someone want to dedicate electricity and computing power to an open source network? They can be rewarded for their effort, of course. The block reward is a minting of new bitcoin for every block that miners add to the chain. This occurs according to a fixed schedule and is a decreasing geometric series. Presently the block reward is 6.25 bitcoin, and will be split in half (3.125) sometime in 2024, an event known as the *halving*.
 
