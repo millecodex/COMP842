@@ -7,19 +7,17 @@
 4. [Proof-of-Work](#proof-of-work)
 5. [Mining](#mining)
 6. [PoW Vulnerabilities](#pow-vulnerabilities)
-7. [Incentives - Why Participate in the Network?](#)
-8. [What did we miss?](#what-did-we-miss)
-9. [Further Reading - the very short list](#further-reading---the-very-short-list)
-10. [Exercises](#exercises)
+7. [Incentives - Why Participate in the Network?](#incentives---why-participate-in-the-network)
+8. [Summary](#summary)
+9. [What did we miss?](#what-did-we-miss)
+10. [Further Reading - the very short list](#further-reading---the-very-short-list)
+11. [Exercises](#exercises)
 
 ## Introduction
 Consensus broadly defines the process used by a network to reach a state of agreement. This process is a communication algorithm that allows nodes to determine what has happened and act accordingly. An activity initiated by a user (or by an autonomous process) needs to be recorded by the system which means that all participating nodes must be aware of the activity.
 
-
-
 > <img width="800" alt="" src="https://github.com/millecodex/COMP842/assets/39792005/e4342bb3-f119-4836-8e53-8151f65dd89b">\
 > Figure: Democratic parliaments work this way - a member proposes an update to the legislation, then through the course of debate (and perhaps incentivising favours) the house comes to agreement on updating the legislature. Source: https://www.parliament.nz/en/get-involved/features/parliament-s-debating-chamber-turns-100/
-
 
 In the parliament-nodes metaphor, each MP needs to be aware of the proposed update, and then make an informed decision to support or deny the change. Not every citizen has equal influence as MPs represent a constituency. The same can be true in computing networks - not all nodes are equal. We can classify computing networks by three types: centralized, decentralized, and distributed. The centralized network has a main server that controls all the events. This is where the rules are implemented, and also where the off switch can be found. As organizations scale, this approach becomes more decentralized either due to computing resource constraints or organizational limits in the case of a global system, such as a bank. The tech giants we are used to todays are distributed - they have nodes, including data centers, in various jurisdictions while operating as a single entity.
 
@@ -203,18 +201,21 @@ The [CoinGecko chart](https://www.coingecko.com/en/explain/bitcoin_halving) show
 ### Transaction Fees
 The second incentive is from transaction fees. By listening to the network, validating transactions, and including them in a block, whoever is operating the node can choose to include transactions that offer an extra fee. Because bitcoin itself is designed to be digital money, this makes perfect sense and is why cryptocurrency is considered the killer app for blockchain. 
 
+# Summary
+Consensus is the process of networks coming to agreement when new information is introduced and requires processing. Distributed consensus in computing networks requires an algorithm to decide who updates the network? and how to come to agreement? A common algorithm in distributed systems is PBFT - Practical Byzantine Fault Tolerance, which can tolerate up to $\frac{1}{3}$ of the nodes to be malicious or unresponsive. Blockchains are a hyper-decentralised version of a distributed system and some of the consensus algorithms are based on PBFT (more one this next lecture), but the primary method that maintains Bitcoin and until September 2022 maintained Ethereum was Proof-of-work computing. PoW consensus uses the random non-deterministic nature of hash functions to allocate incentives for nodes to maintain a longest-chain of blocks representing the state of the ledger.
 
 # What did we miss?
-* here
+* We have not discuss alternate consensus mechanisms such as Proof-of-Stake that Ethereum uses
+* We have not mentioned a lot about forking behaviour in consensus
 
 # Exercises
 1. a
 2. b
 3. c
 
-# Further Reading - the very short list
-* The 
-* On the
+# Readings
+* a
+* b
 
 # Next Lecture
 * :point_right: [Proof-of-Stake Consensus](4-consensus-pos.md)
