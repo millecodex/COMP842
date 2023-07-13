@@ -93,7 +93,9 @@ And what about Eve changing history? She would have to alter the block where the
 ### ⛓️
 Regarding Bitcoin nodes coming to agreement, it does not exactly mirror the model of the Byzantine Generals and so is not impossible to reach consensus. In other words, Bitcoin does achieve consensus despite Byzantine behaviour. More practically, Bitcoin achieves a state of *emergent* consensus. This means that over time as blocks get added to the chain, a general state emerges that everyone agrees on. Here we have a new method of distributed consensus, now known as emergent consensus, or eponymously as Nakamoto consensus. 
 
-The absolute revolutionary contribution of Nakamoto was to use Proof-of-Work (next) to secure the ledger against double-spending attacks. Participants are insured against their coins being spent twice by the emergent property of the longest chain. If there is only ever a single chain, it will be the longest and represent the most proof-of-work and be the canonical state of the blockchain. As more blocks are added to the chain there is an exponential decrease in the probability of a block being rejected by other nodes. This is the method that secures the blockchain against malicious nodes attempting to double spend. Nakamoto consensus resolves forks in the chain by allowing both branches to remain active (alive) until there is a clear longest chain. At this point the shorter branch will be orphaned and any outstanding transactions need to be reprocessed and may have been superseded by others paying higher fees. This is the general process by which all proofing-style blockchains maintain consensus.
+The _**absolute revolutionary**_[^revolution] contribution of Nakamoto was to use Proof-of-Work (next) to secure the ledger against double-spending attacks. Participants are insured against their coins being spent twice by the emergent property of the longest chain. If there is only ever a single chain, it will be the longest and represent the most proof-of-work and be the canonical state of the blockchain. As more blocks are added to the chain there is an exponential decrease in the probability of a block being rejected by other nodes. This is the method that secures the blockchain against malicious nodes attempting to double spend. Nakamoto consensus resolves forks in the chain by allowing both branches to remain active (alive) until there is a clear longest chain. At this point the shorter branch will be orphaned and any outstanding transactions need to be reprocessed and may have been superseded by others paying higher fees. This is the general process by which all proofing-style blockchains maintain consensus.
+
+[^revolution]: Emphasis is mine. Not to be understated. Even though many parts of Bitcoin were around before Satoshi, such as ECC key pairing, spam reduction by proof of work, open source software, p2p networks, and so on, this was the component to both incentive honest behaviour and prevent digital double spending 🔥🔥🔥
 
 ## Mining
 Referring back to the Figure, who gets to propose these blocks and earn the block reward? How do we ensure the distribution is fair Random? How are Sybil attacks prevented?
@@ -184,12 +186,18 @@ Here is an important distinction where Bitcoin varies from other methods of reac
 The economics of creating a new currency are tricky. There are many problems to consider such as: how is the money distributed? How much is there? How will the supply change over time? Bitcoin deviates from the textbook answers to these questions by setting a fixed upper limit on the number of bitcoin that will ever be produced in addition to a mathematical supply schedule.
 
 ### Fixed Supply
-The fixed upper limit is set at 21 million bitcoin and is an aribtrary constant; as long as the money is divisible the unit amount does not matter. Bitcoin is divisible into 8 decimal places, so the smallest unit, a *satoshi*, is `0.000 000 01` BTC. Divisibility is a benefit of digital money as settlement of small amounts can be handled if fees are cheap enough. (For example, can you send 0.1 cents to someone in New Zealand dollars?)
+The fixed upper limit is set at 21 million[^rounding] bitcoin and is an aribtrary constant; as long as the money is divisible the unit amount does not matter[^fixed]. Bitcoin is divisible into 8 decimal places, so the smallest unit, a *satoshi*, is `0.000 000 01` BTC. Divisibility is a benefit of digital money as settlement of small amounts can be handled if fees are cheap enough. (For example, can you send 0.1 cents to someone in New Zealand dollars?)
+[^rounding]: Due to rounding, this calculation comes out to slightly less than 21 million, see Exercises, also Antonopolous.
+[^fixed]: Some economists may have a different opinion. See [What is the money supply?](https://www.econlib.org/library/Enc/MoneySupply.html). Most of these types of economists do not believe in Bitcoin. Thankfully, this is not an economics course!
 
-Bitcoin's supply schedule is unique because its known in advance how many new coins are going to be produced and available to the market. Every 210,000 blocks (≈ four years) there is a halving event and the next block found is only allowed to pay out half the bitcoins. This defines a finite money supply. If you run the clock forward, assuming a new block is added every ten minutes, there will be no new bitcoins minted after the year 2140 (not a typo!)[^lastcoin].
-[^lastcoin]: The last whole bitcoin will start to be mined in about 2100 with the final few satoshis being rewarded forty years later.
+> <img width="800" alt="bitcoin supply showing the block reward decrease. Note the y-axis is a logarithmic scale." src="https://github.com/millecodex/COMP842/assets/39792005/0462d774-f34e-46ce-b70f-fdf4e045e398">\
+> Figure: Chart showing the block reward decrease. Note the y-axis is a logarithmic scale.
 
-<p align="center"><img width="800" alt="bitcoin_supply" src="https://user-images.githubusercontent.com/39792005/147862906-6537e8d0-aa4d-403d-825b-aefd1e31585a.png"></p>
+Bitcoin's supply schedule is unique because its known in advance how many new coins are going to be produced and available to the market. Every 210,000 blocks ($\approx$ four years) there is a halving event and the next block found is only allowed to pay out half the bitcoins. This defines a finite money supply. If you run the clock forward, assuming a new block is added every ten minutes, there will be no new bitcoin minted after the year 2140 (not a typo!)[^lastcoin].
+[^lastcoin]: The last whole bitcoin will start to be mined in about 2100 with the final few satoshis being rewarded _forty_ years later.
+
+> <img width="800" alt="Chart showing the mining reward decreasing geometric series overlaid with the total supply of bitcoin." src="https://user-images.githubusercontent.com/39792005/147862906-6537e8d0-aa4d-403d-825b-aefd1e31585a.png">\
+> Figure: Chart showing the mining reward decreasing geometric series overlaid with the total supply of bitcoin. 
 
 The [CoinGecko chart](https://www.coingecko.com/en/explain/bitcoin_halving) shows bitcoin's total supply approaching 21 million (green) and the blockreward being cut in half every four years (red). After the final fraction of a bitcoin is mined the network will be incentivised entirely from transaction fees being awarded to the miners. 
 
@@ -207,6 +215,7 @@ Consensus is the process of networks coming to agreement when new information is
 1. How does the Proof-of-Work consensus algorithm address the potential issue of Sybil attacks in a blockchain network?
 2. In the context of the 'longest chain' rule, can you describe a scenario where a malicious miner with substantial computational power attempts to create an alternate chain in the network? How does the system maintain its integrity in such a situation?
 3. Explain the balance required for a fees-based network. What happens when fees get (a) too high? (b) too low?
+4. Write a script to calculate the total number of bitcoin that will ever be mined. How many halvings will there be?
 
 # Readings
 * SoK (Systemization of Knowledge) from 2015 by the authors of the Princeton Textbook. An oldie but goodie. [(pdf)](https://github.com/millecodex/COMP842/blob/master/papers/SoK_Research_Perspectives_and_Challenges_for_Bitcoin_and_Cryptocurrencies.pdf)
