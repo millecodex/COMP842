@@ -209,20 +209,19 @@ Consensus is the process of networks coming to agreement when new information is
 * We have not mentioned a lot about forking behaviour in consensus
 
 # Exercises
-1. a
-2. b
-3. c
+1. How does the Proof-of-Work consensus algorithm address the potential issue of Sybil attacks in a blockchain network?
+2. In the context of the 'longest chain' rule, can you describe a scenario where a malicious miner with substantial computational power attempts to create an alternate chain in the network? How does the system maintain its integrity in such a situation?
+3. Explain the balance required for a fees-based network. What happens when fees get (a) too high? (b) too low?
 
 # Readings
-* a
-* b
+* SoK (Systemization of Knowledge) from 2015 by the authors of the Princeton Textbook. An oldie but goodie. [(pdf)](https://github.com/millecodex/COMP842/blob/master/papers/SoK_Research_Perspectives_and_Challenges_for_Bitcoin_and_Cryptocurrencies.pdf)
 
 # Next Lecture
 * :point_right: [Proof-of-Stake Consensus](4-consensus-pos.md)
 
 # References
 1. Baran, P. 1964. On distributed communications: I. introduction to distributed communications networks. Santa Monica, CA: RAND Corporation. https://www.rand.org/pubs/research_memoranda/RM3420.html
-2. Chang, F., Dean, J., Ghemawat, S., Hsieh, W. C., Wallach, D. A., Burrows, M., Chandra, T., Fikes, A. & Gruber, R. E. 2006. Bigtable: A distributed storage system for structured data. In 7th USENIX symposium on operating systems design and implementation (osdi) (pp. 205–218).
+2. Chang, F., Dean, J., Ghemawat, S., Hsieh, W. C., Wallach, D. A., Burrows, M., Chandra, T., Fikes, A. & Gruber, R. E. 2006. Bigtable: A distributed storage system for structured data. In 7th USENIX symposium on operating systems design and implementation (osdi) (pp. 205–218). https://doi.org/10.1145/1365815.1365816
 3. Decandia, G., Hastorun, D., Jampani, M., Kakulapati, G., Lakshman, A., Pilchin, A., Sivasubramanian, S., Vosshall, P. & Vogels, W. 2007. Dynamo: Amazon’s highly available key-value store (Tech. Rep.). https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf
 4. Eyal, I., Sirer, E. G. (2014). Majority Is Not Enough: Bitcoin Mining Is Vulnerable. *Financial Cryptography and Data Security*, 436–454. https://doi.org/10.1007/978-3-662-45472-5_28
 5. Fischer, M. J., Lynch, N. A. & Paterson, M. S. 1985. Impossibility of distributed consensus with one faulty process. ACM, 32(2), 374–382. https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf
