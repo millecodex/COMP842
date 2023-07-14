@@ -1,4 +1,5 @@
-![GitHub](https://img.shields.io/github/license/millecodex/COMP842)
+![GitHub](https://img.shields.io/github/license/millecodex/COMP842) ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/millecodex/comp842)
+
 
 ## COMP842 - Applied Blockchains and Cryptocurrencies
 ### Auckland University of Technology
