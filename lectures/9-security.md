@@ -101,3 +101,7 @@ Outright scams are also prominent as Bitcoin becomes popular and increases in va
 1. a
 2. b
 3. c
+
+# Resources
+* Watch Lera Nikolaenko (a16z crypto research partner, super smart) given you the deep dive into Proof of Stake blockchain attacks ([Youtube](https://youtu.be/-uxHoEfxXC4))
+
