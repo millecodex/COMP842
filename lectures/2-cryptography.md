@@ -310,3 +310,5 @@ echo -n "my name is Jeff" | shasum -a 256
 9. Singh, S. 1999. "The Code Book." *Doubleday*.
 10. Stallings, W. 2017. Cryptography and Network Security: Principles and Practice. Pearson.
 
+---
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/millecodex/comp842/master)
