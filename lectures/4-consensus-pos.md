@@ -37,7 +37,7 @@ First outlined by King and Nadal, they suggested a mechanism where users put up 
 * Bitshares introduced Delegated Proof-of-Stake
 * *Tendermint: Consensus without Mining* is published; an algorithm for blockchain consensus based on PBFT
 
-Motivation for the switch to a staking-type blockchain is primarily mining centralisation risk, but also resource consumption, and an element of intellecual curiousity - Can we do this without mining?
+Motivation for the switch to a staking-type blockchain is primarily mining centralisation risk, but there are also resource consumption concerns, probabalistic versus deterministic transaction finality, and an element of intellecual curiousity - Can we do this without mining?
 
 [Casper](https://arxiv.org/abs/1710.09437) is published in 2017 by Vitalik Buterin and Virgil Griffith as the groundwork for a transition for Ethereum to proof-of-stake. 
 
@@ -106,30 +106,40 @@ The last point in the trilemma - decentralisation - exists on a scale and is deb
 
 | | Centralized | Distributed (p2p) |
 |---|---|---|
-| Structure | Top-down; rules based | 1-node at a time; protocol based |
-| Membership | Gatekeepers allow you to join and can expel/blacklist | Anyone can join (and leave) based on the protocol |
-| Consensus | Voting and elections; democracy | Proofing methods: proof-of-work, proof-of-stake, etc.; meritocracy |
-| Robustness | Fault-tolerant; no expected Byzantine actors | Fault and Byzantine tolerant |
-| Incentive structure | Honesty enforced by legal structure of the corporation and therefore the state in which it operates | Honesty incentivised by some kind of reward (monetary, token, social, etc.) |
-| Examples | banks, Facebook, governments | Bit-torrent, email, wikis* & the internet* |
-| Blockchain examples | Enterprise blockchains: Hyperledger (IBM/Linux), Azure (Microsoft), Quorum (JP Morgan) | Bitcoin, Ethereum, etc. |
+| **Structure** | Top-down; rules based | 1-node at a time; protocol based |
+| **Membership** | Gatekeepers allow you to join and can expel/blacklist | Anyone can join (and leave) based on the protocol |
+| **Consensus** | Voting and elections; democracy | Proofing methods: proof-of-work, proof-of-stake, etc.; meritocracy |
+| **Robustness** | Fault-tolerant; no expected Byzantine actors | Fault and Byzantine tolerant |
+| **Incentive structure** | Honesty enforced by legal structure of the corporation and therefore the state in which it operates | Honesty incentivised by some kind of reward (monetary, token, social, etc.) |
+| **Examples** | banks, Facebook, governments | Bit-torrent, email, wikis* & the internet* |
+| **Blockchain examples** | Enterprise blockchains: Hyperledger (IBM/Linux), Azure (Microsoft), Quorum (JP Morgan) | Bitcoin, Ethereum, etc. |
 > Table: Centralized versus decentralized organizations and some of their features. *depending on your perspective
 
 ## What is a blockchain?
 We are now in a position to pose a definition of a blockchain.
 
-A blockchain is a distributed architecture that has a mechanism to handle:
-* a fork-choice rule; how does the blockchain resolve forks?
-* sybil attack mitigation method
+A blockchain is a distributed architecture that maintains a totally ordered list of transactions. To maintain the true state of the ledger, the protocol must have:
+1. Strong Sybil Resistance
+2. A Fork Choice Rule
+
+**Sybil Resistance** - Once the system is open and permissionless there is risk of entities joining that don't have the same incentives to stay honest as do regular network participants. (stick: lock stake/spend electricity, subject to slashing; carrot: rewards)(closed systems use permissions, and just have to replicate their database for CAP)
+
+**Fork Choice Rule** determines how the network behaves in the presence of network partitions. We take network partitions as a certainty, we just don't know when or where the fault will occur that causes a partition, thus a consensus mechanism accounts for their presence. Two further conditions must be met when the network partitions:
+  1. **Safety** is the state of updates being true. You can think of this as "Nothing bad has happened yet."
+  2. **Liveness** is the guarantee of future updates. You can phrase this as "Something eventually happens."
+     
+If safety and liveness are met the network can continue to operate with some guarantee that it will maintain a source of truth. If the network is also sybil resistant, then it can be said the blockchain is Byzantine fault tolerant. (Recall from last lecture Byzantine behaviour is malicious behaviour by a node.)
+
+The figure summarizes these properties: 
+![image](https://github.com/millecodex/COMP842/assets/39792005/2b1f994c-0d64-4433-a178-2a2f56c418fa)
 
 
-### Summary
-In summary, consensus of nodes in a proof-of-work system like bitcoin emerges from an implicit agreement on the longest chain of blocks. The nodes are all agreeing that this blockchain represents the most computational effort via hashing. It is quick to validate the proof of work because the nonce for every block is published. As soon as a miner learns of a new block, they will abandon shorter chains to compete to build on the longer one to win the block reward. The transactions in this chain will have an increasing probability of being accepted over time as new blocks are mined on top of them. 
-
-
+## Summary
+Understanding consensus mechanisms in blockchain technology is crucial for building robust and decentralized systems. Proof of work style chains rely on a longest-chain rule for resolving network partitions (forks) while proof of stake style chains ues a mix of longest-chain, or committee-based voting styles. The work in proof of work is used to disincentivise bots from subverting the blockchain while locked stake can be subject to slashing in a PoS blockchain.
 
 # What did we miss?
-* We have yet to get into the security element of blockchains in which we'll cover topics such as: 51%, sybil, nothing-at-stake, grinding, DDoS, ....
+* We skipped a lot of the computer science details on how consensus methods work such as leader selection, transaction finality, fault tolerance guarantees.
+* We have yet to get into the security element of blockchains in which we'll cover topics such as: 51%, sybil, nothing-at-stake, grinding, long-range, DDoS, ....
 
 # Exercises
 1. How does 
@@ -138,6 +148,9 @@ In summary, consensus of nodes in a proof-of-work system like bitcoin emerges fr
 * PPCoin: Peer-to-Peer Crypto-Currency with Proof-of-Stake ([pdf](./papers/peercoin-paper.pdf))
 * Ethereum's Whitepaper ([2014 pdf, historical](https://ethereum.org/669c9e2e2027310b6b3cdce6e1c52962/Ethereum_Whitepaper_-_Buterin_2014.pdf), current: https://ethereum.org/en/whitepaper/)
 * Tendermint: Consensus without Mining ([pdf](./papers/tendermint.pdf))
+
+# Resources
+* Watch Lera Nikolaenko (a16z crypto research partner, super smart) given you the deep dive into Proof of Stake blockchains ([Youtube](https://www.youtube.com/watch?v=mZ-Ya7NRDxM))
 
 # Next Lecture
 * :point_right: [Network Scaling](5-scaling.md)
