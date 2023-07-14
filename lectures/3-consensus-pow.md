@@ -204,11 +204,13 @@ The [CoinGecko chart](https://www.coingecko.com/en/explain/bitcoin_halving) show
 The second incentive is from transaction fees. By listening to the network, validating transactions, and including them in a block, whoever is operating the node can choose to include transactions that offer an extra fee. Because bitcoin itself is designed to be digital money, this makes perfect sense and is why cryptocurrency is considered the killer app for blockchain. 
 
 # Summary
-Consensus is the process of networks coming to agreement when new information is introduced and requires processing. Distributed consensus in computing networks requires an algorithm to decide who updates the network? and how to come to agreement? A common algorithm in distributed systems is PBFT - Practical Byzantine Fault Tolerance, which can tolerate up to $\frac{1}{3}$ of the nodes to be malicious or unresponsive. Blockchains are a hyper-decentralised version of a distributed system and some of the consensus algorithms are based on PBFT (more one this next lecture), but the primary method that maintains Bitcoin and until September 2022 maintained Ethereum was Proof-of-work computing. PoW consensus uses the random non-deterministic nature of hash functions to allocate incentives for nodes to maintain a longest-chain of blocks representing the state of the ledger.
+Consensus is the process of networks coming to agreement when new information is introduced and requires processing. Distributed consensus in computing networks requires an algorithm to decide who updates the network? and how to come to agreement? A common algorithm in distributed systems is PBFT - Practical Byzantine Fault Tolerance, which can tolerate up to $\frac{1}{3}$ of the nodes to be malicious or unresponsive. Blockchains are a hyper-decentralised version of a distributed system and some of the consensus algorithms are based on PBFT (more one this next lecture), but the primary method that maintains Bitcoin and until September 2022 maintained Ethereum was Proof-of-work computing. 
+
+PoW consensus uses the random non-deterministic nature of hash functions to allocate incentives for nodes to maintain a longest-chain of blocks representing the state of the ledger. The nodes are all agreeing that this chain represents the most cumulative computational effort via hashing. It is quick to validate the proof of work because the nonce for every block is published. As soon as a miner learns of a new block, they will abandon shorter chains to compete to build on the longer one to win the block reward. The transactions in this chain will have an increasing probability of being accepted over time as new blocks are mined on top of them. 
 
 # What did we miss?
-* We have not discuss alternate consensus mechanisms such as Proof-of-Stake that Ethereum uses
-* We have not mentioned a lot about forking behaviour in consensus
+* We have not discuss alternate consensus mechanisms such as Proof-of-Stake that Ethereum uses.
+* We have not mentioned a lot about forking behaviour in consensus, or other particular details such as sybil resistance mechanicsms. More on this next lecture.
 
 # Exercises
 1. How does the Proof-of-Work consensus algorithm address the potential issue of Sybil attacks in a blockchain network?
