@@ -142,7 +142,8 @@ Understanding consensus mechanisms in blockchain technology is crucial for build
 * We have yet to get into the security element of blockchains in which we'll cover topics such as: 51%, sybil, nothing-at-stake, grinding, long-range, DDoS, ....
 
 # Exercises
-1. How does 
+1. Choose an alternative consensus mechanisms (such as proof of space, or proof of elapsed time) and explain how it meets the requirements of a blockchain. How is it different compared to traditional mechanisms like proof-of-work and proof-of-stake.
+2. If a blockchain is just a database, what is the significance of safety and liveness? Explain why both properties are important for maintaining the integrity and functionality of a blockchain network, especially in the presence of network partitions. What are the trade-offs between safety and liveness in different consensus algorithms?
 
 # Readings
 * PPCoin: Peer-to-Peer Crypto-Currency with Proof-of-Stake ([pdf](./papers/peercoin-paper.pdf))
