@@ -138,7 +138,7 @@ The figure summarizes these properties:
 Understanding consensus mechanisms in blockchain technology is crucial for building robust and decentralized systems. Proof of work style chains rely on a longest-chain rule for resolving network partitions (forks) while proof of stake style chains ues a mix of longest-chain, or committee-based voting styles. The work in proof of work is used to disincentivise bots from subverting the blockchain while locked stake can be subject to slashing in a PoS blockchain.
 
 # What did we miss?
-* We skipped a lot of the computer science details on how consensus methods work such as leader selection, transaction finality, fault tolerance guarantees.
+* We skipped a lot of the computer science details on how consensus methods work such as leader selection, transaction finality, timing assumptions, & fault tolerance guarantees.
 * We have yet to get into the security element of blockchains in which we'll cover topics such as: 51%, sybil, nothing-at-stake, grinding, long-range, DDoS, ....
 
 # Exercises
