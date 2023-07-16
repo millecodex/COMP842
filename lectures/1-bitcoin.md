@@ -35,7 +35,7 @@ For a token to qualify as an NZ$20 note, it must possess additional characterist
 - Portability
 - Reliability
 
-Any token that has these properties in addition to being issued by the state is called fiat money. The advantages of a standardized cash transaction system extend beyond mere convenience—it also offers anonymity. You don’t know the history of your cowrie shell, or who previously used your $20 note. This applies forward as well as your $20 note can't be traced back to you in the future. 
+Any token that has these properties in addition to being issued by the state is called fiat money. The advantages of a standardized cash transaction system extend beyond mere convenience—it also offers anonymity. You don’t know the history of your cowrie shell, or who previously used your $20 note. This applies into the future as well since your $20 note can't be traced back to you. 
 > Q: Why would you care about that note being traced back to your transaction?
 
 ### Finance
