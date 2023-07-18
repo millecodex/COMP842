@@ -348,4 +348,4 @@ echo -n "my name is Jeff" | shasum -a 256
 8. Rivest, R., Shamir, A., & Adleman, L. 1978. "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems." *Communications of the ACM*. 21(2), 120-126.
 9. Singh, S. 1999. "The Code Book." *Doubleday*.
 10. Stallings, W. 2017. Cryptography and Network Security: Principles and Practice. Pearson.
----
+
