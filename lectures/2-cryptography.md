@@ -211,7 +211,9 @@ $$
 
 
 and a cryptanalyst cannot calculate $k$ without knowing either $x_A$ or $x_J$. Obtaining these values would require calculating the discrete logarithm of an intercepted $y_A$ or $y_J$. For large enough $p$, this is infeasible. In practice, $p$ should be at least 160 bits, and for contemporary standards 1024 is more comfortable[^2] (Hoffman, 2005).
+
 [^2]: 160 bits is about a 49 digit decimal number, and 1024 bits is a 309 digit decimal number.
+
 For example, an actual 160 bit prime number:
 
 $$
@@ -229,6 +231,14 @@ The search for a personal key involves finding a one-way function that some insi
 ### RSA
 In 1977, Ron Rivest came up with a scheme to deliver exactly this: a key-pair system that allows universal encryption with some additional information to allow the owner (and only that owner) to decrypt messages. Rivest and his colleagues Adi Shamir and Leonard Adleman's system is simply referred to eponymously as RSA encryption (Rivest, 1978). The details will be skipped here, but in brief, RSA uses the properties of large prime numbers to generate encryption keys that are hard to reverse engineer. It is easy to multiply two prime numbers and calculate the output (semi-prime), but given a large semi-prime it is much more difficult to determine the two factors. 
 
+For example, veryify that:
+
+$$
+(43)(47)=2021
+$$
+
+Now, given a roughly equivallent number, $1961$, find the factors such that $xy=1961$ where $x$ and $y$ are prime.
+
 ### Elliptic Curve Cryptography
 Due to progress in calculating prime factorizations RSA public keys need to be at least 1024 bits to provide adequate security. *Elliptic Curve Cryptography* (ECC) is a promising alternative to RSA for public-key encryption, allowing a much shorter key to be used with far less computational overhead, yet providing the same level of security as RSA against a cryptanalysis attack.
 
@@ -236,6 +246,7 @@ For instance, in order to provide roughly the same level of security as a 128-bi
 
 [^4]: AES is Advanced Encryption Standard, published by the NIST in 2001.
 
+> Table: Private key sizes in bits. The rows represent roughly equivallent levels of encryption in terms of computational power required to brute force the keys. 
 
 | AES | RSA   | ECC  |
 |-----|-------|------|
@@ -249,13 +260,13 @@ For instance, in order to provide roughly the same level of security as a 128-bi
 ### Elliptic Curves
 An *elliptic curve* over a field consists of the set of points $(x,y)$ where $x$ and $y$ are elements of the field that satisfy an equation of the form:
 
-$$y^2 + a_1xy+a_3y = x^3+a_2x^2+a_4x+a_6\,.$$
+$$y^2 + a_1xy+a_3y = x^3+a_2x^2+a_4x+a_6$$
 
 If $a_1=a_2=a_3=0$, this general form can be simplified to:
 
 $$y^2 = x^3+ax+b.$$
 
-Further, if $a=0$ and $b=7$, we get $y^2=(x^3+7)$ taken over a field of primes $\mathbb{Z}_p$ as seen in Antonopoulos (2017). This can be plotted as a series of points similar to Figure 1. Compare to Figure 2 on Page 2 which is plotted over the real numbers. 
+Further, if $a=0$ and $b=7$, we get $y^2=(x^3+7)$ taken over a field of primes $\mathbb{Z}_p$ as seen in Antonopoulos (2017). This can be plotted as a series of points similar to the figure below. Compare to the other figure which is plotted over the real numbers. 
 
 > <img width="346" alt="Plot of a field of primes up to 17" src="https://github.com/millecodex/COMP842/assets/39792005/2bca0a05-c619-4219-9b7c-3b15ada4758e">\
 > Figure: Plot of a field of primes up to 17 (Antonopoulos, 2017). ECC operates on integers and when plotted appear as distinct points.*
