@@ -133,7 +133,7 @@ These tools do not, however, allow us to communicate privately.
 ### Diffie-Hellman (& Merkle) key exchange
 The *Diffie-Hellman (& Merkle) key exchange* algorithm was devised so that two parties could use insecure communication channels to determine a common secret key (Diffie, 1976).
 
-This algorithm starts with two public values that are pre-computed, a large prime number $p$ and an integer value $a$ with $1 < a < p $  for which:
+This algorithm starts with two public values that are pre-computed, a large prime number $p$ and an integer value $a$ with $1 < a < p$ for which:
 $a, \quad a^2\mbox{ mod }p,\quad a^3\mbox{ mod }p,\quad \dots,\quad a^{p-1}\mbox{ mod }p$ are all distinct (yield a permutation of ${1,2,3,\dots, p-1}$)[^1]. If this is the case $a$ is called a *primitive root* of $p$.
 
 Once a primitive root $a$ of a prime $p$ has been found, for any integer $b$ there is a unique power $i < p$ for which 
@@ -143,28 +143,45 @@ and $i$ is called the *discrete logarithm* or *index* of $b$ modulo $p$ for the 
 **For example:** taking $p=7$ and $a=2$, determine $a^k\mod p$ for $k=\{1,2,\quad\dots\quad, p-1\}$.
 [^1]: $\mbox{mod}$ is the modulo arithmetic operator.
 
-| $2^1$ | $=2\mod7$ | $=2$ | |
-|-------|----------------------|------|---|
-| $2^2$ | $=4\mod7$ | $=4$ | |
-| $2^3$ | $=8\mod7$ | $=1$ | |
-| $2^4$ | $=16\mod7$ | $=\textbf{2}$ | |
-| $2^5$ | $=32\mod7$ | $=\textbf{4}$ | repeated roots means 2 is not a primitive root of 7 |
-| $2^6$ | $=64\mod7$ | $=\textbf{1}$ | |
+| $2^1$ | $= 2\mod7$ | $=2$ |
+|-------|----------------------|------|
+| $2^2$ | $= 4\mod7$ | $=4$ | 
+| $2^3$ | $= 8\mod7$ | $=1$ | 
+| $2^4$ | $=16\mod7$ | $=\textbf{2}$* | 
+| $2^5$ | $=32\mod7$ | $=\textbf{4}$* | 
+| $2^6$ | $=64\mod7$ | $=\textbf{1}$* |
+
+*Rows 3,4, and 5 have repeated roots: $2,4,1$ which means $2$ is **not** a primitive root of $7$.\
 
 Now for $a=3$:
 
-| $3^1$ | $=3\mod7$ | $=3$ | |
-|-------|-----------------------|------|---|
-| $3^2$ | $=9\mod7$ | $=2$ | |
-| $3^3$ | $=27\mod7$ | $=6$ | distinct roots up to $p-1$ means 3 is a primitive root of 7 |
-| $3^4$ | $=81\mod7$ | $=4$ | |
-| $3^5$ | $=243\mod7$ | $=5$ | |
-| $3^6$ | $=729\mod7$ | $=1$ | |
+| $3^1$ | $=3\mod7$ | $=3$ | 
+|-------|-----------------------|------|
+| $3^2$ | $=  9\mod7$ | $=2$ | 
+| $3^3$ | $= 27\mod7$ | $=6$ |  
+| $3^4$ | $= 81\mod7$ | $=4$ | 
+| $3^5$ | $=243\mod7$ | $=5$ | 
+| $3^6$ | $=729\mod7$ | $=1$ | 
 
-Thus to find the discrete logarithm of an integer such as $b=1762$ we are looking for the $i$ value in the relation 
-$1762\text{ mod } 7=3^i$
-$1762\text{ mod } 7=5$
-and from row 5 above, $3^5\text{ mod } 7=5$, and so $i=5$.
+These roots are all distinct up to $p-1$, thus $3$ is a primitive root of $7$. *Note* we do **not** know the ordering of roots ${3,2,6,4,5,1}$ until they're computed. 
+
+For example, to find the discrete logarithm of an integer such as $b=1763$ we are looking for $i$ in the relation 
+
+$$
+\begin{align}
+1763\text{ mod } 7&=3^i
+\end{align}
+$$
+
+The left-hand side can be reduced modulo 7: $\frac{1763}{7}=254\frac{6}{7}=6$
+
+$$
+\begin{align}
+1763\text{ mod } 7=6=3^i
+\end{align}
+$$
+
+Now we look to the table to find the distinct root $6$ and see it appears in the third row: $3^3\text{ mod } 7=6$, and so $i=3$.
 
 The security of the Diffie-Hellman key exchange relies on the difficulty of reversing this computation above. Given $b=a^i\mbox{ mod }p$, there is no pattern for relating $b$ to $i$. Stated another way: for any integer, $b$, there is a unique $i$ where $i$ is called the discrete logarithm and is computationally difficult to find.
 
