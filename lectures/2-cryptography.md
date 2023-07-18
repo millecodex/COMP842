@@ -143,25 +143,31 @@ and $i$ is called the *discrete logarithm* or *index* of $b$ modulo $p$ for the 
 **For example:** taking $p=7$ and $a=2$, determine $a^k\mod p$ for $k=\{1,2,\quad\dots\quad, p-1\}$.
 [^1]: $\mbox{mod}$ is the modulo arithmetic operator.
 
-| $2^1$ | $= 2\mod7$ | $=2$ |
-|-------|----------------------|------|
-| $2^2$ | $= 4\mod7$ | $=4$ | 
-| $2^3$ | $= 8\mod7$ | $=1$ | 
-| $2^4$ | $=16\mod7$ | $=\textbf{2}$* | 
-| $2^5$ | $=32\mod7$ | $=\textbf{4}$* | 
-| $2^6$ | $=64\mod7$ | $=\textbf{1}$* |
+$$
+\begin{align}
+2^1= 2\mod7&=2 \\
+2^2= 4\mod7&=4 \\
+2^3= 8\mod7&=1 \\
+2^4=16\mod7&=\textbf{2}*  \\
+2^5=32\mod7&=\textbf{4}*  \\
+2^6=64\mod7&=\textbf{1}* 
+\end{align}
+$$
 
-*Rows 3,4, and 5 have repeated roots: $2,4,1$ which means $2$ is **not** a primitive root of $7$.\
+*Rows 3,4, and 5 have repeated roots: $2,4,1$ which means $2$ is **not** a primitive root of $7$.
 
 Now for $a=3$:
 
-| $3^1$ | $=3\mod7$ | $=3$ | 
-|-------|-----------------------|------|
-| $3^2$ | $=  9\mod7$ | $=2$ | 
-| $3^3$ | $= 27\mod7$ | $=6$ |  
-| $3^4$ | $= 81\mod7$ | $=4$ | 
-| $3^5$ | $=243\mod7$ | $=5$ | 
-| $3^6$ | $=729\mod7$ | $=1$ | 
+$$
+\begin{align}
+3^1=  3\mod7&=3 \\
+3^2=  9\mod7&=2  \\
+3^3= 27\mod7&=6   \\
+3^4= 81\mod7&=4  \\
+3^5=243\mod7&=5  \\
+3^6=729\mod7&=1 
+\end{align}
+$$
 
 These roots are all distinct up to $p-1$, thus $3$ is a primitive root of $7$. *Note* we do **not** know the ordering of roots ${3,2,6,4,5,1}$ until they're computed. 
 
@@ -177,17 +183,17 @@ The left-hand side can be reduced modulo 7: $\frac{1763}{7}=254\frac{6}{7}=6$
 
 $$
 \begin{align}
-1763\text{ mod } 7=6=3^i
+1763\text{ mod } 7=6=3^{\color{blue}i}
 \end{align}
 $$
 
-Now we look to the table to find the distinct root $6$ and see it appears in the third row: $3^3\text{ mod } 7=6$, and so $i=3$.
+Now we look to the table to find the distinct root $6$ and see it appears in the third row: $3^{\color{blue}3}\text{ mod } 7=6$, and so ${\color{blue}i}=3$.
 
 The security of the Diffie-Hellman key exchange relies on the difficulty of reversing this computation above. Given $b=a^i\mbox{ mod }p$, there is no pattern for relating $b$ to $i$. Stated another way: for any integer, $b$, there is a unique $i$ where $i$ is called the discrete logarithm and is computationally difficult to find.
 
-So how do two people use this to exchange information publicly such that they each end up with a shared secret key that others can not deduce?
+> Q: So how do two people use this to exchange information publicly such that they each end up with a shared secret key that others can not deduce?
 
-Alice and Jeff are going to agree on a large prime, $p$, and a base $a$. These values can be published. Each then selects their own secret number $x < p$. This will act as a private key. Both then calculate $y=a^x\mbox{ mod }p$ which is a quick calculation. After exchanging $y$ values, each can then calculate the same secret key, $k=y^x\mbox{ mod }p$. No secret information has been swapped, and both parties now have a common value, $k$, as a secret key.
+Alice and Jeff are going to agree on a large prime, $p$, and a base $a$. These values can be published. Each then selects their own secret number $x < p$. This will act as a private key. Both then calculate $y=a^x\mod p$ which is a quick calculation. After exchanging $y$ values, each can then calculate the same secret key, $k=y^x\mod p$. No secret information has been swapped, and both parties now have a common value, $k$, as a secret key.
 
 Note that both Alice ($A$) and Jeff ($J$) calculate the same key ($k$):
 
@@ -205,11 +211,16 @@ $$
 
 
 and a cryptanalyst cannot calculate $k$ without knowing either $x_A$ or $x_J$. Obtaining these values would require calculating the discrete logarithm of an intercepted $y_A$ or $y_J$. For large enough $p$, this is infeasible. In practice, $p$ should be at least 160 bits, and for contemporary standards 1024 is more comfortable[^2] (Hoffman, 2005).
-
 [^2]: 160 bits is about a 49 digit decimal number, and 1024 bits is a 309 digit decimal number.
+For example, an actual 160 bit prime number:
 
-One drawback of this system is that to communicate there has to be some back-and-forth between participants to agree on a secret key which can be particularly cumbersome if one participant is offline. If a third person wants to communicate, then a another pair of exchanges must take place. Every pair that needs to communicate needs their own secret key. A group of 40 students in this class requires 780 keys. What if instead each person had their own key and everyone else could use that same key to communicate with them?
+$$
+p=200516605485365833647237682354398056103622507001
+$$
 
+One drawback of this system is that to communicate there has to be some back-and-forth between participants to agree on a secret key which can be particularly cumbersome if one participant is offline. If a third person wants to communicate, then a another pair of exchanges must take place. Every pair that needs to communicate needs their own secret key. A group of 40 students in this class requires 780 keys[^US]. What if instead each person had their own key and everyone else could use that same key to communicate with them?
+
+[^US]: Key transport was a big problem in World War II. Uboats that were away for months at a time had to have an updated listing of keys to use to communicate with central command back at base. The Germans published key-books tied to a calendar so that subs could determine their key based on the day. Everything is fine as long as a code book doesn't fall into enemy hands.
 
 ## Asymmetric Encryption
 ### Public-Key Cryptography
@@ -246,10 +257,10 @@ $$y^2 = x^3+ax+b.$$
 
 Further, if $a=0$ and $b=7$, we get $y^2=(x^3+7)$ taken over a field of primes $\mathbb{Z}_p$ as seen in Antonopoulos (2017). This can be plotted as a series of points similar to Figure 1. Compare to Figure 2 on Page 2 which is plotted over the real numbers. 
 
-> <img width="346" alt="fieldOfReals" src="https://github.com/millecodex/COMP842/assets/39792005/2bca0a05-c619-4219-9b7c-3b15ada4758e">\
+> <img width="346" alt="Plot of a field of primes up to 17" src="https://github.com/millecodex/COMP842/assets/39792005/2bca0a05-c619-4219-9b7c-3b15ada4758e">\
 > Figure: Plot of a field of primes up to 17 (Antonopoulos, 2017). ECC operates on integers and when plotted appear as distinct points.*
 
-> <img width="346" alt="fieldOfReals" src="https://github.com/millecodex/COMP842/assets/39792005/341f93cb-e46f-4fcc-9964-45570fde9633">\
+> <img width="346" alt="Plot of $y^2=(x^3+7)$ over real numbers for visualization only" src="https://github.com/millecodex/COMP842/assets/39792005/341f93cb-e46f-4fcc-9964-45570fde9633">\
 > Figure: Plot of $y^2=(x^3+7)$ over real numbers for visualization only; the same theory applies.
 
 ECC can be utilized for key exchange by making public the chosen field ($p$ or $2^m$), the curve ($a$ and $b$ values in the field), and a generator point $G$ for which there are many multiples $G, 2G, 3G, \dots, nG$ that are all distinct. These distinct multiples are related to the discrete logarithm problem describe above. In this manner the security of an elliptic curve cryptosystem relies on the difficulty in finding the discrete logarithm. This is the method that Bitcoin uses for generating public-private key-pairs; the public part which are used as addresses. Selection of the curve (equation 1) is very important as there may be case-by-case weaknesses. Brown (2010) outlines the standards for curve `secp256k1` that is used by Bitcoin.
