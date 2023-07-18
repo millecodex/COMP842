@@ -323,6 +323,7 @@ OSX: `Command + Space`, type `Terminal`, press enter. Change where it says `my n
 echo -n "my name is Jeff" | shasum -a 256
 ```
 3. What is the main mathematical difference between RSA and ECC cryptosystems?
+4. How would you go about finding the prime factorisation of $1961$?
 
 [^windows]: Crazy complicated to do on Windows because they won't natively handle a string, so it has to be converted to a [stream](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.3)
 
