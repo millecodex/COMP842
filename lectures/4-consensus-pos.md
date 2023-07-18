@@ -39,7 +39,7 @@ First outlined by King and Nadal, they suggested a mechanism where users put up 
 
 Motivation for the switch to a staking-type blockchain is primarily mining centralisation risk, but there are also resource consumption concerns, probabalistic versus deterministic transaction finality, and an element of intellecual curiousity - Can we do this without mining?
 
-[Casper](https://arxiv.org/abs/1710.09437) is published in 2017 by Vitalik Buterin and Virgil Griffith as the groundwork for a transition for Ethereum to proof-of-stake. 
+In July 2015 just before proof-of-work Ethereum launched there was a short discussion about Ethereum's intention to switch to proof-of-stake, with Vitalik [saying](https://www.reddit.com/r/ethereum/comments/3evolq/how_many_ethers_are_going_to_be_created_in_the/) at the time "the plan is 9-12 months." This ended up taking 7 years. [Casper](https://arxiv.org/abs/1710.09437) is published in 2017 by Vitalik Buterin and Virgil Griffith as the groundwork for a transition for Ethereum to proof-of-stake. 
 
 > "Proof-of-stake underlies certain consensus mechanisms used by blockchains to achieve distributed consensus. In proof-of-work, miners prove they have capital at risk by expending energy. Ethereum uses proof-of-stake, where validators explicitly stake capital in the form of ETH into a smart contract on Ethereum. This staked ETH then acts as collateral that can be destroyed if the validator behaves dishonestly or lazily. The validator is then responsible for checking that new blocks propagated over the network are valid and occasionally creating and propagating new blocks themselves."\
 > 👉 From the [ethereum.org](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/) website describing Proof-of-Stake
