@@ -69,7 +69,7 @@ $$
 
 In more manageable scientific notation this is about $1.16\times 10^{77}$. So the number of possible hashes that SHA256 can output is very large[^atoms]. To manipulate some data to find a collision you would have vary the input, run it through the hash function, and check the outupt against your target. If you only had 16 possible outputs, this would be fast. But with $10^{77}$ its impossible in practice.
 
-[^atoms]: A somewhat close comparison is the estimated number of atoms in the universe at about $10^{80}$. There are 1000 times more atoms than potential hashes. This is comforting. 
+[^atoms]: A somewhat close comparison is the estimated number of atoms in the universe at about 10^80. There are 1000 times more atoms than potential hashes. This is comforting. 
 
 Hashing is sometimes referred to as a one-way function. This is in the mathematical sense that it is easy to follow the algorithm and create a hash using some input string, but hard to start with the string and determine the data. You cannot go backwards. This property gives rise to verification. If someone sends you a hash, you can easily run your own computation to verify that the message used to produce the hash is authentic. 
 
@@ -134,14 +134,14 @@ These tools do not, however, allow us to communicate privately.
 The *Diffie-Hellman (& Merkle) key exchange* algorithm was devised so that two parties could use insecure communication channels to determine a common secret key (Diffie, 1976).
 
 This algorithm starts with two public values that are pre-computed, a large prime number $p$ and an integer value $a$ with $1 < a < p$ for which:
-$a, \quad a^2\mbox{ mod }p,\quad a^3\mbox{ mod }p,\quad \dots,\quad a^{p-1}\mbox{ mod }p$ are all distinct (yield a permutation of ${1,2,3,\dots, p-1}$)[^1]. If this is the case $a$ is called a *primitive root* of $p$.
+$a, \quad a^2\mbox{ mod }p,\quad a^3\mbox{ mod }p,\quad \dots,\quad a^{p-1}\mbox{ mod }p$ are all distinct (yield a permutation of ${1,2,3,\dots, p-1}$)[^mod]. If this is the case $a$ is called a *primitive root* of $p$.
 
 Once a primitive root $a$ of a prime $p$ has been found, for any integer $b$ there is a unique power $i < p$ for which 
 $b\mbox{ mod }p=a^i\mbox{ mod }p$
 and $i$ is called the *discrete logarithm* or *index* of $b$ modulo $p$ for the base $a$.
 
 **For example:** taking $p=7$ and $a=2$, determine $a^k\mod p$ for $k=\{1,2,\quad\dots\quad, p-1\}$.
-[^1]: $\mbox{mod}$ is the modulo arithmetic operator.
+[^mod]: mod is the modulo arithmetic operator.
 
 $$
 \begin{align}
