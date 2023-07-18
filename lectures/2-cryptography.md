@@ -309,7 +309,7 @@ Digital signatures allow a blockchain user to transfer ownership of a token by v
 # Exercises
 1. Find out what encryption your browser site is using. Now check a different site, do you notice any difference?
 2. SHA256 - Open a terminal window.\
-Windows: `windows key + R`, type `powershell`, press enter. Change where it says `YourString` to your string and paste in[^windows].
+Windows: `windows key + R`, type `powershell`, press enter. Change where it says `YourString` to your message and paste in[^windows].
 ```powershell
 $stringAsStream = [System.IO.MemoryStream]::new()
 $writer = [System.IO.StreamWriter]::new($stringAsStream)
@@ -318,7 +318,7 @@ $writer.Flush()
 $stringAsStream.Position = 0
 Get-FileHash -InputStream $stringAsStream | Select-Object Hash
 ```
-OSX: `Command + Space`, type `Terminal`, press enter. Change where it says `my name is Jeff` to your string and paste in
+OSX: `Command + Space`, type `Terminal`, press enter. Change where it says `my name is Jeff` to your message and paste in
 ```
 echo -n "my name is Jeff" | shasum -a 256
 ```
