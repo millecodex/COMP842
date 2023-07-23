@@ -48,7 +48,7 @@ Finding a hash function that doesn't output collisions  $H(\text{code})\ne H(\te
 SHA-256 is a secure hashing algorithm that outputs a 256-bit message digest. It is part of a family of hash functions designed by the United States National Security Agency and published by the National Institute of Standards and Technology (see required reading). One of the key components is the bitwise XOR (exclusive-or) operation which outputs 0 if the two inputs are the same and 1 otherwise. This inclusion makes it difficult to back-track from a hash and figure out what data went into it. (Using the simple example above, if the hash is `1111` you know characters all map to the first half of the alphabet.) Just like trying to figure out the Colonel's 11 herbs and spices[^kfc] from tasting, it could take a lifetime to recreate the secret recipe.
 [^kfc]: The true recipe, it is said, is locked away in a vault at KFC's headquarters in Louisville, Kentucky.
 
-Here you see the SHA-256 output of the message `jeff` as compared to `Jeff`. It is a string of 64 hexidecimal characters, which has been converted from a string of 256 bits (binary digits).
+Here you see the SHA-256 output of the message `jeff` as compared to `Jeff`. It is a string of 64 hexidecimal characters, which has been converted from a string of 256 bits (binary digits); $2^{256}$.
 
 ```plaintext
     +------------+         +---------------+
