@@ -63,7 +63,7 @@ In their paper *Reaching Agreement in the Presence of Faults*, Pease (1980) show
 
 Early work to overcome **Byzantine Fault Tolerance** (BFT) was either too inefficient or could not allow for messages to be delayed for arbitrary lengths of time. The landmark result by Fischer (1985) concludes that agreement among processors in which at least one is faulty is impossible without some form of timing assumptions such as a message timeout. This is because it is impossible to know if a message has been delayed indefinitely (it may never arrive). The difference between a slow node and a crashed node is difficult to detect.
 
-**Note here about the part-time parliament**
+<!-- Note here about the part-time parliament -->
 
 A decentralized blockchain application has many nodes in the network and each of them has a copy of the blockchain. If Bob wants to send Alice his tokens, the nodes in the network must first agree that Bob has available tokens to spend, and then update the state before Bob can double-spend his tokens. The network needs to be in a state of *consensus* for people to trust it. Consensus in the Byzantine Generals problem has been proven to be impossible if more than a third of the nodes are malicious (Fischer, 1985).
 
@@ -99,7 +99,7 @@ The _**absolute revolutionary**_[^revolution] contribution of Nakamoto was to us
 ## Mining
 Referring back to the Figure, who gets to propose these blocks and earn the block reward? How do we ensure the distribution is fair Random? How are Sybil attacks prevented?
 
-> <img width="800" alt="A state diagram for a distributed blockchain showing the hashing competition for the process of generating new blocks and updating the chain." src="https://github.com/millecodex/COMP842/assets/39792005/59aeb48c-3bcf-4a23-834e-ddab3de2c444">\
+> <img width="800" alt="A state diagram for a distributed blockchain showing the hashing competition for the process of generating new blocks and updating the chain." src="https://github.com/millecodex/COMP842/assets/39792005/ce672191-be4a-439e-8c12-af60acccf5b2">\
 > Figure: A state diagram for a distributed blockchain showing the hashing competition for the process of generating new blocks and updating the chain.
 
 A miner is a network participant that contributes their computing power in a demonstrable way. A fair way to allocate the incentives would be by some resource that can not be gamed or monopolized. One such way is by computing power as proposed by Dwork and Naor in 1993 in relation to email spam, and refined by Back with Hashcash in 2002 for digital currency. Bitcoin miners participate by using their hardware to validate transactions and suggest new blocks. For this effort they receive rewards in proportion of their contribution to the network as a whole. A fair way to determine effort used by the miners is to have them search for a particular hash that meets a target. Bitcoin uses the `SHA256` hashing algorithm as the hash ~~puzzles~~ competition[^hashing] that miners have to win.
