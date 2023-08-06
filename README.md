@@ -16,7 +16,7 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 1. [Money & Bitcoin](lectures/1-bitcoin.md)
 2. [Cryptography](lectures/2-cryptography.md)
 3. [Consensus Part I: Proof of Work](lectures/3-consensus-pow.md)
-4. Consensus Part II: Proof of Stake & Alternatives
+4. [Consensus Part II: Proof of Stake & Alternatives](lectures/4-consensus-pos.md)
 5. Scaling
 6. Wallets & Tokens
 7. Ethereum (maybe Seminar)
