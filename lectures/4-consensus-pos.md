@@ -99,10 +99,10 @@ Many alternative methods have been proposed in the literature and some have prot
 
 **Proof of reputation** is based on the reputation of the network participants. In this algorithm, nodes in the network are given voting power in creating new blocks or validating transactions based on their reputation. This reputation could be determined by various factors like the age of the node, its historic behavior, or the amount of work it has done for the network, among other things. The theory is that nodes with higher reputation would be more trustworthy and less likely to attempt malicious actions, similar to the concept of 'reputation' in many online platforms and marketplaces.
 
-You can see where this is going. Bouraga (2021), for example, also mentiones Proof-of-Luck, Proof-of-Vote, Proof-of-Disease, Proof-of-Play, and Proof-of-Learning. Anything you can code can be implemented as a consensus algorithm, although not necessarily well, and to the standard required of global networks that transmit value. There is a balance that needs to be met between performance -- collecting and processing transactions, security -- incentivising honest behaviour and preventing attacks, and decentralisation -- too centralised and we're back to big-tech. This three-pronged tradeoff is the blockchain trilemma and will be discussed in the next lecture on scaling.
+You can see where this is going. Bouraga (2021), for example, also mentions Proof-of-Luck, Proof-of-Vote, Proof-of-Disease, Proof-of-Play, and Proof-of-Learning. Anything you can code can be implemented as a consensus algorithm, although not necessarily well, and to the standard required of global networks that transmit value. There is a balance that needs to be met between performance -- collecting and processing transactions, security -- incentivising honest behaviour and preventing attacks, and decentralisation -- too centralised and we're back to big-tech. This three-pronged tradeoff is the **blockchain trilemma** and will be discussed in the next lecture on scaling.
 
 ## Decentralisation
-The last point in the trilemma - decentralisation - exists on a scale and is debatable, or subjective. We can summarize some of the features that distinguish a decentralised blockchain from a centralised pseudo-blockchain.
+Quick sidequest here::The last point in the trilemma - decentralisation - exists on a scale and is debatable, or subjective. We can summarize some of the features that distinguish a decentralised blockchain from a centralised pseudo-blockchain.
 
 | | Centralized | Distributed (p2p) |
 |---|---|---|
@@ -119,8 +119,8 @@ The last point in the trilemma - decentralisation - exists on a scale and is deb
 We are now in a position to pose a definition of a blockchain.
 
 A blockchain is a distributed architecture that maintains a totally ordered list of transactions. To maintain the true state of the ledger, the protocol must have:
-1. Strong Sybil Resistance
-2. A Fork Choice Rule
+1. Strong Sybil Resistance, and
+2. A Fork Choice Rule.
 
 **Sybil Resistance** - Once the system is open and permissionless there is risk of entities joining that don't have the same incentives to stay honest as do regular network participants. (stick: lock stake/spend electricity, subject to slashing; carrot: rewards)(closed systems use permissions, and just have to replicate their database for CAP)
 
