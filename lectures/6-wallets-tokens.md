@@ -165,7 +165,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 * iii 
 
 ## Further Reading - the very short list
-* Andrew Yao's Protocol for Secure Computations [pdf]()
+* Andrew Yao's Protocol for Secure Computations [pdf](https://github.com/millecodex/COMP842/blob/master/papers/yao1982-ocr.pdf)
 * B
 * C
 
