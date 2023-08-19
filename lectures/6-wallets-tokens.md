@@ -4,7 +4,7 @@
 ## Contents
 1. [Wallets](#wallets)
 2. [Seed Phrases](#seed-phrases)
-3. [Multi-Sig](#multi-sig)
+3. [Multisig](#multisig)
 4. [Multi-Party Computation](#multi-party-computation)
 5. [Token standards](#token-standards)
 6. [NFTs](#nfts)
@@ -25,8 +25,8 @@ Wallets have evolved past the point of storing randomly generated private keys a
 
 The user experience for blockchain applications is an area for improvement. As an example, *Mycellium* has been in wallet development since 2009, switching their focus from secure hardware after bitcoin was released. From the figure below you get the sense that setting up a wallet and sending coins is not user-friendly.
 
-> <img width="800" alt="The Mycelium bitcoin wallet interface." src="https://github.com/millecodex/COMP842/assets/39792005/7f6ef20d-451d-4ccc-8821-52204777631d">
-> The Mycelium bitcoin wallet interface. The home screen (left); Adding a new account (middle); Sending a transaction (right).
+> <img width="800" alt="The Mycelium bitcoin wallet interface." src="https://github.com/millecodex/COMP842/assets/39792005/7f6ef20d-451d-4ccc-8821-52204777631d">\
+> The Mycelium bitcoin wallet interface (2019). The home screen (left); Adding a new account (middle); Sending a transaction (right).
 
 ## Seed Phrases
 After selecting *backup now*, two warning messages are displayed and then a word list which you must write down (screenshots and copy/paste are disabled). The word list for this account is:
@@ -39,13 +39,16 @@ After selecting *backup now*, two warning messages are displayed and then a word
 | 10. cause   | 11. royal | 12. brass |
 > Table: a backup seed phrase maps common words (in this case English) to bytes.
 
-The list must be verified by the user after being displayed in the app. In the case of losing your device, the seed phrase can be used to import the wallet. 
+The list must be verified by the user after being displayed in the app. In the case of losing your device, the seed phrase can be used to import the wallet. Screenshots from Trustwallet, show a different approach. The home screen is much less cluttered and appears more like what you would expect from a wallet app. 
 
-Screenshots from Enjin's wallet, which has concentrated on the user experience, show a different approach. The Enjin home screen is much less cluttered and appears more like what you would expect from a wallet app. Enjin will let you export the 12-word seed phrase but will not let you dump your private keys to the screen as an added security measure[^1]. The Mycelium private key of the seed phrase is shown in Figure below.
+> <img width="800" alt="Screenshots from Trustwallet showing the recovery phrase" src="https://github.com/millecodex/COMP842/assets/39792005/8e708174-23a2-4ca3-8264-daac159180c6">\
+> Figure: Screenshots from Trustwallet showing the recovery phrase. 
 
-[^1]: Using both Mycelium and Enjin wallets for Android, I could not screen capture or share the screen with my PC.
+Trustwallet will let you export the 12-word seed phrase but will not let you dump your private keys to the screen as an added security measure[^1]. The Mycelium private key of the seed phrase is shown in Figure below.
 
-> <img width="250" alt="The Mycelium bitcoin wallet interface." src="https://github.com/millecodex/COMP842/assets/39792005/efcb1db3-c720-4fc2-86c2-83f32696eac2">
+[^1]: Using both Mycelium and Enjin wallets for Android, I could not screen-capture or share the screen with my PC.
+
+> <img width="250" alt="The Mycelium bitcoin wallet interface." src="https://github.com/millecodex/COMP842/assets/39792005/efcb1db3-c720-4fc2-86c2-83f32696eac2">\
 > Figure: Mycelium private key of the seed phrase shown above. Note the warning message: "whoever knows this code can spend all your current and future bitcion from this account."
 
 ### Key Storage
@@ -57,20 +60,46 @@ Cryptocurrencies are riskier than traditional online banking because if you lose
 
 There are a number of ways to store your keys:
 
-- Hot Wallet: This is the most common method. It is a software application that stores your private keys so you can sign transactions, keeps track of your tokens, and may offer additional functionality like multiple addresses or multiple token support. The risk here is that if you lose your device, your private keys are gone with it. Day-to-day transactions using a smartphone would be done through a hot wallet.
+- **Hot Wallet**: This is the most common method. It is a software application that stores your private keys so you can sign transactions, keeps track of your tokens, and may offer additional functionality like multiple addresses or multiple token support. The risk here is that if you lose your device, your private keys are gone with it. Day-to-day transactions using a smartphone would be done through a hot wallet.
 
-- Cold Storage: For larger amounts, savings, investments, and custodial services, a cold or hardware wallet is recommended. This is a device that is not powered and has no connectivity and stores your private keys internally. When tokens are required, it can be plugged into a USB and connected to the network.
+- **Cold Storage**: For larger amounts, savings, investments, and custodial services, a cold or hardware wallet is recommended. This is a device that is not powered and has no connectivity and stores your private keys internally. When tokens are required, it can be plugged into a USB and connected to the network.
 
-- Paper Wallet: Once a key pair has been generated and used to receive tokens, that private key will always have ownership of the tokens. The private key can be printed out or written down, sometimes as a QR code for easy scanning. After the memory has been cleared, there is no more digital record of the private keys.
+- **Paper Wallet**: Once a key pair has been generated and used to receive tokens, that private key will always have ownership of the tokens. The private key can be printed out or written down, sometimes as a QR code for easy scanning. After the memory has been cleared, there is no more digital record of the private keys.
 
-- Brain Wallet: The most serious storage system is to remember your private keys and destroy all physical and digital evidence of them. Certain memory mnemonics and the use of common words as seed phrases can help with this.
+- **Brain Wallet**: The most serious storage system is to remember your private keys and destroy all physical and digital evidence of them. Certain memory mnemonics and the use of common words as seed phrases can help with this.
 
 It's important to note that for all these methods, including memorization, it is possible to receive tokens to your address without connecting the keys to the network. These transactions will be recorded by all the nodes running the blockchain and propagated accordingly. Private keys are only required to sign transactions (spend tokens). All of these methods are vulnerable to crises such as fire or theft and represent a single point of failure. Backing up your keys can solve the crisis issues, but someone could still steal the backup.
 
 
 
-## Multi-Sig
-Imagine two out of three business owners needing to sign with their private keys to disburse funding, or a family that requires agreement among siblings and their lawyer to settle an estate. A multiple signature transaction requires more than one authorizing key. Sometimes referred to as an $M$ of $N$ system, if a minimum of $M$ private keys sign a transaction out of $N$ possible signatories, then the transaction can proceed.  *Multisig* is a useful feature in bitcoin although includes a bug requiring an extra item to be added to the script stack before execution. Although technically easy to fix, the bug has always been included in the reference implementation and is now a part of the consensus rules. At this stage it is considered too risky to fix because of unknown downstream effects. Antonopoulos (2017) details multisig transactions and the more advanced *pay-to-script-hash* functionality.
+## Multisig
+Multisignature (multisig) refers to the requirement of multiple private keys to authorise a cryptocurrency transaction. It's akin to a digital lock that needs multiple keys to be opened. Initially developed to enhance the security of Bitcoin[^multisig] transactions, multisig is now a well known key application. Imagine two out of three business owners needing to sign with their private keys to disburse funding, or a family that requires agreement among siblings and their lawyer to settle an estate, or a governance structure that needs majority voting to fund a proposal. A multiple-signature transaction requires more than one authorizing key. Sometimes referred to as an $M$ of $N$ system, if a minimum of $M$ private keys sign a transaction out of $N$ possible signatories, then the transaction can proceed.  
+
+[^multisig]: *Multisig* is a useful feature in bitcoin although includes a bug requiring an extra item to be added to the script stack before execution. Although technically easy to fix, the bug has always been included in the reference implementation and is now a part of the consensus rules. At this stage it is considered too risky to fix because of unknown downstream effects. Antonopoulos (2017) details multisig transactions and the more advanced *pay-to-script-hash* functionality.
+
+To enhance personal security you can arrange your funds in a 2 of 3 multisig (or more!) with private keys stored on different devices. This way, if one gets compromised, you can use the other two to move the funds. This additional layer provides enhanced protection against malware and phishing as the compromised device can't move your coins without at least one other signature.
+
+Here's a pseudocode algorithm to create a multisig address:
+```js
+// Define Parameters
+M = 2 // Minimum number of required signatures
+N = 3 // Total number of possible signatures
+publicKeys = [PublicKey1, PublicKey2, PublicKey3] 
+
+// Create the Redeem Script
+redeemScript = concatenate(M, publicKeys[0], publicKeys[1], publicKeys[2], N, "OP_CHECKMULTISIG")
+
+// Compile Redeem Script to Bytecode (implementation varies based on the specific language and environment)
+bytecode = compileToBytecode(redeemScript)
+
+// Hash the Redeem Script to create a P2SH address
+p2shHash = SHA256(RIPEMD160(bytecode))
+
+// Add Network Information and Checksum, then encode into Base58Check for the final P2SH address
+p2shAddress = Base58CheckEncode(p2shHash, networkPrefix, checksum)
+
+// The P2SH address is now ready for use in transactions
+```
 
 Logically extending $M$ of $N$ signatures leads to transactions that can execute a small amount of instructions. Transactions are just data that is stored by all the nodes in the network, and there is no reason why this data could not be code -> *Smart Contracts*?
 
@@ -83,7 +112,7 @@ Now, let's consider the case where we split the secret into four shares and requ
 
 This approach of secret sharing provides a way to distribute the shares among trustworthy individuals. Even if one or more shares are compromised, they provide no useful information about the secret without the required threshold number of shares to reconstruct it.
 
-> <img width="461" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/840adfd1-f4ee-40cc-9286-fbb0b0af1b45">
+> <img width="461" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/840adfd1-f4ee-40cc-9286-fbb0b0af1b45">\
 > Figure: The point $(0,S)$ represents the secret, a large random number less than a large prime, $P$. The shares are linear combinations modulo $P$, up to $N$, where any 2 of them will recover the secret.
 
 $$
@@ -100,7 +129,26 @@ $$
 What if you require more than 2 shares necessary to reconstruct the key? If we increase the degree of our share-reconstruction function from linear to parabolic, then we have $K=3$ is necessary to find $S$ because 3 points can uniquely define a parabola. This can be continued up to $K=N-1$ shares. Since multiple people can store portions of an individuals private key it would be convenient if a similar setup was in place for specific transactions or sets of transactions.
 
 ## Multi-Party Computation
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+**The Millionaire's Problem** is a classic problem in the field of cryptography, specifically in the context of Multi-Party Computation (MPC). It was introduced by Andrew Yao in the 1980s, and it forms the basis for understanding how privacy can be preserved during computation. Two millionaires, Alice and Bob, want to compare their wealth to find out who is richer without revealing the actual amount of their wealth to each other or anyone else. They want to know the result of the comparison but are unwilling to disclose any additional information.
+
+The Millionaire's Problem can be seen as a special case of secure multi-party computation, where two parties wish to jointly compute a function over their inputs (in this case, a comparison function) while keeping those inputs private. Here, the answer is Max(Alice's Salary, Bob's Salary). An MPC protocol will take the private information (salaries), compute the function (max) and relay the information (Alice) without revealling the private info (salary). Also, the protocol is just that, a protocol, and not a trusted third party.
+
+Multi-Party Computation (MPC) wallets are an innovation in cryptocurrency storage that leverages cryptographic protocols to securely distribute private keys among multiple parties. This distribution ensures that no single entity has control, enhancing security, and removing single points of failure.
+
+Distinguishing MPC wallets from regular ones like single-key, multi-signature, or hardware wallets, MPC wallets are more secure, protocol-agnostic, and less cumbersome in authorization. They also overcome issues like damage to physical devices or the loss of private keys.
+
+Benefits of MPC Wallets include:
+* Decentralization: Elimination of trusted third parties for storing private keys.
+* Data Privacy: No revealing of private information to other parties.
+* Removal of Single Points of Failure: Distributing private keys among multiple parties.
+* Scalability: Flexibility in adding or removing parties.
+
+Risks of MPC Wallets include:
+* High Communication Costs: Extensive communication can increase network latency and expose to attacks.
+* Technical Complexity: Advanced cryptographic techniques might lead to vulnerabilities.
+* Lack of Interoperability: Incompatibility with conventional wallets due to non-standardization.
+
+Some popular MPC wallets are ZenGo, Fireblocks, Coinbase, and Qredo, each catering to different types of users with varying features and security levels.
 
 ## Token standards
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
