@@ -129,7 +129,7 @@ $$
 What if you require more than 2 shares necessary to reconstruct the key? If we increase the degree of our share-reconstruction function from linear to parabolic, then we have $K=3$ is necessary to find $S$ because 3 points can uniquely define a parabola. This can be continued up to $K=N-1$ shares. Since multiple people can store portions of an individuals private key it would be convenient if a similar setup was in place for specific transactions or sets of transactions.
 
 ## Multi-Party Computation
-**The Millionaire's Problem** is a classic problem in the field of cryptography, specifically in the context of Multi-Party Computation (MPC). It was introduced by Andrew Yao in the 1980s, and it forms the basis for understanding how privacy can be preserved during computation. Two millionaires, Alice and Bob, want to compare their wealth to find out who is richer without revealing the actual amount of their wealth to each other or anyone else. They want to know the result of the comparison but are unwilling to disclose any additional information.
+**The Millionaire's Problem** is a classic problem in the field of cryptography, specifically in the context of Multi-Party Computation (MPC). It was introduced by Andrew Yao (1986), and it forms the basis for understanding how privacy can be preserved during computation. Two millionaires, Alice and Bob, want to compare their wealth to find out who is richer without revealing the actual amount of their wealth to each other or anyone else. They want to know the result of the comparison but are unwilling to disclose any additional information.
 
 The Millionaire's Problem can be seen as a special case of secure multi-party computation, where two parties wish to jointly compute a function over their inputs (in this case, a comparison function) while keeping those inputs private. Here, the answer is Max(Alice's Salary, Bob's Salary). An MPC protocol will take the private information (salaries), compute the function (max) and relay the information (Alice) without revealling the private info (salary). Also, the protocol is just that, a protocol, and not a trusted third party.
 
@@ -165,7 +165,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 * iii 
 
 ## Further Reading - the very short list
-* a
+* Andrew Yao's Protocol for Secure Computations [pdf]()
 * B
 * C
 
