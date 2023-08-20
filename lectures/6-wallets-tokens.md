@@ -8,10 +8,9 @@
 4. [Multi-Party Computation](#multi-party-computation)
 5. [Token standards](#token-standards)
 6. [NFTs](#nfts)
-7. [UTXO Model](#utxo-model)
-8. [What did we miss?](#what-did-we-miss)
-9. [Further Reading - the very short list](#further-reading---the-very-short-list)
-10. [Exercises](#exercises)
+7. [What did we miss?](#what-did-we-miss)
+8. [Further Reading - the very short list](#further-reading---the-very-short-list)
+9. [Exercises](#exercises)
 
 
 Contrary to popular belief, there is no standardized encryption in the Bitcoin protocol. As a decentralized system of exchange, there is no need for encryption. All the transactions are stored in the blockchain and accessible to everyone. Access to the private keys controlling addresses is maintained solely through personal security of the user. It is imperative that users keep their private keys secret, just as in any other cryptosystem. There are some added enhancements for encrypting passwords and wallets, but these are third-party additions and not built into the protocol.
@@ -140,6 +139,7 @@ Distinguishing MPC wallets from regular ones like single-key, multi-signature, o
 Benefits of MPC Wallets include:
 * Decentralization: Elimination of trusted third parties for storing private keys.
 * Data Privacy: No revealing of private information to other parties.
+* Correctness: All parties are confident the result is correct (as they cannot see the inputs).
 * Removal of Single Points of Failure: Distributing private keys among multiple parties.
 * Scalability: Flexibility in adding or removing parties.
 
@@ -165,9 +165,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 * iii 
 
 ## Further Reading - the very short list
+* What is MPC? [Fireblocks explainer}(https://www.fireblocks.com/what-is-mpc/)
 * Andrew Yao's Protocol for Secure Computations [pdf](https://github.com/millecodex/COMP842/blob/master/papers/yao1982-ocr.pdf)
-* B
-* C
+* Garbled Circuits ([wikipedia](https://en.wikipedia.org/wiki/Garbled_circuit))
 
 ## Exercises
 1. a
