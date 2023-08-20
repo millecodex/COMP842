@@ -4,14 +4,15 @@
 ## Contents
 1. [Wallets](#wallets)
 2. [Seed Phrases](#seed-phrases)
-3. [Multisig](#multisig)
-4. [Multi-Party Computation](#multi-party-computation)
-5. [Token standards](#token-standards)
-6. [Non-Ethereum Token Standards](#non-ethereum-token-standards)
-7. [A Token's Lifecycle](#a-tokens-lifecycle)
-8. [What did we miss?](#what-did-we-miss)
-9. [Further Reading - the very short list](#further-reading---the-very-short-list)
-10. [Exercises](#exercises)
+3. [Hierarchical Deterministic (HD) Wallets](#hierarchical-deterministic-hd-wallets)
+4. [Multisig](#multisig)
+5. [Multi-Party Computation](#multi-party-computation)
+6. [Token standards](#token-standards-ethereum)
+7. [Non-Ethereum Token Standards](#non-ethereum-token-standards)
+8. [A Token's Lifecycle](#a-tokens-lifecycle)
+9. [What did we miss?](#what-did-we-miss)
+10. [Further Reading - the very short list](#further-reading---the-very-short-list)
+11. [Exercises](#exercises)
 
 
 Contrary to popular belief, there is no standardized encryption in the Bitcoin protocol. As a decentralized system of exchange, there is no need for encryption. All the transactions are stored in the blockchain and accessible to everyone. Access to the private keys controlling addresses is maintained solely through personal security of the user. It is imperative that users keep their private keys secret, just as in any other cryptosystem. There are some added enhancements for encrypting passwords and wallets, but these are third-party additions and not built into the protocol.
@@ -70,7 +71,26 @@ There are a number of ways to store your keys:
 
 It's important to note that for all these methods, including memorization, it is possible to receive tokens to your address without connecting the keys to the network. These transactions will be recorded by all the nodes running the blockchain and propagated accordingly. Private keys are only required to sign transactions (spend tokens). All of these methods are vulnerable to crises such as fire or theft and represent a single point of failure. Backing up your keys can solve the crisis issues, but someone could still steal the backup.
 
+## Hierarchical Deterministic (HD) Wallets
+Each instance of MetaMask that has a recovery phrase is called a hierarchical deterministic wallet. Within this hierarchy you can generate multiple accounts, each having their own public/private key pair and each being able to be regenerated with the recovery phrase. This allows many addresses to be generated from the same seed entropy[^1], so you can always invoice with a fresh address. The new accounts generated under this regime are ordered, with one 'leading' to the next, and deterministic such that when recovering a wallet the child accounts generated will be the same and in the same order.
 
+[^1]: Seed entropy refers to the orignal source of randomness used to generate the seed phrase. In the case of browser generation such as with MetaMask this comes from the OS random function and is the safest way to do so online. Good ways to generate your own entropy include [dice](https://vault12.com/securemycrypto/cryptocurrency-security-how-to/dice-crypto-recovery-seed/particle-29) and [lava-lamps](https://www.cloudflare.com/en-gb/learning/ssl/lava-lamp-encryption/).
+
+> <p align="left"><img width="600" alt="HD key generation tree" src="https://user-images.githubusercontent.com/39792005/188350149-c50a1858-6a84-4f47-bd2d-740b47b8657b.png"></p>
+
+## BIP39
+The seed phrase is a mapping of common English (& some other) language words to numbers that when assembled in the correct order represent the master private key. **BIP39**[^2] is a standard that was developed for Bitcoin and now used in many cryptocurrency projects. The total list is [2048 words](https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md) and contains words as short as `mom` and as long as `mosquito`. From the master key many branches and children can be derived as per the algorithm below. To generate a seed phrase, you first need some entropy, then run it through `SHA256`, append the bit difference to the entropy, and split the output into the required number of words (12, 18, 24, etc.). These individual pieces then map to one of the 2048 words.
+
+[^2]: Bitcoin improvement proposal number [39](https://en.bitcoin.it/wiki/BIP_0039). See also [BIP32](https://en.bitcoin.it/wiki/BIP_0032) and [BIP44]()
+
+> <p align="left"><img width="600" alt="extending parent public key" src="https://user-images.githubusercontent.com/39792005/188350155-7f26f889-fcc9-45bd-9691-74d2245031db.png"></p>
+>
+> Key diagram sources: Antonopolous, Mastering Bitcoin. 2nd ed. 2018. https://github.com/bitcoinbook/bitcoinbook. 
+
+## Security
+In order to guess someone's private key you need to guess a sequence of 12, or 24 words from the list. Since there are 2048 possibilities for each guess, you have a one-in-2048 chance of guessing the first word correctly. At this point it may seem feesible for a computer to run this search fairly easily. Keeping in mind there is no progress indicator like making it past the first tumbler in a lock, so the probability to find the first two words is now $p= {1 \over 2048}{1 \over 2048}={1 \over 4,194,304} $. Extending this to a twelve word seed phrase: $p={1 \over 2048^{12}}$ and inverting to represent the number of possibilities we get $5.44E10^{39}$. On average it might take half the time to correctly guess a seed, so this is $2.72E10^{39}$ attemps. This is [roughly](https://en.wikipedia.org/wiki/Orders_of_magnitude_(numbers)#1036) the same size as the theoretical maximum number of Internet addresses that can be allocated under the IPv6 addressing ( $10^{36}$ ); or the estimated number of atoms in Earth ( $10^{50}$ ).
+
+*Exercise:* How much harder is it to guess a 24-word phrase? How long would it take your computer to guess every possible key?
 
 ## Multisig
 Multisignature (multisig) refers to the requirement of multiple private keys to authorise a cryptocurrency transaction. It's akin to a digital lock that needs multiple keys to be opened. Initially developed to enhance the security of Bitcoin[^multisig] transactions, multisig is now a well known key application. Imagine two out of three business owners needing to sign with their private keys to disburse funding, or a family that requires agreement among siblings and their lawyer to settle an estate, or a governance structure that needs majority voting to fund a proposal. A multiple-signature transaction requires more than one authorizing key. Sometimes referred to as an $M$ of $N$ system, if a minimum of $M$ private keys sign a transaction out of $N$ possible signatories, then the transaction can proceed.  
