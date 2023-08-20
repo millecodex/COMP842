@@ -8,10 +8,10 @@
 4. [Multi-Party Computation](#multi-party-computation)
 5. [Token standards](#token-standards)
 6. [Non-Ethereum Token Standards](#non-ethereum-token-standards)
-7. [A Token's Lifecycle](#a-token-s-lifecycle)
-7. [What did we miss?](#what-did-we-miss)
-8. [Further Reading - the very short list](#further-reading---the-very-short-list)
-9. [Exercises](#exercises)
+7. [A Token's Lifecycle](#a-tokens-lifecycle)
+8. [What did we miss?](#what-did-we-miss)
+9. [Further Reading - the very short list](#further-reading---the-very-short-list)
+10. [Exercises](#exercises)
 
 
 Contrary to popular belief, there is no standardized encryption in the Bitcoin protocol. As a decentralized system of exchange, there is no need for encryption. All the transactions are stored in the blockchain and accessible to everyone. Access to the private keys controlling addresses is maintained solely through personal security of the user. It is imperative that users keep their private keys secret, just as in any other cryptosystem. There are some added enhancements for encrypting passwords and wallets, but these are third-party additions and not built into the protocol.
@@ -250,12 +250,11 @@ Sending any tokens, either accidentally or on purpose, to these addresses will b
 Sending tokens to any address that you do not control or have the private keys to requires diligence in checking the destination, both to ensure the right network is being used, and the address is as intended. If tokens get sent to a random address there is no method or process for recovering them. There is no consumer protection in crypto!
 
 ## What did we miss?
-* [Airdrops](https://airdrops.io/) - because blockchain data is public new projects can easily view wallet addresses and send them tokens to increase visibility and achieve immediate wider token distribution. Famous airdrops include Stellar Lumens, Uniswap, and Ethereum Name Service.
+* [Airdrops](https://airdrops.io/) - because blockchain data is public new projects can easily view wallet addresses and send them tokens to increase visibility and achieve immediate wider token distribution. Famous airdrops include Stellar Lumens, Uniswap, Ethereum Name Service, and Arbitrum.
 * [Tokenomics](https://101blockchains.com/tokenomics/) is the new blockchain branch of token distribution and incentives. It's wise to view most projects as 'experiments-in-progress' and be cautious of marketing claims.
-* iii 
 
 ## Further Reading - the very short list
-* What is MPC? [Fireblocks explainer}(https://www.fireblocks.com/what-is-mpc/)
+* What is MPC? [Fireblocks explainer](https://www.fireblocks.com/what-is-mpc/)
 * Andrew Yao's Protocol for Secure Computations [pdf](https://github.com/millecodex/COMP842/blob/master/papers/yao1982-ocr.pdf)
 * Garbled Circuits ([wikipedia](https://en.wikipedia.org/wiki/Garbled_circuit))
 * [An Ethereum token list standard](https://tokenlists.org/)
