@@ -18,12 +18,12 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 3. [Consensus Part I: Proof of Work](lectures/3-consensus-pow.md)
 4. [Consensus Part II: Proof of Stake & Alternatives](lectures/4-consensus-pos.md)
 5. [Scaling](lectures/5-scaling.md)
-6. Wallets & Tokens
-7. Ethereum (maybe Seminar)
-8. Privacy
+6. [Wallets & Tokens](lectures/6-wallets.md) & Seminar by [Everlasting.io]()
+7. Ethereum
+8. Privacy & Presentation Check-point
 9. Security
 10. DeFi
-11. Web3
+11. Web3 & Seminar by [Ryan Johnson-Hunt]()
 12. Social Factors
 
 ## Resources
