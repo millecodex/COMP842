@@ -2,9 +2,12 @@
 
 # Lecture 7: Ethereum
 ## Contents
-1. [Motivation](#motivation)
-2. [Smart Contract](#smart-contracts)
-
+1. [Motivation](#first-some-brief-history)
+2. [Smart Contracts](#smart-contracts)
+3. [dApps](#dapps)
+4. [Ethereum Virtual Machine](#evm)
+5. [Consensus](#consensus)
+6. []()
 7. [Characteristics and Quirks](#characteristics-and-quirks)
 8. [What did we miss?](#what-did-we-miss)
 9. [Further Reading - the very short list](#further-reading---the-very-short-list)
@@ -161,29 +164,48 @@ Although not listed in the chart above, stable-value currencies were originally 
 
 Chart from [TheBlock](https://www.theblockcrypto.com/data/decentralized-finance/stablecoins) showing growth in stablecoins over the past four years. The total value of stablecoins rose in 2021 from ~$28B to $150B. Note that this chart includes other blockchains, not just Ethereum.
 
+## EVM
 
 
+## Consensus - I thought Ethereum was Proof-of-Stake?
+Maintaining the database of accounts and smart contracts is done by the consensus algorithm and is a key component of any blockchain and often the first point of difference between blockchains. Bitcoin uses [proof-of-work](https://github.com/millecodex/BlockchainNZ_education/blob/main/articles/bitcoin.md#proof-of-work-mining--network-security) and relies on miners running purpose-built hardware to process transactions, and package and publish blocks. The incentive mechanism is a lottery based on the SHA256 (secure hash algorithm) result; when miners are lucky enough to find a winning hash they can publish a block and earn a reward.
+
+The downside to Bitcoin's mining algorithm is that it is suceptible to hardware optimisation in the form of ASICs (application-specific integrated circuits) that can be manufactured purely for mining purposes and are otherwise superfluous. Ethereum's primary goal was to alleviate this by choosing an algorithm that required less pure processing power and relied more on general-purpose hardware like memory (RAM). The algorithm is called [ethash](https://eth.wiki/en/concepts/ethash/ethash) and requires random read access to a 1GB dataset making it suitable for PC graphics cards to be used as miners. As in Bitcoin, miners are incentivised by a block reward that is currently 2 ETH per block. In summary Ethereum is presently a proof-of-work blockchain that uses GPU miners.
+
+### Where does proof-of-stake (PoS) come in?
+It has always the ethos of the Ethereum community to transition the network to a fully stake-based validation mechanism and remove the need for expensive customized hardware. In a PoS system consensus is handled by validators that maintain skin in the game by contributing a stake in ether and are rewarded in a similar fashion to miners. A validator's rewards are proportional to their stake in the system. 
+
+[Eth2](https://ethereum.org/en/eth2/) is the name of the upgrade[^eth2] which has been split into many sub phases. Presently the network is in the *final* stages of the upgrade and the merge may🤞 happen in 2022.
+[^eth2]: As of early 2022 the Ethereum foundation decided [change the name](https://blog.ethereum.org/2022/01/24/the-great-eth2-renaming/) of Eth2 to *consensus layer* to prevent people from thinking that Eth1 and Eth2 are different blockchains. They aren't. Eth2 is just an upgrade that includes the present version.
+
+Fact check this with regards to PoS. **Uncle Blocks**: Unlike other blockchain systems, Ethereum incorporates a mechanism to reward stale blocks, referred to as "uncle" blocks. These are blocks that are valid but not included in the main blockchain. This promotes network security and inclusiveness by providing incentives for miners even if their mined blocks are not included in the main chain.
+
+## Topic 6
 
 
-## What did we miss?
-* i
-* ii
+# Characteristics and Quirks
+* Difficulty Bomb: Also known as the "Ice Age," the Ethereum network has a built-in difficulty bomb designed to make mining exponentially more challenging over time. This was originally introduced to motivate the network to transition from Proof of Work (PoW) to Proof of Stake (PoS). It's a fascinating mechanic that's deeply rooted in the network's consensus strategy.
+* Self-Destruct and Resurrection: A quirky feature in Solidity is the selfdestruct function. When a contract self-destructs, it can send its remaining Ether to another address. Interestingly, if someone sends Ether to a self-destructed contract's address, and a new contract is created at the same address, the new contract will have the Ether sent to the "dead" contract. This resurrection quirk has potential security implications.
+
+# What did we miss?
+* The **DAO hack** was an important event in Ethereum's history. There was a bug, and a lot of money was lost, but then the *immutable* blockchain was rolled back, the community split, now there still exists Ethereum Classic (ETC) and an ongoing question over the decentralised nature of Ethereum.
+* Questions of Tokenomics: What is the total supply of ETH? Is ETH money?
 * iii 
 
-## Further Reading - the very short list
-* a
-* B
-* C
+# Further Reading - the very short list
+* [The Whitepaper by Vitalik Buterin](https://ethereum.org/en/whitepaper/)
+* [The Yellowpaper by Gavin Wood](https://github.com/ethereum/yellowpaper), & [pdf](https://ethereum.github.io/yellowpaper/paper.pdf)
+* [Extensive list of learning resources](https://ethereum.org/en/learn/)
 
-## Exercises
+# Exercises
 1. a
 2. b
 3. c
 
-## Video
+# Video
 To be posted.
 
-## Exercises
+# Exercises
 1. a
 2. b
 3. c
