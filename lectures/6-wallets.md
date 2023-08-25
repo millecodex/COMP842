@@ -284,3 +284,6 @@ Sending tokens to any address that you do not control or have the private keys t
 1. Look into the documentation for two wallet providers: MetaMask and TrustWallet, and determine if they use HD key generation.
 2. Create a hypothetical seed phrase following the standard conventions. Explain how this seed phrase can be utilised for wallet recovery and how it enhances security.
 3. Reflect on the potential risks and challenges associated with losing private keys in a cryptocurrency system. How do various wallet technologies attempt to mitigate these risks?
+
+# Video Lecture
+Here's a Guest Lecture by Guy Kloss recorded live August 22, 2023 on [YouTube](https://www.youtube.com/watch?v=BXcf03ayzPQ).
