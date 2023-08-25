@@ -10,28 +10,35 @@
 9. [Further Reading - the very short list](#further-reading---the-very-short-list)
 10. [Exercises](#exercises)
 
-## Motivation
-A simple case that can't be handled by such scalability enhancements: suppose you have solar panels on your roof that generate electricity. When you are not home you would like to get paid for the excess electricity by selling it to your neighbors. This can be done through an agreement whereby generating electricity creates tokens that can be traded on the power network. Neighbors can buy your tokens at a discount to the local utility and you both benefit from the exchange.
+## First, some brief History
+### What was the problem(s) that Vitalik Buterin was looking to solve?
+Bitcoin provided a solution to the double-spend problem of creating digital cash by using proof-of-work mining to both maintain the state of the ledger and allow open participation in the network based on computing power. By assigning value to these digitally scarce coins the ledger can be used as a monetary system. This works great for money but comes up short when using Bitcoin's scripting language to make simple extensions such as a decentralized exchange -- how to determine the NZD/BTC rate? or how to do some arbitrary calculation, e.g. what is the probability that your game character encounters a villan?
 
-Or suppose you want to raise money for your project, similar to a crowdfund. If people donate money to your project, in return you can promise them digitally unique tokens that can be used by the project. These are ideal reasons to use a blockchain as there is an exchange of a digital token that holds value.
+In late 2013, While writing for *Bitcoin Weekly* and co-founding [*Bitcoin Magazine*](https://bitcoinmagazine.com/),  a nineteen-year-old Russian-Canadian computer science dropout, Vitalik saw the limitations in Bitcoin as an opportunity to create a new blockchain from scratch that can allow developers to build general applications. The first feature to include in this new blockchain was *Turing completness*. In computer programming this means it is possible to have loops in the code which would be necessary, for example, for calculating a probability or the value of π. Bicoin's *script* language is not considered Turing complete because it is stack-based and therefore anything that is needed by the program must be loaded onto the stack. (Also, by definition stacks cannot loop.) If you want to do something that isn't already available in the opcodes, then some very creative ad-hoc programming and second-layer work may be required. Turing-complete refers to a class of computers (programming languages) that can simulate another computer. Named after computer scientist Alan Turing[^Turing], a more practical way of thinking of Turing-completeness is that the language has loops; structures that allow for computation. HTML is not Turing-complete as it cannot calculate digits of π, whereas most programming languages are. Bitcoin's scripting language is not Turing-complete.
 
-In late 2013, a nineteen-year-old Russian-Canadian computer science dropout decided to create a system that could handle these use-cases. Vitalik Buterin wrote Ethereum as a response to Bitcoin's lack of programmability. It is the first Turing-complete blockchain and uses a javascript-esque language called Solidity to create blocks of code known as smart contracts. Let's unpack some of these statements and terms.
+[^Turing]: The same namesake as the Turing test in which an artificial intelligence can convince a human they are human. Or, in other words, the human cannot tell if the terminal is answering on behalf of a human or AI.
 
-- **Bitcoin's lack of programmability** comes from the fact that Bitcoin uses a scripting language with very restricted functionality (see Appendix B in Antonopoulos, 2017). If you want to do something that isn't already available in the opcodes, then some very creative ad-hoc programming and second-layer work may be required.
+The second feature was to use an account-based system. The benefit of this style is that each account (address) has a balance *and* the option of some code and storage. (This is in contrast to Bitcoin that uses a UTXO model that only keeps track of coins and not any additional data or code.)
 
-- **Turing-complete** refers to a class of computers (programming languages) that can simulate another computer. Named after computer scientist Alan Turing[^1], a more practical way of thinking of Turing-completeness is that the language has loops; structures that allow for computation. HTML is not Turing-complete as it cannot calculate digits of π, whereas most programming languages are. Bitcoin's scripting language is not Turing-complete.
-
-[^1]: The same namesake as the Turing test in which an artificial intelligence can convince a human they are human. Or, in other words, the human cannot tell if the terminal is answering on behalf of a human or AI.
-
-- **Solidity** is the name of most common high-level language used to write code that compiles to bytecode to be executed on the Ethereum virtual machine. Created by the co-founder of Ethereum, Gavin Wood, Solidity was intended to resemble JavaScript and be recognizable to web developers.
+The whitepaper for *Ethereum* was published online in 2013 and a year later a formal specification was written by Gavin Wood and the project raised funds through their initial coin offering. This was followed by the network launch in 2015.
 
 Summarizing Ethereum from the whitepaper[^Buterin2014]:
 > [Ethereum] is essentially the ultimate abstract foundational layer: a blockchain with a built-in Turing-complete programming language, allowing anyone to write smart contracts and decentralized applications where they can create their own arbitrary rules for ownership, transaction formats, and state transition functions.
 
 [^Buterin2014]: Buterin, V. (2014). Ethereum: A next-generation smart contract and decentralized application platform.
 
+
+
+## Initial Coin Offering
+In order to fund their new proposed blockchain network, the founders embarked on a unique [fundraising scheme](https://blog.ethereum.org/2014/07/22/launching-the-ether-sale/) that laid down the template for future crowdfunding sales. An initial coin offering (ICO) seeks to bootstrap user adoption and funding by combining the style of an initial public offering (IPO) with a crowd fund model. A marked difference from the IPO model is that the token sale was open to anyone without geographic or regulatory restriction. All users had to do to participate was deposit bitcoin and receive *ether* tokens that represent their stake in the new network. The token sale was successful resulting in more than 50 million ether (the native currency of ethereum) being sold. Investors were aware of the token distribution from the beginning which included 9.9% of the tokens reserved for the founders (to fund development, salaries, bug bounties, etc.) and another 9.9% for a [foundation](https://ethereum.foundation/) that was set up to guide the long term mission of the network. These tokens didn't have to be purchased in a traditional sense; a practice now known as *pre-mining*.
+
+### ICO Boom Times
+The success of Ethereum's ICO and its smart contract capability combined with its open source code made it an ideal model for other founders to fund their projects. A new project could easily copy and modify smart contract code and host their own ICO and issue their own new ERC-20 tokens. (ERC-20 refers to the token standard that most coins that run on Ethereum use.) 2017--2018 was a boom period for ICOs with many projects and tokens launching. Unfortunately many of them had questionable products and practices or were outright scams and because there was no regulation in crypto (as there is for an IPO), there was no recourse for those that invested and lost their money (this author included 🙃). 
+
 ## Smart Contracts
-Smart contracts are blocks of code that reside on a blockchain. To be invoked, a transaction must be sent to the address of the code block, which may then cause other actions. Due to the nature of public decentralized blockchains like Bitcoin and Ethereum, once a smart contract is written to the blockchain, it permanently resides there lying dormant.
+The term *smart contract* refers to some executable code that lives on the blockchain. This code may be a snippet, small or large, it may be straightforward or complex, it may contain bugs, not compile, it may never even be executed. Ethereum allows for code to be stored on the blockchain in *contracts* which have a callable address that looks just like a user's address. All of these bits of code are generically called smart contracts. Pedants will like to tell you that they are not smart nor are they contractual and they might be right in a traditional sense, however, the term has come to be redefined in a blockchain context.
+
+Earlier we mentioned that Ethereum is turing-complete, and here is where that comes in. A developer can write a program, say to issue crop insurance based on weather data, and store this program in a smart contract on the blockchain. As the blockchain is immutable this code will live there forever, it is also visible and thus can be easily verified or audited. The only limits to the applications that can be deployed on Ethereum come from the creativity & skill of the developer, and the amount of computation that program needs to do. Solidity is the name of most common high-level language used to write code that compiles to bytecode to be executed on the Ethereum virtual machine. Created by the co-founder of Ethereum, Gavin Wood, Solidity was intended to resemble JavaScript and be recognizable to web developers.
 
 **Example Contract 1**
 Here is an example from *Mastering Ethereum* (Antonopoulos, 2019) to create a faucet which will give out ether[^2] to anyone that interacts with it.
@@ -121,6 +128,42 @@ contract donateDAO {
 The problem is in the `withdraw()` function. In line 17, `call.value()` sends funds, in this case to the sender, before updating the balance. Here, the hacker can request their funds back, and then a fallback function triggers a recursive call that keeps sending funds back without updating the balance[^Humiston2018].
 
 [^Humiston2018]: Humiston, I. (2018). Attacks and Incidents. In Ethereum Smart Contract Development (pp. 81-94). Apress.
+
+### Gas
+Computation occurs in the EVM (Ethereum virtual machine) and we will be light on details, but because its a blockchain, all the nodes need to have a copy of the data and verify any updates. This includes running *all* smart contracts and doing *any* calculation. A scenario could arise, either accidentally or maliciously, to halt the network by deploying a contract with an infinite loop:
+```
+int i=1
+while i>0
+  i=i+1
+ ```
+The simple code above continually updates the counter because the stop condition of i being less than or equal to 0 is never met. To avoid this scenario all computation in the EVM needs gas. As a contract is executed gas is consumed and if the contract runs out of the gas then the update fails. All gas is paid in ether (`ETH`) and goes to the nodes (miners) that perform the calculations. A follow up question is what if I am wealthy and have enough gas to spam the network in this manner? To prevent this there is a gas limit on all transactions that is calculated based on how busy the network is.
+> The recent *London* upgrade to Ethereum changed the way that gas is distributed. Previously the miner would be compensated by receiving the entire gas fee in the transaction. Now, part of this fee is *burned*, and the miner gets the remainder. Burning some ETH reduces the overall issuance. More in the section on Proof-of-Work.
+
+## dapps
+Decentralised applications, or *dapps* just refer to smart contracts that are executed on a blockchain. When combined with a frontend these dapps can appear just like any other web application with the key difference being that that code and/or user data is stored on the blockchain. 
+
+The [most used dapps](https://dappradar.com/rankings/protocol/ethereum) on Ethereum in 2021:
+
+| App            | Category                | Users (k/30 days) |
+|:-------------  |:-----                   |-------:|
+| Uniswap        |  Decentralised Exchange |    520 |
+| OpenSea        |  NFT Marketplace        |    304 |
+| MetaMask Swap  |  Decentralised Exchange |    166 |
+| Polygon Bridge | Bridge                  |    114 |
+| Sushi          | Decentralised Finance   |     98 |
+
+Other categories of dapps that are popular are gaming and gambling although the last few years have been dominated by [DeFi](defi.md) (decentralised finance) and 2021 saw breakout growth in NFTs (Non-fungible tokens) art & collectibles.
+
+### Stablecoins
+Although not listed in the chart above, stable-value currencies were originally categorized as applications that can run on Ethereum. Now called *stablecoins*, it is hard to ignore their growth and popularity when looking at total value. The idea behind them is that to avoid the volatility present in the crypto markets, rather than using `ETH` there is the option to use a crypto token pegged to a common currency like the $USD. If you convert some $NZD to Tether today, then you can rely on the value being relatively stable to use it in the future. Some of the stablecoins that exist on Ethereum are Tether `USDT`, `USDC`, and `DAI`. Both Tether and USDC are issued privately, whereas DAI is a *Decentralized Autonomous Organization* (DAO) and maintains a US dollar peg.
+
+<p align="center"><img width="800" alt="total-stablecoin-supply-daily" src="https://user-images.githubusercontent.com/39792005/147860382-00470018-aae5-46a7-8d7f-023a2b163a4f.png"></p>
+
+Chart from [TheBlock](https://www.theblockcrypto.com/data/decentralized-finance/stablecoins) showing growth in stablecoins over the past four years. The total value of stablecoins rose in 2021 from ~$28B to $150B. Note that this chart includes other blockchains, not just Ethereum.
+
+
+
+
 
 ## What did we miss?
 * i
