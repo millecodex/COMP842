@@ -4,10 +4,7 @@
 ## Contents
 1. [Motivation](#motivation)
 2. [Smart Contract](#smart-contracts)
-3. [The Double-Spend Problem](#the-double-spend-problem)
-4. [Distributed Systems](#distributed-systems)
-5. [Bitcoin](#bitcoin)
-6. [Chain of blocks](#chain-of-blocks)
+
 7. [Characteristics and Quirks](#characteristics-and-quirks)
 8. [What did we miss?](#what-did-we-miss)
 9. [Further Reading - the very short list](#further-reading---the-very-short-list)
@@ -134,6 +131,14 @@ The problem is in the `withdraw()` function. In line 17, `call.value()` sends fu
 * a
 * B
 * C
+
+## Exercises
+1. a
+2. b
+3. c
+
+## Video
+To be posted.
 
 ## Exercises
 1. a
