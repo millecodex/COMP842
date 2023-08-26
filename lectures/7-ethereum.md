@@ -165,7 +165,24 @@ Although not listed in the chart above, stable-value currencies were originally 
 Chart from [TheBlock](https://www.theblockcrypto.com/data/decentralized-finance/stablecoins) showing growth in stablecoins over the past four years. The total value of stablecoins rose in 2021 from ~$28B to $150B. Note that this chart includes other blockchains, not just Ethereum.
 
 ## EVM
+Virtual machines (VMs) in computer science are emulations of a computer system that provide the functionality of a physical computer, operating on the basis of a host system and creating a separate environment known as the guest system. The main purpose of a VM is to enable multiple operating systems to share the same physical hardware resources, promoting flexibility and isolation for applications such as testing and development. 
 
+```bash
+VBoxHeadless --startvm "My_VM"
+VBoxManage createvm --name "my_blockchain_vm" --register
+VBoxManage modifyvm "my_blockchain_vm" --memory 1024 --acpi on --boot1 dvd
+VBoxManage createhd --filename "my_blockchain_vm.vdi" --size 10000
+VBoxManage storagectl "my_blockchain_vm" --name "IDE Controller" --add ide
+VBoxManage storageattach "my_blockchain_vm" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium "my_blockchain_vm.vdi"
+VBoxManage storageattach "my_blockchain_vm" --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /path/to/iso
+VBoxHeadless --startvm "my_blockchain_vm"
+```
+> Bash script to spin up a VM in linux: register, allocate memory, disc space, and point to the OS
+
+This concept of emulation is shared with the **Ethereum Virtual Machine** (EVM), although they serve different purposes. While regular VMs simulate physical hardware, the EVM is a virtual runtime environment designed specifically for executing smart contracts on the Ethereum blockchain. The EVM operates independently of the underlying hardware, ensuring deterministic computation that yields the same result across all network nodes. Each full node runs a copy of the EVM to verify transactions and smart contract executions, playing a crucial role in the decentralisation and security of the Ethereum network. Both regular VMs and the EVM are vital in their respective fields, with regular VMs being crucial in areas like cloud computing and virtualisation technologies, and the EVM translating the principles of virtualisation to the specific domain of blockchain technology.
+
+
+Visit the [EVM playground](https://www.evm.codes/playground?fork=shanghai)
 
 ## Consensus - I thought Ethereum was Proof-of-Stake?
 Maintaining the database of accounts and smart contracts is done by the consensus algorithm and is a key component of any blockchain and often the first point of difference between blockchains. Bitcoin uses [proof-of-work](https://github.com/millecodex/BlockchainNZ_education/blob/main/articles/bitcoin.md#proof-of-work-mining--network-security) and relies on miners running purpose-built hardware to process transactions, and package and publish blocks. The incentive mechanism is a lottery based on the SHA256 (secure hash algorithm) result; when miners are lucky enough to find a winning hash they can publish a block and earn a reward.
@@ -196,6 +213,7 @@ Fact check this with regards to PoS. **Uncle Blocks**: Unlike other blockchain s
 * [The Whitepaper by Vitalik Buterin](https://ethereum.org/en/whitepaper/)
 * [The Yellowpaper by Gavin Wood](https://github.com/ethereum/yellowpaper), & [pdf](https://ethereum.github.io/yellowpaper/paper.pdf)
 * [Extensive list of learning resources](https://ethereum.org/en/learn/)
+* [EVM Illustrated (slides)](https://github.com/takenobu-hs/ethereum-evm-illustrated)
 
 # Exercises
 1. a
