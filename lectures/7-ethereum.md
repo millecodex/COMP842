@@ -2,19 +2,20 @@
 
 # Lecture 7: Ethereum
 ## Contents
-1. [Motivation](#first-some-brief-history)
-2. [Smart Contracts](#smart-contracts)
-3. [dapps](#dapps)
+1. [Motivation](#motivation)
+2. [ICO](#initial-coin-offering)
+3. [Smart Contracts](#smart-contracts)
 4. [Ethereum Architecture](#ethereum-architecture)
-6. [Consensus](#consensus--from-PoS-to-PoW)
+6. [Consensus](#consensus-from-PoS-to-PoW)
 5. [Ethereum Virtual Machine](#ethereum-virtual-machine)
-7. [Characteristics and Quirks](#characteristics-and-quirks)
+3. [Applications](#applications)
+4. [Characteristics and Quirks](#characteristics-and-quirks)
 8. [What did we miss?](#what-did-we-miss)
 9. [Further Reading - the very short list](#further-reading---the-very-short-list)
 10. [Exercises](#exercises)
 
-## First, some brief History
-### What was the problem(s) that Vitalik Buterin was looking to solve?
+# Motivation
+### What was the problem that Vitalik Buterin was looking to solve?
 Bitcoin provided a solution to the double-spend problem of creating digital cash by using proof-of-work mining to both maintain the state of the ledger and allow open participation in the network based on computing power. By assigning value to these digitally scarce coins the ledger can be used as a monetary system. This works great for money but comes up short when using Bitcoin's scripting language to make simple extensions such as a decentralized exchange -- how to determine the NZD/BTC rate? or how to do some arbitrary calculation, e.g. what is the probability that your game character encounters a villan?
 
 In late 2013, While writing for *Bitcoin Weekly* and co-founding [*Bitcoin Magazine*](https://bitcoinmagazine.com/),  a nineteen-year-old Russian-Canadian computer science dropout, Vitalik saw the limitations in Bitcoin as an opportunity to create a new blockchain from scratch that can allow developers to build general applications. The first feature to include in this new blockchain was *Turing completness*. In computer programming this means it is possible to have loops in the code which would be necessary, for example, for calculating a probability or the value of π. Bicoin's *script* language is not considered Turing complete because it is stack-based and therefore anything that is needed by the program must be loaded onto the stack. (Also, by definition stacks cannot loop.) If you want to do something that isn't already available in the opcodes, then some very creative ad-hoc programming and second-layer work may be required. Turing-complete refers to a class of computers (programming languages) that can simulate another computer. Named after computer scientist Alan Turing[^Turing], a more practical way of thinking of Turing-completeness is that the language has loops; structures that allow for computation. HTML is not Turing-complete as it cannot calculate digits of π, whereas most programming languages are. Bitcoin's scripting language is not Turing-complete.
@@ -139,10 +140,7 @@ int i=1
 while i>0
   i=i+1
  ```
-The simple code above continually updates the counter because the stop condition of i being less than or equal to 0 is never met. To avoid this scenario all computation in the EVM needs gas. As a contract is executed gas is consumed and if the contract runs out of the gas then the update fails. All gas is paid in ether (`ETH`) and goes to the nodes (miners) that perform the calculations. A follow up question is what if I am wealthy and have enough gas to spam the network in this manner? To prevent this there is a gas limit on all transactions that is calculated based on how busy the network is.
-> The recent *London* upgrade to Ethereum changed the way that gas is distributed. Previously the miner would be compensated by receiving the entire gas fee in the transaction. Now, part of this fee is *burned*, and the miner gets the remainder. Burning some ETH reduces the overall issuance. More in the section on Proof-of-Work.
-
-
+The simple code above continually updates the counter because the stop condition of $i$ being less than or equal to $0$ is never met. To avoid this scenario all computation in the EVM needs gas. As a contract is executed gas is consumed and if the contract runs out of the gas then the update fails. All gas is paid in ether (`ETH`) and goes to the nodes that perform the calculations. A follow up question is what if I am wealthy and have enough gas to spam the network in this manner? To prevent this there is a gas limit on all transactions that is calculated based on how busy the network is. The  *London* upgrade to Ethereum changed the way that gas is distributed. Previously the miner would be compensated by receiving the entire gas fee in the transaction. Now, part of this fee is *burned*, and the validator gets the remainder. Burning some ETH offsets the overall issuance.
 
 
 # Ethereum Architecture
@@ -162,6 +160,7 @@ On September 15, 2022, the Ethereum network executed "[The Merge](https://ethere
 In a PoS system consensus is handled by validators that maintain skin in the game by contributing a stake in ether and are rewarded in a similar fashion to miners. A validator's rewards are proportional to their stake in the system. 
 
 ## Ethereum Virtual Machine
+### VMs
 Virtual machines (VMs) in computer science are emulations of a computer system that provide the functionality of a physical computer, operating on the basis of a host system and creating a separate environment known as the guest system. The main purpose of a VM is to enable multiple operating systems to share the same physical hardware resources, promoting flexibility and isolation for applications such as testing and development. 
 
 ```bash
@@ -181,11 +180,12 @@ This concept of emulation is shared with the **EVM**, although they serve differ
 > <img width="800" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/9c3de5ff-de3f-44e9-bbb7-6a80abf43e4d">\
 > Figure: Ethereum EVM shown in the inner box (execution cycle) determines the next state. Source: https://github.com/4c656554/BlockchainIllustrations/ 
 
-Visit the [EVM playground](https://www.evm.codes/playground?fork=shanghai) to see the stack in operation.
 
 
-## dapps
-So what we do with this decentralised state machine? Decentralised applications, or *dapps* just refer to smart contracts that are executed on a blockchain. When combined with a frontend these dapps can appear just like any other web application with the key difference being that that code and/or user data is stored on the blockchain. 
+-------------------
+## Applications
+### So what are people doing with this decentralised state machine?
+ Decentralised applications, or *dapps* just refer to smart contracts that are executed on a blockchain. When combined with a frontend these dapps can appear just like any other web application with the key difference being that that code and/or user data is stored on the blockchain. 
 
 The [most used dapps](https://dappradar.com/rankings/protocol/ethereum) on Ethereum in 2023 ranked by Unique active wallets (UaW):
 
@@ -194,17 +194,17 @@ The [most used dapps](https://dappradar.com/rankings/protocol/ethereum) on Ether
 | Uniswap        |  Decentralised Exchange |    495 |
 | MetaMask Swap  |  Decentralised Exchange |    85 |
 | OpenSea        |  NFT Marketplace        |    81 |
-| Simple FX    |  Decentralised Finance |  80    |
-| Ox Protocol |Decentralised Exchange| 62 |
+| Simple FX        |  Decentralised Finance |  80    |
+| Ox Protocol     |Decentralised Exchange| 62 |
 
 This list is dominated by DEX activity, so if we [rank](https://dappradar.com/rankings/defi?range=24h) by total value locked (TVL)[^caution]:
 | App            | Category                | TVL ($B) |
 |:-------------  |:-----                   |-------:|
-| Lido        |  Ethereum Staking |   13.8  |
+| Lido            |  Ethereum Staking         |   13.8  |
 | Summer.fi        |    Decentralised Finance | 6.1    |
-| Maker DAO        |  Stablecoin |   4.9  |
+| Maker DAO        |  Stablecoin             |   4.9  |
 | Uniswap        |  Decentralised Exchange | 3.2    |
-| Aave        |  Decentralised Lending |   2.6  |
+| Aave            |  Decentralised Lending |   2.6  |
 
 [^caution]: Take these stats with some salt, I haven't looked into dappradar's methodology, and they are only representative as of August, 2023. Generally over the past few years, Maker, Uniswap, Aave, Curve have been relatively stable and popular protocols. 
 
@@ -227,9 +227,9 @@ This list is dominated by DEX activity, so if we [rank](https://dappradar.com/ra
 * [Beacon Chain Explained](https://ethos.dev/beacon-chain)
 
 # Exercises
-1. a
+1. Visit the [EVM playground](https://www.evm.codes/playground?fork=shanghai) to see the stack in operation.
 2. b
 3. c
 
-# Video
+# Video Lecture
 To be posted.
