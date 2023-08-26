@@ -7,7 +7,6 @@
 3. [dApps](#dapps)
 4. [Ethereum Virtual Machine](#evm)
 5. [Consensus](#consensus)
-6. []()
 7. [Characteristics and Quirks](#characteristics-and-quirks)
 8. [What did we miss?](#what-did-we-miss)
 9. [Further Reading - the very short list](#further-reading---the-very-short-list)
@@ -145,17 +144,26 @@ The simple code above continually updates the counter because the stop condition
 ## dapps
 Decentralised applications, or *dapps* just refer to smart contracts that are executed on a blockchain. When combined with a frontend these dapps can appear just like any other web application with the key difference being that that code and/or user data is stored on the blockchain. 
 
-The [most used dapps](https://dappradar.com/rankings/protocol/ethereum) on Ethereum in 2021:
+The [most used dapps](https://dappradar.com/rankings/protocol/ethereum) on Ethereum in 2023 ranked by Unique active wallets (UaW):
 
-| App            | Category                | Users (k/30 days) |
+| App            | Category                | UaW (k/30 days) |
 |:-------------  |:-----                   |-------:|
-| Uniswap        |  Decentralised Exchange |    520 |
-| OpenSea        |  NFT Marketplace        |    304 |
-| MetaMask Swap  |  Decentralised Exchange |    166 |
-| Polygon Bridge | Bridge                  |    114 |
-| Sushi          | Decentralised Finance   |     98 |
+| Uniswap        |  Decentralised Exchange |    495 |
+| MetaMask Swap  |  Decentralised Exchange |    85 |
+| OpenSea        |  NFT Marketplace        |    81 |
+| Simple FX    |  Decentralised Finance |  80    |
+| Ox Protocol |Decentralised Exchange| 62 |
 
-Other categories of dapps that are popular are gaming and gambling although the last few years have been dominated by [DeFi](defi.md) (decentralised finance) and 2021 saw breakout growth in NFTs (Non-fungible tokens) art & collectibles.
+This list is dominated by DEX activity, so if we [rank](https://dappradar.com/rankings/defi?range=24h) by total value locked (TVL)[^caution]:
+| App            | Category                | TVL ($B) |
+|:-------------  |:-----                   |-------:|
+| Lido        |  Ethereum Staking |   13.8  |
+| Summer.fi        |    Decentralised Finance | 6.1    |
+| Maker DAO        |  Stablecoin |   4.9  |
+| Uniswap        |  Decentralised Exchange | 3.2    |
+| Aave        |  Decentralised Lending |   2.6  |
+
+[^caution]: Take these stats with some salt, I haven't looked into dappradar's methodology, and they are only representative as of August, 2023. Generally over the past few years, Maker, Uniswap, Aave, Curve have been relatively stable and popular protocols. 
 
 ### Stablecoins
 Although not listed in the chart above, stable-value currencies were originally categorized as applications that can run on Ethereum. Now called *stablecoins*, it is hard to ignore their growth and popularity when looking at total value. The idea behind them is that to avoid the volatility present in the crypto markets, rather than using `ETH` there is the option to use a crypto token pegged to a common currency like the $USD. If you convert some $NZD to Tether today, then you can rely on the value being relatively stable to use it in the future. Some of the stablecoins that exist on Ethereum are Tether `USDT`, `USDC`, and `DAI`. Both Tether and USDC are issued privately, whereas DAI is a *Decentralized Autonomous Organization* (DAO) and maintains a US dollar peg.
@@ -181,6 +189,8 @@ VBoxHeadless --startvm "my_blockchain_vm"
 
 This concept of emulation is shared with the **Ethereum Virtual Machine** (EVM), although they serve different purposes. While regular VMs simulate physical hardware, the EVM is a virtual runtime environment designed specifically for executing smart contracts on the Ethereum blockchain. The EVM operates independently of the underlying hardware, ensuring deterministic computation that yields the same result across all network nodes. Each full node runs a copy of the EVM to verify transactions and smart contract executions, playing a crucial role in the decentralisation and security of the Ethereum network. Both regular VMs and the EVM are vital in their respective fields, with regular VMs being crucial in areas like cloud computing and virtualisation technologies, and the EVM translating the principles of virtualisation to the specific domain of blockchain technology.
 
+![image](https://github.com/millecodex/COMP842/assets/39792005/9c3de5ff-de3f-44e9-bbb7-6a80abf43e4d)
+> Figure: Ethereum EVM shown in the inner box (execution cycle) determines the next state. Source: https://github.com/4c656554/BlockchainIllustrations/ 
 
 Visit the [EVM playground](https://www.evm.codes/playground?fork=shanghai)
 
@@ -197,7 +207,7 @@ It has always the ethos of the Ethereum community to transition the network to a
 
 Fact check this with regards to PoS. **Uncle Blocks**: Unlike other blockchain systems, Ethereum incorporates a mechanism to reward stale blocks, referred to as "uncle" blocks. These are blocks that are valid but not included in the main blockchain. This promotes network security and inclusiveness by providing incentives for miners even if their mined blocks are not included in the main chain.
 
-## Topic 6
+
 
 
 # Characteristics and Quirks
