@@ -4,9 +4,10 @@
 ## Contents
 1. [Motivation](#first-some-brief-history)
 2. [Smart Contracts](#smart-contracts)
-3. [dApps](#dapps)
-4. [Ethereum Virtual Machine](#evm)
-5. [Consensus](#consensus)
+3. [dapps](#dapps)
+4. [Ethereum Architecture](#ethereum-architecture)
+6. [Consensus](#consensus--from-PoS-to-PoW)
+5. [Ethereum Virtual Machine](#ethereum-virtual-machine)
 7. [Characteristics and Quirks](#characteristics-and-quirks)
 8. [What did we miss?](#what-did-we-miss)
 9. [Further Reading - the very short list](#further-reading---the-very-short-list)
@@ -141,8 +142,50 @@ while i>0
 The simple code above continually updates the counter because the stop condition of i being less than or equal to 0 is never met. To avoid this scenario all computation in the EVM needs gas. As a contract is executed gas is consumed and if the contract runs out of the gas then the update fails. All gas is paid in ether (`ETH`) and goes to the nodes (miners) that perform the calculations. A follow up question is what if I am wealthy and have enough gas to spam the network in this manner? To prevent this there is a gas limit on all transactions that is calculated based on how busy the network is.
 > The recent *London* upgrade to Ethereum changed the way that gas is distributed. Previously the miner would be compensated by receiving the entire gas fee in the transaction. Now, part of this fee is *burned*, and the miner gets the remainder. Burning some ETH reduces the overall issuance. More in the section on Proof-of-Work.
 
+
+
+
+# Ethereum Architecture
+
+> <img width="800" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/fa95396b-7bad-4e43-982a-770405ab08a7">\
+> Architecture of an Ethereum node, i.e. Geth, Parity, showing three main clients: Validator, Consensus (Beacon chain), and Execution (EVM). Modified from: https://eth-docker.net/
+
+
+
+
+## Consensus: From PoS to PoW
+On September 15, 2022, the Ethereum network executed "[The Merge](https://ethereum.org/en/roadmap/merge/)" which transferred consensus from the main chain that was operating by proof of work to the beacon chain that was running (in parallel) proof of stake. It was always the ethos of the Ethereum community to transition the network to a fully stake-based validation mechanism. What was unknown at the time was how hard it would be; it took developers ~7 years to do it. 
+
+> <img width="600" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/047defb2-1617-4449-b2e2-c6a3fc31f749">\
+> Tick-tock next block. The network switched consensus methods without missing a block. Tweet: https://twitter.com/pcaversaccio/status/1591744307215605764 
+
+In a PoS system consensus is handled by validators that maintain skin in the game by contributing a stake in ether and are rewarded in a similar fashion to miners. A validator's rewards are proportional to their stake in the system. 
+
+## Ethereum Virtual Machine
+Virtual machines (VMs) in computer science are emulations of a computer system that provide the functionality of a physical computer, operating on the basis of a host system and creating a separate environment known as the guest system. The main purpose of a VM is to enable multiple operating systems to share the same physical hardware resources, promoting flexibility and isolation for applications such as testing and development. 
+
+```bash
+VBoxHeadless --startvm "My_VM"
+VBoxManage createvm --name "my_blockchain_vm" --register
+VBoxManage modifyvm "my_blockchain_vm" --memory 1024 --acpi on --boot1 dvd
+VBoxManage createhd --filename "my_blockchain_vm.vdi" --size 10000
+VBoxManage storagectl "my_blockchain_vm" --name "IDE Controller" --add ide
+VBoxManage storageattach "my_blockchain_vm" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium "my_blockchain_vm.vdi"
+VBoxManage storageattach "my_blockchain_vm" --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /path/to/iso
+VBoxHeadless --startvm "my_blockchain_vm"
+```
+> Bash commands to spin up a VM in linux: register, allocate 1 GB memory, 10 GB disc space, and point to the OS
+
+This concept of emulation is shared with the **EVM**, although they serve different purposes. While regular VMs simulate physical hardware, the EVM is a virtual runtime environment designed specifically for executing smart contracts on the Ethereum blockchain. The EVM operates independently of the underlying hardware, ensuring deterministic computation that yields the same result across all network nodes. Each full node runs a copy of the EVM to verify transactions and smart contract executions, playing a crucial role in the decentralisation and security of the Ethereum network. Both regular VMs and the EVM are vital in their respective fields, with regular VMs being crucial in areas like cloud computing and virtualisation technologies, and the EVM translating the principles of virtualisation to the specific domain of blockchain technology.
+
+> <img width="800" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/9c3de5ff-de3f-44e9-bbb7-6a80abf43e4d">\
+> Figure: Ethereum EVM shown in the inner box (execution cycle) determines the next state. Source: https://github.com/4c656554/BlockchainIllustrations/ 
+
+Visit the [EVM playground](https://www.evm.codes/playground?fork=shanghai) to see the stack in operation.
+
+
 ## dapps
-Decentralised applications, or *dapps* just refer to smart contracts that are executed on a blockchain. When combined with a frontend these dapps can appear just like any other web application with the key difference being that that code and/or user data is stored on the blockchain. 
+So what we do with this decentralised state machine? Decentralised applications, or *dapps* just refer to smart contracts that are executed on a blockchain. When combined with a frontend these dapps can appear just like any other web application with the key difference being that that code and/or user data is stored on the blockchain. 
 
 The [most used dapps](https://dappradar.com/rankings/protocol/ethereum) on Ethereum in 2023 ranked by Unique active wallets (UaW):
 
@@ -165,53 +208,15 @@ This list is dominated by DEX activity, so if we [rank](https://dappradar.com/ra
 
 [^caution]: Take these stats with some salt, I haven't looked into dappradar's methodology, and they are only representative as of August, 2023. Generally over the past few years, Maker, Uniswap, Aave, Curve have been relatively stable and popular protocols. 
 
-### Stablecoins
-Although not listed in the chart above, stable-value currencies were originally categorized as applications that can run on Ethereum. Now called *stablecoins*, it is hard to ignore their growth and popularity when looking at total value. The idea behind them is that to avoid the volatility present in the crypto markets, rather than using `ETH` there is the option to use a crypto token pegged to a common currency like the $USD. If you convert some $NZD to Tether today, then you can rely on the value being relatively stable to use it in the future. Some of the stablecoins that exist on Ethereum are Tether `USDT`, `USDC`, and `DAI`. Both Tether and USDC are issued privately, whereas DAI is a *Decentralized Autonomous Organization* (DAO) and maintains a US dollar peg.
-
-<p align="center"><img width="800" alt="total-stablecoin-supply-daily" src="https://user-images.githubusercontent.com/39792005/147860382-00470018-aae5-46a7-8d7f-023a2b163a4f.png"></p>
-
-Chart from [TheBlock](https://www.theblockcrypto.com/data/decentralized-finance/stablecoins) showing growth in stablecoins over the past four years. The total value of stablecoins rose in 2021 from ~$28B to $150B. Note that this chart includes other blockchains, not just Ethereum.
-
-## EVM
-Virtual machines (VMs) in computer science are emulations of a computer system that provide the functionality of a physical computer, operating on the basis of a host system and creating a separate environment known as the guest system. The main purpose of a VM is to enable multiple operating systems to share the same physical hardware resources, promoting flexibility and isolation for applications such as testing and development. 
-
-```bash
-VBoxHeadless --startvm "My_VM"
-VBoxManage createvm --name "my_blockchain_vm" --register
-VBoxManage modifyvm "my_blockchain_vm" --memory 1024 --acpi on --boot1 dvd
-VBoxManage createhd --filename "my_blockchain_vm.vdi" --size 10000
-VBoxManage storagectl "my_blockchain_vm" --name "IDE Controller" --add ide
-VBoxManage storageattach "my_blockchain_vm" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium "my_blockchain_vm.vdi"
-VBoxManage storageattach "my_blockchain_vm" --storagectl "IDE Controller" --port 0 --device 1 --type dvddrive --medium /path/to/iso
-VBoxHeadless --startvm "my_blockchain_vm"
-```
-> Bash script to spin up a VM in linux: register, allocate memory, disc space, and point to the OS
-
-This concept of emulation is shared with the **Ethereum Virtual Machine** (EVM), although they serve different purposes. While regular VMs simulate physical hardware, the EVM is a virtual runtime environment designed specifically for executing smart contracts on the Ethereum blockchain. The EVM operates independently of the underlying hardware, ensuring deterministic computation that yields the same result across all network nodes. Each full node runs a copy of the EVM to verify transactions and smart contract executions, playing a crucial role in the decentralisation and security of the Ethereum network. Both regular VMs and the EVM are vital in their respective fields, with regular VMs being crucial in areas like cloud computing and virtualisation technologies, and the EVM translating the principles of virtualisation to the specific domain of blockchain technology.
-
-![image](https://github.com/millecodex/COMP842/assets/39792005/9c3de5ff-de3f-44e9-bbb7-6a80abf43e4d)
-> Figure: Ethereum EVM shown in the inner box (execution cycle) determines the next state. Source: https://github.com/4c656554/BlockchainIllustrations/ 
-
-Visit the [EVM playground](https://www.evm.codes/playground?fork=shanghai)
-
-## Consensus: From PoS to PoW
-On September 15, 2022, the Ethereum network executed "[The Merge](https://ethereum.org/en/roadmap/merge/)" which transferred consensus from the main chain that was operating by proof of work to the beacon chain that was running (in parallel) proof of stake. It was always the ethos of the Ethereum community to transition the network to a fully stake-based validation mechanism. What was unknown at the time was how hard it would be; it took developers ~7 years to do it. 
-
-![image](https://github.com/millecodex/COMP842/assets/39792005/047defb2-1617-4449-b2e2-c6a3fc31f749)
-> Tweet: https://twitter.com/pcaversaccio/status/1591744307215605764 
-
-In a PoS system consensus is handled by validators that maintain skin in the game by contributing a stake in ether and are rewarded in a similar fashion to miners. A validator's rewards are proportional to their stake in the system. 
-
 -------------------
-
 # Characteristics and Quirks
 * Difficulty Bomb: Also known as the "Ice Age," the Ethereum network has a built-in difficulty bomb designed to make mining exponentially more challenging over time. This was originally introduced to motivate the network to transition from Proof of Work (PoW) to Proof of Stake (PoS). It's a fascinating mechanic that's deeply rooted in the network's consensus strategy.
+* The DAO hack was an important event in Ethereum's history. There was a bug, and a lot of money was lost, but then the *immutable* blockchain was rolled back, the community split, now there still exists Ethereum Classic (ETC) and an ongoing question over the decentralised nature of Ethereum. See Laura Shin's book [The Cryptoptians](https://laurashin.com/book/) for an excellent accounting of the events.
 * Self-Destruct and Resurrection: A quirky feature in Solidity is the selfdestruct function. When a contract self-destructs, it can send its remaining Ether to another address. Interestingly, if someone sends Ether to a self-destructed contract's address, and a new contract is created at the same address, the new contract will have the Ether sent to the "dead" contract. This resurrection quirk has potential security implications.
 * Uncle Blocks: Unlike other blockchain systems, Ethereum incorporates a mechanism to reward stale blocks, referred to as "uncle" blocks. (Bitcoin calls them orphans.) These are blocks that are valid but not included in the main blockchain. This promotes network security and inclusiveness by providing incentives for miners even if their mined blocks are not included in the main chain.
 
 # What did we miss?
-* The **DAO hack** was an important event in Ethereum's history. There was a bug, and a lot of money was lost, but then the *immutable* blockchain was rolled back, the community split, now there still exists Ethereum Classic (ETC) and an ongoing question over the decentralised nature of Ethereum.
-* Questions of Tokenomics: What is the total supply of ETH? Is ETH money?
+* MEV
 * zkEVM
 
 # Further Reading - the very short list
@@ -219,6 +224,7 @@ In a PoS system consensus is handled by validators that maintain skin in the gam
 * [The Yellowpaper by Gavin Wood](https://github.com/ethereum/yellowpaper), & [pdf](https://ethereum.github.io/yellowpaper/paper.pdf)
 * [Extensive list of learning resources](https://ethereum.org/en/learn/)
 * [EVM Illustrated (slides)](https://github.com/takenobu-hs/ethereum-evm-illustrated)
+* [Beacon Chain Explained](https://ethos.dev/beacon-chain)
 
 # Exercises
 1. a
