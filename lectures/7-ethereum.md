@@ -6,7 +6,7 @@
 2. [ICO](#initial-coin-offering)
 3. [Smart Contracts](#smart-contracts)
 4. [Ethereum Architecture](#ethereum-architecture)
-6. [Consensus](#consensus-from-PoS-to-PoW)
+6. [Consensus](#consensus-from-poS-to-poW)
 5. [Ethereum Virtual Machine](#ethereum-virtual-machine)
 3. [Applications](#applications)
 4. [Characteristics and Quirks](#characteristics-and-quirks)
