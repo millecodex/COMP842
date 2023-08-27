@@ -240,9 +240,9 @@ This list is dominated by DEX activity, so if we [rank](https://dappradar.com/ra
 * [Beacon Chain Explained](https://ethos.dev/beacon-chain)
 
 # Exercises
-1. Visit the [EVM playground](https://www.evm.codes/playground?fork=shanghai) to see the stack in operation.
-2. b
-3. c
+1. Turing-Completeness of Ethereum. Discuss the implications of Ethereum being Turing-complete in contrast to Bitcoin. What opportunities and challenges does Turing-completeness introduce in the context of blockchain applications? Consider aspects such as computational complexity, attack vectors, and flexibility in contract development.
+2. Initial Coin Offering (ICO) Analysis. Critically examine the ICO model used for Ethereum and compare it with the traditional IPO model. Address questions like: What are the ethical and regulatory considerations? How does the ICO model promote or hinder decentralisation? What are the economic risks associated with the ICO model for investors and the network?
+3. The DAO Hack Look at the Solidity code snippet for donateDAO. Identify and analyse the vulnerabilities present in this smart contract that led to the DAO hack. Propose alternative code or solutions to mitigate such vulnerabilities. It might be helpful to refer to security practices in smart contract development.
 
 # Video Lecture
 To be posted.
