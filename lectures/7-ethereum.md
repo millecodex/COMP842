@@ -221,7 +221,6 @@ This list is dominated by DEX activity, so if we [rank](https://dappradar.com/ra
 
 [^caution]: Take these stats with some salt, I haven't looked into dappradar's methodology, and they are only representative as of August, 2023. Generally over the past few years, Maker, Uniswap, Aave, Curve have been relatively stable and popular protocols. 
 
--------------------
 # Characteristics and Quirks
 * Difficulty Bomb: Also known as the "Ice Age," the Ethereum network has a built-in difficulty bomb designed to make mining exponentially more challenging over time. This was originally introduced to motivate the network to transition from Proof of Work (PoW) to Proof of Stake (PoS). It's a fascinating mechanic that's deeply rooted in the network's consensus strategy.
 * The DAO hack was an important event in Ethereum's history. There was a bug, and a lot of money was lost, but then the *immutable* blockchain was rolled back, the community split, now there still exists Ethereum Classic (ETC) and an ongoing question over the decentralised nature of Ethereum. See Laura Shin's book [The Cryptoptians](https://laurashin.com/book/) for an excellent accounting of the events.
@@ -229,8 +228,8 @@ This list is dominated by DEX activity, so if we [rank](https://dappradar.com/ra
 * Uncle Blocks: Unlike other blockchain systems, Ethereum incorporates a mechanism to reward stale blocks, referred to as "uncle" blocks. (Bitcoin calls them orphans.) These are blocks that are valid but not included in the main blockchain. This promotes network security and inclusiveness by providing incentives for miners even if their mined blocks are not included in the main chain.
 
 # What did we miss?
-* MEV
-* zkEVM
+* [MEV](https://ethereum.org/en/developers/docs/mev/)
+* [zkEVM](https://www.alchemy.com/overviews/zkevm)
 
 # Further Reading - the very short list
 * [The Whitepaper by Vitalik Buterin](https://ethereum.org/en/whitepaper/)
