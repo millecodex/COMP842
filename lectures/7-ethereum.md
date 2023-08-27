@@ -31,8 +31,6 @@ Summarizing Ethereum from the whitepaper[^Buterin2014]:
 
 [^Buterin2014]: Buterin, V. (2014). Ethereum: A next-generation smart contract and decentralized application platform.
 
-
-
 ## Initial Coin Offering
 In order to fund their new proposed blockchain network, the founders embarked on a unique [fundraising scheme](https://blog.ethereum.org/2014/07/22/launching-the-ether-sale/) that laid down the template for future crowdfunding sales. An initial coin offering (ICO) seeks to bootstrap user adoption and funding by combining the style of an initial public offering (IPO) with a crowd fund model. A marked difference from the IPO model is that the token sale was open to anyone without geographic or regulatory restriction. All users had to do to participate was deposit bitcoin and receive *ether* tokens that represent their stake in the new network. The token sale was successful resulting in more than 50 million ether (the native currency of ethereum) being sold. Investors were aware of the token distribution from the beginning which included 9.9% of the tokens reserved for the founders (to fund development, salaries, bug bounties, etc.) and another 9.9% for a [foundation](https://ethereum.foundation/) that was set up to guide the long term mission of the network. These tokens didn't have to be purchased in a traditional sense; a practice now known as *pre-mining*.
 
@@ -144,20 +142,27 @@ The simple code above continually updates the counter because the stop condition
 
 
 # Ethereum Architecture
-
+Looking at Ethereum from an individual node point of view there are three main clients that work together to (a) maintain consensus and (b) update the state.
 > <img width="800" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/fa95396b-7bad-4e43-982a-770405ab08a7">\
 > Architecture of an Ethereum node, i.e. Geth, Parity, showing three main clients: Validator, Consensus (Beacon chain), and Execution (EVM). Modified from: https://eth-docker.net/
-
-
-
 
 ## Consensus: From PoS to PoW
 On September 15, 2022, the Ethereum network executed "[The Merge](https://ethereum.org/en/roadmap/merge/)" which transferred consensus from the main chain that was operating by proof of work to the beacon chain that was running (in parallel) proof of stake. It was always the ethos of the Ethereum community to transition the network to a fully stake-based validation mechanism. What was unknown at the time was how hard it would be; it took developers ~7 years to do it. 
 
 > <img width="600" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/047defb2-1617-4449-b2e2-c6a3fc31f749">\
-> Tick-tock next block. The network switched consensus methods without missing a block. Tweet: https://twitter.com/pcaversaccio/status/1591744307215605764 
+> Tweet: Tick-tock next block. The network switched consensus methods without missing a block. Source: https://twitter.com/pcaversaccio/status/1591744307215605764 
 
-In a PoS system consensus is handled by validators that maintain skin in the game by contributing a stake in ether and are rewarded in a similar fashion to miners. A validator's rewards are proportional to their stake in the system. 
+In a PoS system consensus is handled by validators that maintain skin in the game by contributing a stake in ether and are rewarded in a similar fashion to miners. A validator's rewards are proportional to their stake in the system. The rules of the game dictate the validators must not be able to cheaply spam the network with multiple identities (Sybil resistance), which is enforced by a known list of validators with rewards in proportion to total stake. So multiple entites can join, but you must have >32 ETC to do so. 
+
+> <img width="800" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/24925a07-ad77-46cc-a6d6-132359547d39">\
+> Figure: Ethereum consensus enforces sybil resistance by slashing penalties, and uses committee voting to determing the chain-head.
+
+## Beacon Chain
+The beacon chain launched at the end of 2020 to act as the proof of stake consensus chain alongside the proof of work chain. It is now the 'main' Ethereum chain. Forks in Ethereum are resolved through voting. Block ordering is done by collecting attestations on each block as to whether or not it is the 'chain-head'. Block proposers are selected in a BFT-style leader election process, and finality is determined by validator voting on checkpoints. There is 1 check point in each epoch (32 slots). There is 1 block proposer and block per slot. Supermajority, or greater than 2/3 of the votes are required for selecting the chain-head[^LMDGHOST] and the epoch check-point. This means that up to 1/3 can be malicious. Each block takes 12 seconds to be published, and thus each epoch is $12*32=384$ seconds, or 6:24.
+
+[^LMDGHOST]: The name of the fork-choice rule algorithm. The acryonym stands for Latest Message Driven Greediest Heaviest Observed SubTree. Read the paper: Combining GHOST and Casper https://arxiv.org/pdf/2003.03052.pdf
+
+Once the beacon chain decides on the chain-head and has a block proposer, the node has 12 seconds to execute transactions and advance the state before publishing the updated block. The block is propagated by sending it out through the network gossip protocol. Executing transactions means it will process all the smart contract code, deploy new contracts, and update account balances. These are all handled by the Ethereum Virtual Machine.
 
 ## Ethereum Virtual Machine
 ### VMs
@@ -175,7 +180,7 @@ VBoxHeadless --startvm "my_blockchain_vm"
 ```
 > Bash commands to spin up a VM in linux: register, allocate 1 GB memory, 10 GB disc space, and point to the OS
 
-This concept of emulation is shared with the **EVM**, although they serve different purposes. While regular VMs simulate physical hardware, the EVM is a virtual runtime environment designed specifically for executing smart contracts on the Ethereum blockchain. The EVM operates independently of the underlying hardware, ensuring deterministic computation that yields the same result across all network nodes. Each full node runs a copy of the EVM to verify transactions and smart contract executions, playing a crucial role in the decentralisation and security of the Ethereum network. Both regular VMs and the EVM are vital in their respective fields, with regular VMs being crucial in areas like cloud computing and virtualisation technologies, and the EVM translating the principles of virtualisation to the specific domain of blockchain technology.
+This concept of emulation is shared with the **EVM**, although they serve different purposes. While regular VMs simulate physical hardware, the EVM is a virtual runtime environment designed specifically for executing smart contracts on the Ethereum blockchain. The EVM operates independently of the underlying hardware, ensuring deterministic computation that yields the same result across all network nodes. Each full node runs a copy of the EVM to verify transactions and smart contract executions, playing a crucial role in the decentralisation and security of the Ethereum network.
 
 > <img width="800" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/9c3de5ff-de3f-44e9-bbb7-6a80abf43e4d">\
 > Figure: Ethereum EVM shown in the inner box (execution cycle) determines the next state. Source: https://github.com/4c656554/BlockchainIllustrations/ 
