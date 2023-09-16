@@ -96,6 +96,7 @@ Advanced section. See the What did we miss? section.
 * [zk-SNARKs: Under the Hood](https://medium.com/@VitalikButerin/zk-snarks-under-the-hood-b33151a013f6) by Vitalik Buterin: A deep dive into zk-SNARKs and their application in blockchain.
 * [Blockchain Privacy and Regulatory Compliance: Towards a Practical Equilibrium](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4563364) by Vitalik Buterin et.al (2023). An exploration of privacy issues and solutions in blockchain.
 * [The Dining Cryptographers Problem: Unconditional Sender and Recipient Untraceability](https://link.springer.com/content/pdf/10.1007/BF00206326.pdf) by David Chaum: Introduces the concept of anonymous communication.
+* Radiolab Podcast 'The Ceremony' about the ZCash trusted setup https://radiolab.org/podcast/ceremony 
 
 # Exercises
 1. a
