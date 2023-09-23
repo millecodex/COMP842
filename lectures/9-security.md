@@ -70,7 +70,15 @@ In Proof of Work (PoW) systems, two economic factors act as natural deterrents t
 Preventive measures against DoS attacks include rate limiting to cap the number of requests from a single source and using a distributed architecture to make it harder for an attacker to target specific nodes. Additionally, decentralized peer discovery mechanisms can decrease the risk of DoS attacks by not relying on a central authority for network participation.
 
 ### Sybil
-In a PoW chain, multiple identities require splitting one's computing power and receiving proportionally less reward per identity. Similarly, a proof of stake proportion of tokens must be divvied up between Sybils.
+In a Sybil[^sybil] attack on a blockchain network, a single adversary controls multiple nodes, essentially creating a large number of fake identities. This can undermine mechanisms that rely on redundancy and trust. For example, in peer-to-peer blockchain networks, nodes often share information based on a mutual trust assumption. A Sybil attacker could disseminate false information, manipulate transactions, or undermine mechanisms that rely on redundancy and trust, such as routing between nodes or the formation of quorums in consensus algorithms.
+
+[^sybil]: From the book "Sybil," published in 1973, which is about a young woman with a dissociative identity disorder. In the book, Sybil Dorsett, the main character, has multiple personalities as a result of childhood abuse. The term was adopted to describe attacks in computer networks where a single adversary controls multiple nodes, essentially creating multiple fake identities, much like Sybil Dorsett's multiple personalities. The concept of the Sybil attack was formalized in a 2002 paper by researcher John Douceur, and it has since become a fundamental concern in the field of network security, particularly in decentralized systems like peer-to-peer networks and blockchains.
+
+In Proof of Work (PoW) blockchains, Sybil attacks are generally less effective because block creation is computationally expensive, and controlling a significant portion of the network's computational power is costly. Similarly, in Proof of Stake (PoS) systems, staking a significant amount of the cryptocurrency makes Sybil attacks expensive to execute.
+
+However, in networks where reputation or simple node count matters, Sybil attacks can be more problematic. For instance, in networks using simple majority voting without a staking or computational component, a Sybil attacker can create a majority of nodes and have undue influence over the network.
+
+Defenses against Sybil attacks often involve some form of validation that makes it expensive or cumbersome to create a large number of nodes, such as requiring some form of validation or introducing computational or financial costs to participate in network activities.
 
 ## 4. Protocol (Consensus) Layer
 
@@ -175,9 +183,7 @@ The main practical threat to a single entity controlling the majority of the has
 * Blockchain Security Vulnerabilities by Hackn https://hackn.gitbook.io/l1-security/ 
 
 # Exercises
-1. a
-2. b
-3. c
+1. To be posted.
 
 # Resources
 * Watch Lera Nikolaenko (a16z crypto research partner, super smart) given you the deep dive into Proof of Stake blockchain attacks ([Youtube](https://youtu.be/-uxHoEfxXC4))
