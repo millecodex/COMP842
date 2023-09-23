@@ -11,11 +11,11 @@ Divided into three pillars, security of a blockchain involves being prepared for
 
 # Blockchain Security Taxonomy
 Taking inspiration from the blockchain tech stack, we will orgnaize the security threats according to layers:
-1. [Infrastructure Layer Security](#1. Infrastructure Layer Security)
-2. [Data Layer Security](#2. Data Layer Security)
-3. [Network Layer Security](#3. Network Layer Security)
-4. [Protocol (Consensus) Layer Security](#4. Protocol (Consensus) Layer)
-5. [Application Layer Security](#5. Application Layer Security)
+1. [Infrastructure Layer Security](#1-infrastructure-layer-security)
+2. [Data Layer Security](#2-data-layer-security)
+3. [Network Layer Security](#3-network-layer-security)
+4. [Protocol (Consensus) Layer Security](#4-protocol-consensus-layer)
+5. [Application Layer Security](#5-application-layer-security)
 
 ## 1. Infrastructure Layer Security
 
