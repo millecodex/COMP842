@@ -21,8 +21,8 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 6. [Wallets & Tokens](lectures/6-wallets.md) & 🚀**Seminar**⚡ by [Everlasting.io](https://www.everlasting.io/)
 7. [Ethereum](lectures/7-ethereum.md)
 8. [Privacy](lectures/8-privacy.md) & Presentation Check-point
-9. Security
-10. DeFi
+9. [Security](lectures/9-security.md)
+10. DeFi & Digital Assets
 11. Web3 & 🚀**Seminar**⚡ by [Ryan Johnson-Hunt](https://linktr.ee/ryanjohnsonhunt)
 12. Social Factors
 
