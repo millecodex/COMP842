@@ -91,18 +91,56 @@ In a grinding attack, the attacker increases their probability of being selected
 | User Interface           | Smart Contracts                 | Social  |
 |--------------------------|---------------------------------|----------------------|
 | Phishing                 | Reentrancy                      | Social Engineering   |
-| Multi-Signature          | Integer Overflow/Underflow      |   Rug Pull     |
+| Multi-Signature          | Integer Overflow/Underflow      |  Rug Pull             |
 | Weak Randomness          | Uninitialized Storage Pointers  |  Regulatory Risks   |
 |                           |Front-Running / MEV             |  Decentralisation       |  
-|                           |Timestamp Dependence            |          |
+|                           |Timestamp Dependence            |                        |
 
 ### Smart Contracts
 As the industry matures and well known SC exploits are learned from a number of best practices emerge. See the [smart contract security field guide](https://scsfg.io/hackers/) for best practices in smart contract development.
 
+#### DAO Hack
+The most famous smart contract exploit is the Ethereum **DAO hack** that took place in 2016 when a hacker drained US $50 million from a [fundraising account](https://www.gemini.com/cryptopedia/the-dao-hack-makerdao#section-the-dao-hack-remedy-forks-ethereum). Here is some logic from the attack:
+
+```solidity
+contract donateDAO {
+    mapping (address => uint256) public credit;
+
+    // add funds to the contract
+    function donate(address to) payable {
+        credit[msg.sender] += msg.value;
+    }
+
+    // show ether credited to address
+    function assignedCredit(address) returns (uint) {
+        return credit[msg.sender];
+    }
+
+    // withdrawal ether from contract
+    function withdraw(uint amount) {
+        if (credit[msg.sender] >= amount) {
+            msg.sender.call.value(amount)();
+            credit[msg.sender] -= amount;
+        }
+    }
+}
+```
+
+The problem is in the `withdraw()` function. In line 17, `call.value()` sends funds, in this case to the sender, before updating the balance. Here, the hacker can request their funds back, and then a fallback function triggers a recursive call that keeps sending funds back without updating the balance[^Humiston2018]. The **reentrancy** attack took advantage of the fact that the smart contract logic allowed external calls to untrusted contracts before the internal state was updated. In simple terms, the attacker was able to repeatedly "re-enter" the smart contract and drain funds before the contract had a chance to update its internal record of withdrawals. This resulted in a substantial portion of the DAO's funds being siphoned off by the attacker.
+
+[^Humiston2018]: Humiston, I. (2018). Attacks and Incidents. In Ethereum Smart Contract Development (pp. 81-94). Apress.
+
+#### MEV
+MEV refers to the maximum value that can be extracted from transaction reordering, transaction inclusion, and transaction censorship by validators within a block. Essentially, it quantifies the financial incentives for validators to deviate from the "honest" behavior expected of them. In Ethereum validators have the authority to choose the transactions that will be included in the next block. Because transactions pay fees to validators for their inclusion in a block, validators naturally prioritize transactions offering higher fees. However, the ability to choose transactions and their ordering within a block creates opportunities for MEV.
+
+Validators can strategically reorder transactions to take advantage of arbitrage opportunities or even [front-run](https://hacken.io/discover/front-running/) specific transactions. Front-running involves placing a transaction ahead of another transaction in a block to take advantage of some profitable condition before the latter transaction can be executed. For example, if a trader is about to buy a large amount of a particular token, which is expected to increase the token price, a front-running validator can buy the token first and sell it after the trader's purchase, thereby making a profit.
+
+Although mentioned here in the context of security, MEV is more of a consequence of the nature of fee market transactions in a decentralised system, rather than malicious behaviour.
+
 ### Exchanges & Scams
 The list of hacks and breaches of cryptocurrency exchanges is long and colorful. A sampling can be found [here](https://www.hedgewithcrypto.com/cryptocurrency-exchange-hacks/) and includes a New Zealand (Christchurch based) company _Cryptopia_.
 
-Outright scams are also prominent as Bitcoin becomes popular and increases in value, many 'alternatives' make the rounds promising massive gains and better features. The OneCoin scam was recently popularized in the excellent BBC podcast series _The Missing Queen_ by Jamie Bartlett. Episodes available [here](https://www.bbc.co.uk/programmes/p07nkd84/episodes/downloads).
+Outright scams are also prominent as Bitcoin becomes popular and increases in value, many 'alternatives' make the rounds promising massive gains and better features. The OneCoin scam was recently popularized in the excellent BBC podcast series _The Missing Queen_ by Jamie Bartlett. Episodes available [here](https://www.bbc.co.uk/programmes/p07nkd84/episodes/downloads). Often these types of scams are called **Rug Pulls** as the founders or one of the founders decides to abscond with user funds, often leaving nothing more than a trail of transaction history for victims to search.
 
 ### Mining Centralisation
 The main practical threat to a single entity controlling the majority of the hashpower is that it will lead to centralization and cause users to abandon the system altogether. Once hashpower gets close to this threshold it is also possible that developers will step in and update the software to limit this behaviour. It is unknown how this will play out in the future. Thus far the bitcoin network has been relatively decentralized, but a few mega mining pools have emerged. There have been some cases of 51% attacks on alternative cryptocurrencies such as Verge, Horizen, and Vertcoin. Smaller cryptocurrencies are more vulnerable to a large mining pool shifting their resources for this purpose.
@@ -113,7 +151,7 @@ The main practical threat to a single entity controlling the majority of the has
 * iii 
 
 ## Further Reading - the very short list
-* Good description of Front Running and MEV from [Hacken.io](https://hacken.io/discover/front-running/)
+* -
 * Blockchain Security Vulnerabilities by Hackn https://hackn.gitbook.io/l1-security/ 
 * C
 
