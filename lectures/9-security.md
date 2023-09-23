@@ -7,7 +7,7 @@
 1. [Further Reading - the very short list](#further-reading---the-very-short-list)
 1. [Exercises](#exercises)
 
-Divided into three pillars, security of a blockchain involves being prepared for many different attacks at the personal, community, and protocol levels. This list is not exhaustive and only represents some of the main security considerations that must be made when evaluating blockchains. Not every attack mentioned will be described, but there is an excellent source for blockchains security considerations [here](https://hackn.gitbook.io/l1-security/).
+Divided into five layers, security of a blockchain involves being aware of different attacks from the infrastructure to the social level. This list is not exhaustive and only represents some of the main security considerations that must be made when evaluating blockchains. Not every attack mentioned will be described, but there is an excellent source for blockchains security considerations [here](https://hackn.gitbook.io/l1-security/).
 
 # Blockchain Security Taxonomy
 Taking inspiration from the blockchain tech stack, we will orgnaize the security threats according to layers:
@@ -19,23 +19,38 @@ Taking inspiration from the blockchain tech stack, we will orgnaize the security
 
 ## 1. Infrastructure Layer Security
 
-| Public vs Private Networks  | Node-Related     | Denial of Service  |
-|-----------------------------|------------------|--------------------|
-| Permissionless vs Permissioned | Node Compromise |  DoS |
-|                              | Information Leakage  |                |
+|    Infrastructure   |
+|---------------------|
+|    Validators/Nodes    | 
+|    Miners       |
+|    Routers     |
 
-Denial of Service (DoS) and Sybil attacks (below, network) are common to all networking systems. The consensus protocol itself handles these attacks by making it prohibitively expensive for an attacker to spam the network and create multiple identities. Spamming results in an immediate loss of funds through fees or resources spent such as electricity. In a PoW chain, multiple identities require splitting one's computing power and receiving proportionally less reward per identity. Similarly, a proof of stake proportion of tokens must be divvied up between Sybils.
+The infrastructure layer involves the hardware components that build up the network. For blockchains this could mining hardware, node hardware, and their secure components, both physical and digital. Mining attacks are discussed below as part of consensus. We will exclude discussions on securing routers, validators, and the communication between them.
 
 ## 2. Data Layer Security
 
-| Cryptographic       | Transaction Related     | Other Attacks    |
-|---------------------|-------------------------|------------------|
-|    Cryptanalysis   | Transaction Replay      | Length Extension  |
-|  Hash Collision     | Transaction Malleability | False Top-Up      |
-|                     | Time-Locked Transaction |                   |
+| Cryptographic       | Transaction Related     |
+|---------------------|-------------------------|
+|    Cryptanalysis    | Double Spending         | 
+|  Hash Collision     | Transaction Malleability | 
+|   Length Extension   | Time-Locked Transaction |
 
-Cryptanalysis and various cryptographic attacks will not be discussed here as they are not specific to blockchain networks.
-**Transaction Replay** is a double-spend attack.
+Cryptanalysis and various cryptographic attacks will not be discussed here as they apply in general and are not specific to blockchain networks.
+
+### Double Spend Attack
+A transaction replay, or a double-spend attack is a type of fraudulent activity in which digital coins are spent more than once. Should someone be able to double spend, this will undermine the integrity and trust in the network, making it crucial for blockchain networks to have mechanisms to prevent this type of attack.
+
+PoW Mitigations:
+* Confirmation Time: In PoW blockchains like Bitcoin, transactions are considered secure after several block confirmations. This makes it increasingly difficult for an attacker to reverse a transaction as they would need to redo the work for the confirmed blocks and catch up with the network's ongoing mining efforts.
+* Economic Disincentives: Successfully executing a double-spend attack in a PoW system would require an attacker to control at least 51% of the network's hashing power. The cost of acquiring this much computational power makes such attacks economically unfeasible in well-established networks.
+* Network Propagation: Transactions and blocks are rapidly propagated across the network, making it difficult for an attacker to propagate a fraudulent transaction without other network nodes becoming aware of the inconsistency.
+
+PoS Mitigations:
+* Slashing: validators are required to "stake" or lock up a significant amount of cryptocurrency as collateral. Malicious actions can result in the loss of this stake, creating a financial disincentive for double spending.
+* Finality: introduce the concept of "finality," meaning that once a block has been confirmed to a certain degree, it can't be changed. This makes it impossible to double-spend without violating the protocol rules, which would lead to penalties.
+* Long-range Attacks Prevention: PoS systems often implement mechanisms like checkpoints or other finality-enforcing techniques to prevent attackers from forking the blockchain far back in history to double-spend.
+
+Transaction Malleability allows altering a transaction's ID without changing its effect, creating potential for fraud. Time-Locked Transactions execute after a condition is met but can be exploited to manipulate transaction order.
 
 ## 3. Network Layer Security
 
@@ -45,19 +60,29 @@ Cryptanalysis and various cryptographic attacks will not be discussed here as th
 | Eclipse         |                 |                       | Alien    |
 |||                                                        | Timejacking     |
 
+### DoS
+A Denial of Service (DoS) attack aims to disrupt normal functioning by overwhelming the network with excessive requests or traffic. DoS attacks can manifest in various ways, such as flooding the network with invalid transactions, overloading node capacities, or targeting the consensus mechanism.
 
+In Proof of Work (PoW) systems, two economic factors act as natural deterrents to DoS attacks:
+* Transaction Fees: Each transaction requires a fee, which discourages attackers from flooding the network with numerous low-value or invalid transactions. The financial cost of such an attack would be prohibitively high.
+* Cost of Hashpower: Miners invest in significant computational resources to participate in the network. To successfully launch a DoS attack, an adversary would need to outcompete these miners, requiring an impractically high investment in hashpower.
+
+Preventive measures against DoS attacks include rate limiting to cap the number of requests from a single source and using a distributed architecture to make it harder for an attacker to target specific nodes. Additionally, decentralized peer discovery mechanisms can decrease the risk of DoS attacks by not relying on a central authority for network participation.
+
+### Sybil
+In a PoW chain, multiple identities require splitting one's computing power and receiving proportionally less reward per identity. Similarly, a proof of stake proportion of tokens must be divvied up between Sybils.
 
 ## 4. Protocol (Consensus) Layer
 
 | Proof Mechanisms | Transaction Validation | Chain Manipulation   | Mining-Related      |
 |------------------|------------------------|----------------------|---------------------|
-| 51% (PoW)        | Race Attack*           | Long Range Attack    | Selfish Mining      |
-| 34% (PoS)        | Finney Attack*         |  Grinding Attack      | Pool Hopping        |
-| Nothing at Stake | One-Confirmation Attack* | Chain Re-org        |  Bribery Attack   |
+| 51% (PoW)        | Race*                   | Long Range         | Selfish Mining      |
+| 34% (PoS)        | Finney*                 |  Grinding           | Pool Hopping        |
+| Nothing at Stake | One-Confirmation*       | Chain Re-org        |  Bribery            |
 |                  |                         |                      | Block Discarding    |
 |                  |                         |                      | Block Withholding   |
 |                  |                         |                      | Fork After Withholding |
-|                  |                         |                      | Uncle-Block Attack  |
+|                  |                         |                      | Uncle-Block   |
 
 \* A type of double-spend attack
 
@@ -81,7 +106,7 @@ A Long Range attack involves rebuilding a blockchain from scratch with the inten
 
 In the short term, an attacker can attempt a double-spend by incentivizing participants to build on an orphaned chain as soon as a malicious transaction is broadcast. This is done secretly. If the alternate chain succeeds in overtaking the main chain, the double spend was successful. Basically, miners can be bribed to compete on the alternate chain, and this will be profitable up to the value of the double spend. Similar to the Nothing at Stake problem, a short-range attacker is penalized by slashing or revocation of validation privileges.
 
-### Grinding
+### Grinding Attack
 In a grinding attack, the attacker increases their probability of being selected for block minting. For example, a validator could iterate through many combinations of block parameters searching for a favorable one to get published. Given enough computing power, the attacker could always "find" a suitable block (Kiayias et al., 2019). A general mitigation measure for this is to use a source of randomness that cannot be known in advance, like a random function that uses seeds from a group of validators. Of course, the validators could work together and collude. Workarounds for this can be found in Ethereum's Proof of Stake FAQ.
 
 ## 5. Application Layer Security
@@ -145,13 +170,9 @@ The main practical threat to a single entity controlling the majority of the has
 
 # What did we miss?
 * There are a number of mining-related attacks; most of which are theoretical for Bitcoin because of its decentralisation and large network hashpower, but could be more practicle for smaller PoW based cryptocurrencies.
-* ii
-* iii 
 
 # Further Reading - the very short list
-* -
 * Blockchain Security Vulnerabilities by Hackn https://hackn.gitbook.io/l1-security/ 
-* C
 
 # Exercises
 1. a
