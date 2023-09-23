@@ -101,7 +101,7 @@ contract Coin {
 ```
 
 **Example Contract 3**
-The Ethereum DAO hack took place in 2016 when a hacker drained US $50 million from a [fundraising account](https://daohub.org/). Here is some logic from the attack:
+The Ethereum DAO hack took place in 2016 when a hacker drained US $50 million from a [fundraising account](https://www.gemini.com/cryptopedia/the-dao-hack-makerdao#section-the-dao-hack-remedy-forks-ethereum). Here is some logic from the attack:
 
 ```solidity
 contract donateDAO {
