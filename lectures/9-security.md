@@ -7,33 +7,33 @@
 1. [Further Reading - the very short list](#further-reading---the-very-short-list)
 1. [Exercises](#exercises)
 
-Divided into five layers, security of a blockchain involves being aware of different attacks from the infrastructure to the social level. This list is not exhaustive and only represents some of the main security considerations that must be made when evaluating blockchains. Not every attack mentioned will be described, but there is an excellent source for blockchains security considerations [here](https://hackn.gitbook.io/l1-security/).
+Divided into five layers, security of a blockchain involves being aware of different attacks from the infrastructure (hardware & physical security) to the social level (applications & phishing). This list is not exhaustive and only represents some of the main security considerations that must be made when evaluating blockchains. Not every attack mentioned will be described, but there is an excellent source for blockchains security considerations [here](https://hackn.gitbook.io/l1-security/).
 
 # Blockchain Security Taxonomy
 Taking inspiration from the blockchain tech stack, we will orgnaize the security threats according to layers:
 1. [Infrastructure Layer Security](#1-infrastructure-layer-security)
-2. [Data Layer Security](#2-data-layer-security)
-3. [Network Layer Security](#3-network-layer-security)
-4. [Protocol (Consensus) Layer Security](#4-protocol-consensus-layer)
-5. [Application Layer Security](#5-application-layer-security)
+2. [Data Layer Attacks](#2-data-layer-attacks)
+3. [Network Layer Attacks](#3-network-layer-attacks)
+4. [Protocol (Consensus) Layer Attacks](#4-protocol-consensus-layer-attacks)
+5. [Application Layer Attacks](#5-application-layer-attacks)
 
 ## 1. Infrastructure Layer Security
 
-|    Infrastructure   |
-|---------------------|
-|    Validators/Nodes    | 
-|    Miners       |
-|    Routers     |
+| Blockchain | General |
+|---------------------|--|
+|  Validators (PoS) |  Routers   |
+|  Nodes  (PoW) | Cloud Services |
+|  Miners (PoW)  | Mobile Services |
 
-The infrastructure layer involves the hardware components that build up the network. For blockchains this could mining hardware, node hardware, and their secure components, both physical and digital. Mining attacks are discussed below as part of consensus. We will exclude discussions on securing routers, validators, and the communication between them.
+The infrastructure layer involves the hardware components that build up the network. For blockchains this could mining hardware, node hardware, and their secure components, both physical and digital. Mining attacks are discussed below as part of consensus. We will exclude discussions on securing routers, validators, and the communication between them. Any cloud services will have a security policy for their services. Similarly, mobile services that run light clients or wallets will also use inherited security policy.
 
-## 2. Data Layer Security
+## 2. Data Layer Attacks
 
 | Cryptographic       | Transaction Related     |
 |---------------------|-------------------------|
-|    Cryptanalysis    | Double Spending         | 
+|General Cryptanalysis| Double Spending         | 
 |  Hash Collision     | Transaction Malleability | 
-|   Length Extension   | Time-Locked Transaction |
+|   Length Extension  | Time-Locked Transaction |
 
 Cryptanalysis and various cryptographic attacks will not be discussed here as they apply in general and are not specific to blockchain networks.
 
@@ -52,7 +52,7 @@ PoS Mitigations:
 
 Transaction Malleability allows altering a transaction's ID without changing its effect, creating potential for fraud. Time-Locked Transactions execute after a condition is met but can be exploited to manipulate transaction order.
 
-## 3. Network Layer Security
+## 3. Network Layer Attacks
 
 | P2P Components  | Data Integrity  | Resource Exhaustion | Routing & IPs  |
 |-----------------|-----------------|---------------------|----------------|
@@ -80,12 +80,17 @@ However, in networks where reputation or simple node count matters, Sybil attack
 
 Defenses against Sybil attacks often involve some form of validation that makes it expensive or cumbersome to create a large number of nodes, such as requiring some form of validation or introducing computational or financial costs to participate in network activities.
 
-## 4. Protocol (Consensus) Layer
+### Routing & Other
+BGP, Alien, and Timejacking highlight some vulnerabilities in routing, and time synchronization across decentralized systems. BGP (Border Gateway Protocol) hijacking involves diverting internet traffic by falsely announcing IP spaces, potentially intercepting or tampering with data. Alien attacks focus on subverting the consensus in blockchain networks by exploiting network delays and out-of-order message delivery. Timejacking manipulates a node's perception of network time, causing discrepancies in block timestamps or transaction validation.
+
+An eclipse attack aims to isolate a target by controlling all the traffic directed at that node. Controlling the information a target gets from the network can then compel the node to be behave in certain ways.
+
+## 4. Protocol (Consensus) Layer Attacks
 
 | Proof Mechanisms | Transaction Validation | Chain Manipulation   | Mining-Related      |
 |------------------|------------------------|----------------------|---------------------|
 | 51% (PoW)        | Race*                   | Long Range         | Selfish Mining      |
-| 34% (PoS)        | Finney*                 |  Grinding           | Pool Hopping        |
+| $>\frac{1}{3}$ (PoS) | Finney*             |  Grinding           | Pool Hopping        |
 | Nothing at Stake | One-Confirmation*       | Chain Re-org        |  Bribery            |
 |                  |                         |                      | Block Discarding    |
 |                  |                         |                      | Block Withholding   |
@@ -107,7 +112,7 @@ An adversary doesn't necessarily need 51% of the hash power, but with a large nu
 ### Nothing at Stake
 Given a fork in a proof of stake system, the user is incentivized to build on every branch. In a proof of work system, the user has a finite amount of hashpower that is most profitable if used to build on the main chain. This constraint is gone in a pure proof of stake system as the user can bid for blocks on any and all branches. The probability of finding a block remains constant. Here, the blockchain may never reach consensus as everyone is scrambling to build blocks rather than maintain the longest chain (BitFury, 2015).
 
-A simple solution is to penalize someone who publishes blocks on multiple branches. This is known as slashing and acts as a disincentive to build on non-consensus chains (Buterin, 2017).
+A simple solution is to penalize someone who publishes blocks on multiple branches. This is known as slashing and acts as a disincentive to build on non-consensus chains.
 
 ### Short and Long Range Attacks
 A Long Range attack involves rebuilding a blockchain from scratch with the intention of overtaking main-chain consensus. A user with enough computational power could accomplish this easier than the same attack on a proof of work chain. To prevent an attacker from building a long competing chain, milestones can be reached along the way that act as finality checkpoints. Going back in time before a checkpoint is not possible as any other branches, including the potential attack, would be pruned. Ethereum uses validator nodes that vote on checkpoint blocks within an epoch.
@@ -115,17 +120,17 @@ A Long Range attack involves rebuilding a blockchain from scratch with the inten
 In the short term, an attacker can attempt a double-spend by incentivizing participants to build on an orphaned chain as soon as a malicious transaction is broadcast. This is done secretly. If the alternate chain succeeds in overtaking the main chain, the double spend was successful. Basically, miners can be bribed to compete on the alternate chain, and this will be profitable up to the value of the double spend. Similar to the Nothing at Stake problem, a short-range attacker is penalized by slashing or revocation of validation privileges.
 
 ### Grinding Attack
-In a grinding attack, the attacker increases their probability of being selected for block minting. For example, a validator could iterate through many combinations of block parameters searching for a favorable one to get published. Given enough computing power, the attacker could always "find" a suitable block (Kiayias et al., 2019). A general mitigation measure for this is to use a source of randomness that cannot be known in advance, like a random function that uses seeds from a group of validators. Of course, the validators could work together and collude. Workarounds for this can be found in Ethereum's Proof of Stake FAQ.
+In a grinding attack, the attacker increases their probability of being selected for block minting. For example, a validator could iterate through many combinations of block parameters searching for a favorable one to get published. Given enough computing power, the attacker could always "find" a suitable block. A general mitigation measure for this is to use a source of randomness that cannot be known in advance, like a random function that uses seeds from a group of validators. Of course, the validators could work together and collude. Workarounds for this can be found in Ethereum's Proof of Stake FAQ.
 
-## 5. Application Layer Security
+## 5. Application Layer Attacks
 
 | User Interface           | Smart Contracts                 | Social  |
-|--------------------------|---------------------------------|----------------------|
-| Phishing                 | Reentrancy                      | Social Engineering   |
-| Multi-Signature          | Front-Running / MEV             | Rug Pull           |
-| Weak Randomness          | Uninitialized Storage Pointers  | Decentralisation   |
-|                           | Integer Overflow/Underflow     | Regulatory Risks    |  
-|                           |Timestamp Dependence            |                        |
+|--------------------------|---------------------------------|--------------------------|
+| Phishing                 | Reentrancy                      | Social Engineering       |
+| Multi-Signature          | Front-Running / MEV             | Rug Pulls                |
+| Weak Randomness          | Uninitialized Storage Pointers  | Decentralisation Risks   |
+|                          | Integer Overflow/Underflow      | Regulatory Risks         |  
+|                          |Timestamp Dependence             |                          |
 
 ### Smart Contracts
 As the industry matures and well known SC exploits are learned from a number of best practices emerge. See the [smart contract security field guide](https://scsfg.io/hackers/) for best practices in smart contract development.
@@ -162,7 +167,7 @@ The problem is in the `withdraw()` function. In line 17, `call.value()` sends fu
 [^Humiston2018]: Humiston, I. (2018). Attacks and Incidents. In Ethereum Smart Contract Development (pp. 81-94). Apress.
 
 #### MEV
-MEV refers to the maximum value that can be extracted from transaction reordering, transaction inclusion, and transaction censorship by validators within a block. Essentially, it quantifies the financial incentives for validators to deviate from the "honest" behavior expected of them. In Ethereum validators have the authority to choose the transactions that will be included in the next block. Because transactions pay fees to validators for their inclusion in a block, validators naturally prioritize transactions offering higher fees. However, the ability to choose transactions and their ordering within a block creates opportunities for MEV.
+Maximum Extractable Value refers to the maximum value that can be extracted from transaction reordering, transaction inclusion, and transaction censorship by validators within a block. Essentially, it quantifies the financial incentives for validators to deviate from the "honest" behavior expected of them. In Ethereum validators have the authority to choose the transactions that will be included in the next block. Because transactions pay fees to validators for their inclusion in a block, validators naturally prioritize transactions offering higher fees. However, the ability to choose transactions and their ordering within a block creates opportunities for MEV.
 
 Validators can strategically reorder transactions to take advantage of arbitrage opportunities or even [front-run](https://hacken.io/discover/front-running/) specific transactions. Front-running involves placing a transaction ahead of another transaction in a block to take advantage of some profitable condition before the latter transaction can be executed. For example, if a trader is about to buy a large amount of a particular token, which is expected to increase the token price, a front-running validator can buy the token first and sell it after the trader's purchase, thereby making a profit.
 
@@ -174,21 +179,31 @@ The list of hacks and breaches of cryptocurrency exchanges is long and colorful.
 Outright scams are also prominent as Bitcoin becomes popular and increases in value, many 'alternatives' make the rounds promising massive gains and better features. The OneCoin scam was recently popularized in the excellent BBC podcast series _The Missing Queen_ by Jamie Bartlett. Episodes available [here](https://www.bbc.co.uk/programmes/p07nkd84/episodes/downloads). Often these types of scams are called **Rug Pulls** as the founders or one of the founders decides to abscond with user funds, often leaving nothing more than a trail of transaction history for victims to search.
 
 ### Mining Centralisation
-The main practical threat to a single entity controlling the majority of the hashpower is that it will lead to centralization and cause users to abandon the system altogether. Once hashpower gets close to this threshold it is also possible that developers will step in and update the software to limit this behaviour. It is unknown how this will play out in the future. Thus far the bitcoin network has been relatively decentralized, but a few mega mining pools have emerged. There have been some cases of 51% attacks on alternative cryptocurrencies such as Verge, Horizen, and Vertcoin. Smaller cryptocurrencies are more vulnerable to a large mining pool shifting their resources for this purpose.
+The main practical threat to a single entity controlling the majority of the hashpower is that it will lead to centralization and cause users to abandon the system altogether. Once hashpower gets close to this threshold it is also possible that developers will step in and update the software to limit this behaviour. It is unknown how this will play out in the future. Thus far the bitcoin network has been relatively decentralized, but a few mega mining pools have emerged. There have been some cases of 51% attacks on alternative cryptocurrencies such as Verge, Horizen, and Vertcoin. Smaller cryptocurrencies are more vulnerable to a large mining pool shifting their resources for this purpose. See Case Studies (next).
+
+# Case Studies (🏗️ Under Construction 👷‍♀️)
+## Reorgs
+* Ethereum Beacon Chain 2022. "The Ethereum beacon chain experienced a 7-block deep reorg ~2.5h ago." [Source: X](https://twitter.com/koeppelmann/status/1529458000011972610)
+* Here's a list of on-going Ethereum reorgs on [Etherscan](https://etherscan.io/blocks_forked)
+## Double Spends
+* Ethereum Classic (ETC) 2019. A transaction of value 600 ETC in orphaned block 7249357 was double spent representing a 57-block-deep reorg. ([Coinbase post-mortem](https://www.coinbase.com/blog/deep-chain-reorganization-detected-on-ethereum-classic-etc))
+* Horizon (ZEN) 2018. "Between blocks 318165 and 318275, the attacker(s) caused multiple reorganizations of the blockchain, reverting 38 blocks in the longest reorganization. In block 318204 and 318234 the attacker(s) performed double-spend attacks." ([Horizon post-mortem]( https://blog.horizen.io/zencash-statement-on-double-spend-attack/)) 
 
 # What did we miss?
 * There are a number of mining-related attacks; most of which are theoretical for Bitcoin because of its decentralisation and large network hashpower, but could be more practicle for smaller PoW based cryptocurrencies.
 
 # Further Reading - the very short list
-* Blockchain Security Vulnerabilities by Hackn https://hackn.gitbook.io/l1-security/ 
+* Selfish Mining by [decentralizedThoughts](https://decentralizedthoughts.github.io/2020-02-26-selfish-mining/)
 
 # Exercises
-1. To be posted.
+1. How do PoW and PoS mitigate Sybil attacks?
+2. Explain the probabalistic nature of an attacker that has 51% of the network's hashpower. Why are they not guaranteed of double spending?
+3. Mining blocks in secret, or withholding blocks, can be a mining strategy. What is the benefit to the miner for doing this? How is this harmful to the community?
 
 # Resources
-* Watch Lera Nikolaenko (a16z crypto research partner, super smart) given you the deep dive into Proof of Stake blockchain attacks ([Youtube](https://youtu.be/-uxHoEfxXC4))
+* Watch Micah Warren (math professor) lay out the Bitcoin security hashrate concerns [YouTube](https://www.youtube.com/watch?v=0bUpF0wJrxo)
+* Blockchain Security Vulnerabilities by Hackn https://hackn.gitbook.io/l1-security/
+* Watch Lera Nikolaenko (a16z crypto research partner, super smart) given you the deep dive into Proof of Stake blockchain attacks [YouTube](https://youtu.be/-uxHoEfxXC4)
 
 # Video Lecture
 To be posted.
-
-
