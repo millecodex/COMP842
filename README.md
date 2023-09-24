@@ -39,6 +39,7 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 * [Cryptocurrency Engineering And Design](https://ocw.mit.edu/courses/mas-s62-cryptocurrency-engineering-and-design-spring-2018/) (MIT)
 * [Bitcoin and Cryptocurrency Technologies](https://bitcoinbook.cs.princeton.edu/) (Princeton)
 * [CS251: Blockchain Technologies](https://cs251.stanford.edu/syllabus.html) (Stanford)
+* [EE374: Scaling Blockchains](https://web.stanford.edu/class/archive/ee/ee374/ee374.1206/) (Stanford)
 * [Foundations of Blockchains](https://timroughgarden.github.io/fob21/) (Columbia)
 
 ## Other Academic Groups
