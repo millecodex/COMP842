@@ -41,6 +41,7 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 * [CS251: Blockchain Technologies](https://cs251.stanford.edu/syllabus.html) (Stanford)
 * [EE374: Scaling Blockchains](https://web.stanford.edu/class/archive/ee/ee374/ee374.1206/) (Stanford)
 * [Foundations of Blockchains](https://timroughgarden.github.io/fob21/) (Columbia)
+* [META511MC: NFTs and the Metaverse](https://github.com/UniversityOfNicosia/META511MC-Course-Materials/tree/main) (Nicosia)
 
 ## Other Academic Groups
 * [Resistance Money](https://www.resistance.money/) (Wyoming)
