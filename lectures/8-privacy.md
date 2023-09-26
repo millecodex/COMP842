@@ -103,5 +103,4 @@ Advanced section. See the What did we miss? section.
 2. b
 
 # Video Lecture
-To be posted.
-
+Here's this lecture recorded live September 18, 2023 on [YouTube](https://www.youtube.com/watch?v=1pK6Iiw0fp0)
