@@ -24,7 +24,7 @@ This is the Graduate Level 🎓 version of [COMP726](https://github.com/millecod
 9. [Security](lectures/9-security.md)
 10. [Digital Assets](lectures/10-digital-assets.md)
 11. [Web3](lectures/11-web3.md) & 🚀**Seminar**⚡ by [Ryan Johnson-Hunt](https://linktr.ee/ryanjohnsonhunt)
-12. Social Factors
+12. [The Return to Money](lectures/12.md)
 
 ## Resources
 * [Course Discussion forum](https://canvas.aut.ac.nz/courses/15421/discussion_topics) (you also earn participation credit here)
