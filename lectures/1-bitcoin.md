@@ -44,7 +44,7 @@ Finance evolved once systems for credit, debt, and value transfer (cash) gained 
 > <img width="400" alt="Medici Ledger of accounts from 1573" src="https://github.com/millecodex/COMP842/assets/39792005/5a95b958-ddc5-458b-99f3-de6410b8e361">\
 > Figure: Medici Ledger of accounts from 1573. Source: University of Pennsylvania, OPENN Library.
 
-It’s not just the idea of a permanent ledger that bitcoin borrowed, but rather the motivation to create a system independent of the one pioneered by the Medicis in 15th-century Italy. 
+It’s not just the idea of a permanent ledger that Bitcoin borrowed, but rather the motivation to create a system independent of the one pioneered by the Medicis in 15th-century Italy. 
 
 ## Traditional Banking System
 The contemporary banking system leverages internet infrastructure and computing concepts such as relational databases and atomic transactions to operate on a global scale. With relevance to blockchain development, this system:
