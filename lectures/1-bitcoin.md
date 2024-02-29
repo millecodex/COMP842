@@ -91,7 +91,7 @@ Because the chain is public you can do an inventory of nodes online at any given
 When a program writes to disc or memory, it typically uses a predetermined area allocated by the operating system at runtime. Since programs frequently write and rewrite to disc, the data can end up disorganized and scattered. Data structures help track the location of items in memory, including potentially other crucial information like the last element's location or the maximum quantity allowed. Here, we'll discuss two data structures: linked lists and trees (in a future lecture). These structures have simple visual representations but can be challenging to implement, hence all useful programming languages come equipped with built-in data structure operations.
 
 ### Linked Lists
-A linked list is a sequence of data that has a reference to previous or subsequent item. The figure shows a schematic for integer elements that are linked to a subsequent item in their list. A key property of lists is that there is no absolute reference to individual elements. To find an element in the middle, say 99, you have to start at the beginning (12) and then traverse the list. Additionally in this manner it is easiest to append elements to the end of the list and much more difficult to insert elements part way through.
+A linked list is a sequence of data that has a reference to previous or subsequent item. The figure shows a schematic for integer elements that are linked to a subsequent item in their list. A key property of lists is that there is no absolute reference to individual elements. To find an element in the middle, say 99, you have to start at the beginning (12) and then traverse the list. Additionally in this manner it is easiest to append elements to the end of the list compared to inserting elements part way through.
 
 > <img width="800" alt="asdf" src="https://github.com/millecodex/COMP842/assets/39792005/468aafe3-f855-478e-80c9-adcd5139dd7e">\
 > Figure: Various linked lists. Top: a standard implementation with a reference pointer to the next element. Middle: a doulble-linked list with previous and subsequent pointers. Bottom: a circular linked list with reference back to the first element. Source: https://en.wikipedia.org/wiki/Linked_list.
@@ -163,7 +163,7 @@ The killer feature of Bitcoin is the use as a currency and one of the features i
 
 [^21]: Due to the beautiful and messy nature of math applied through computer science the actual limit is just under 21 million. See [Lecture 3](./3-consensus-pow.md).
 ### Block Reward
-Incentives in social systems are very important - for example, why would someone want to dedicate electricity and computing power to an open source network? They can be rewarded for their effort, of course. The block reward is a minting of new bitcoin for every block that miners add to the chain. This occurs according to a fixed schedule and is a decreasing geometric series. Presently the block reward is 6.25 bitcoin, and will be split in half (3.125) sometime in 2024, an event known as the *halving*.
+Incentives in social systems are very important - for example, why would someone want to dedicate electricity and computing power to an open source network? They can be rewarded for their effort, of course. The block reward is a minting of new bitcoin for every block that miners add to the chain. This occurs according to a fixed schedule and is a decreasing geometric series. Presently the block reward is 6.25 bitcoin, and will be split in half (3.125) sometime in April 2024, an event known as the *halving*.
 
 ### Difficulty Adjustment
 A difficulty adjustment helps control the distribution of new bitcoins, making it more challenging to win the block reward as network participants increase. If large organizations or governments wanted to control a network, they would dedicate substantial resources to doing so, leading to industry centralization. To limit this growth, a difficulty adjustment occurs every two weeks, impacting the rate of bitcoin issuance.
@@ -171,7 +171,7 @@ A difficulty adjustment helps control the distribution of new bitcoins, making i
 ## Bitcoin Today
 Satoshi sent his whitepaper out to a [mailing list](https://satoshi.nakamotoinstitute.org/emails/cryptography/1/#selection-117.66-117.78) of like-minded cryptography cypherpunks on October 31, 2008. A few months later in January 2009 he started running the software and mined the genesis block. Since this time the Bitcoin network has been the most robust computing network humans have ever created. There has been almost no downtime, few bugs, no hacks, and exponential growth. 
 
-With a total value of around $600 million USD, it is the 20th largest [currency](https://coinmarketcap.com/fiat-currencies/) next to the Vietnamese Dong and Singaporean Dollar. It is estimated that 1-2% of the global population have used or interacted with bitcoin, and [16% of Americans](https://www.pewresearch.org/fact-tank/2021/11/11/16-of-americans-say-they-have-ever-invested-in-traded-or-used-cryptocurrency/) have used or invested in cryptocurrency. There are reachable nodes running the core software in 87 countries. In El Salvador bitcoin is legal tender. 
+As of mid-2023, With a total value of around $600 million USD, it is the 20th largest [currency](https://coinmarketcap.com/fiat-currencies/) next to the Vietnamese Dong and Singaporean Dollar. It is estimated that 1-2% of the global population have used or interacted with bitcoin, and [16% of Americans](https://www.pewresearch.org/fact-tank/2021/11/11/16-of-americans-say-they-have-ever-invested-in-traded-or-used-cryptocurrency/) have used or invested in cryptocurrency. There are reachable nodes running the core software in 87 countries. In El Salvador bitcoin is legal tender. 
 
 What began as an experiment has bootstrapped an entire financial system with global settlement time in minutes and fees that are orders of magnitude cheaper and more secure than traditional banking infrastructure.
 
@@ -204,4 +204,4 @@ What began as an experiment has bootstrapped an entire financial system with glo
 11. Wood, G. 2014. *Ethereum: A Secure Decentralised Generalised Transaction Ledger*. Yellow Paper. [(pdf)](https://ethereum.github.io/yellowpaper/paper.pdf)
 
 # Video Lecture
-Here's this lecture recorded live July 17, 2023 on [YouTube](https://www.youtube.com/watch?v=Q6vWmZPgPJs).
+To Be Posted.
