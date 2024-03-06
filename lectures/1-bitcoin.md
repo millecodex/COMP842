@@ -204,4 +204,7 @@ What began as an experiment has bootstrapped an entire financial system with glo
 11. Wood, G. 2014. *Ethereum: A Secure Decentralised Generalised Transaction Ledger*. Yellow Paper. [(pdf)](https://ethereum.github.io/yellowpaper/paper.pdf)
 
 # Video Lecture
-To Be Posted.
+Recorded live on March 1st, 2024.\
+[Lecture 1.1 Introduction to Money](https://www.youtube.com/watch?v=2TDAvq-l154)\
+[Lecture 1.2 The Double Spend Problem](https://www.youtube.com/watch?v=TAkAskvqDP8)\
+[Lecture 1.3 Introduction to Bitcoin](https://www.youtube.com/watch?v=BfANYivWk4o)
