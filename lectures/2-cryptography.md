@@ -348,4 +348,4 @@ echo -n "my name is Jeff" | shasum -a 256
 10. Stallings, W. 2017. Cryptography and Network Security: Principles and Practice. Pearson.
 
 # Video Lecture
-Here's this lecture recorded live July 25, 2023 on [YouTube](https://www.youtube.com/watch?v=kjvkQEnkF5g).
+Here's Part I of this lecture recorded live March 08, 2024 on [YouTube](https://youtu.be/vLx0V_ZHTRM). See the playlist for the remaining parts.
