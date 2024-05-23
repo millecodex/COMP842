@@ -122,12 +122,6 @@ Worth considering here when talking about project sustainability is that somethi
 # Further Reading - the very short list
 * [History of DeFi by Finematics](https://finematics.com/history-of-defi-explained/)
 * How does the AMM actually *make* the market? [AMMs & ~~Impermanent~~ Divergent Loss by Pintail](https://pintail.medium.com/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2)
-
-# Exercises
-1. How do
-
-# Resources
-* Watch
   
 # Video Lecture
-TBD: Here's this lecture recorded live on October 2, 2023 on [YouTube]()
+TBD
