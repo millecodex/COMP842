@@ -17,7 +17,7 @@
 > <img width="800" alt="image" src="https://github.com/millecodex/COMP842/assets/39792005/335a3ecd-849b-4af7-bae3-8d91dddc3407">\
 > The landscape is a bit cluttered, but assets can be digital, real, or crossover with both fungible and non-fungible traits.
 
-See [Lecture Video](#video-lecture) for the walkthrough of the landscape. The remained of the notes focus on decentralised finance, or DeFi which is largely in the fungible-digital box on the landscape, although stablecoins are also considered DeFi as they have only been invented since blockchain technology made them possible.
+See [Lecture Video (to be posted)](#video-lecture) for the walkthrough of the landscape. The remained of the notes focus on decentralised finance, or DeFi which is largely in the fungible-digital box on the landscape, although stablecoins are also considered DeFi as they have only been invented since blockchain technology made them possible.
 
 # Decentralised Finance
 Why? In one word: trust. Or, ironically, you could also say trust*less*. Allow me to explain. For the same reason that Bitcoin is successful without a centralizing third-party─namely that you can transact with a perfect stranger in a foreign country by trusting the protocol and you *don't* need to trust the stranger─the cascade of financial products that can be built upon digital money is an ideal fit for blockchains.
