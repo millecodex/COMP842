@@ -94,7 +94,7 @@ If a blockchain used a regular API to get information there would be differences
 To avoid an issue where a service is not available when needed or perhaps a feed has been manipulated it can be designed to use multiple oracles by, for example, combining Uniswap and Chainlink data, adding your own weighting function, and publishing the result. Others use the Chainlink infrastructure to create their own oracles.
 
 
-# Liquidity Mining & Yield Farming (:sushi: :unicorn: :sweet_potato: :cake:)
+# Liquidity Mining & Yield Farming (🍣 🦄 🥔 🎂)
 In the beginning when a DeFi project is just getting started they can also entice users with high reward rates in the form of a native token. This process of committing assets to pools to earn rewards is called *liquidity mining*. By adding liquidity you take a risk of impermanent loss but can reap rewards from transaction fees.
 
 Farming took off in June of 2020 when [Compound](https://compound.finance/) decided to transfer control of their DeFi borrowing & lending product to its users by depositing tokens in a smart contract that would vest automatically over the next four years to the users in proportion to their activity. The resulting COMP governance tokens can be used to vote on future protocol decisions or traded on the open market. It was *very* popular.
@@ -124,4 +124,4 @@ Worth considering here when talking about project sustainability is that somethi
 * How does the AMM actually *make* the market? [AMMs & ~~Impermanent~~ Divergent Loss by Pintail](https://pintail.medium.com/uniswap-a-good-deal-for-liquidity-providers-104c0b6816f2)
   
 # Video Lecture
-TBD
+To be posted
