@@ -1,4 +1,4 @@
-![Deprecated](https://img.shields.io/badge/status-deprecated-red.svg) ![GitHub](https://img.shields.io/github/license/millecodex/COMP842) ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/millecodex/comp842)
+![Deprecated](https://img.shields.io/badge/status-deprecated-red.svg) ![GitHub](https://img.shields.io/github/license/millecodex/COMP842) 
 
 This repo is no longer maintained. See my new course [here]().
 ---
