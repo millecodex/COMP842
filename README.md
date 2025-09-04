@@ -1,6 +1,6 @@
 ![Deprecated](https://img.shields.io/badge/status-deprecated-red.svg) ![GitHub](https://img.shields.io/github/license/millecodex/COMP842) 
 
-This repo is no longer maintained. See my new course [here]().
+This repo is no longer maintained. See my new course [here](https://github.com/millecodex/blockchains101/).
 ---
 ## COMP842 - Applied Blockchains and Cryptocurrencies
 ### Auckland University of Technology
